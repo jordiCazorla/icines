@@ -6,35 +6,161 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
+        <title>iCines</title>
+        <link rel="shortcut icon" href="img/claqueta_icon.png" type="image/x-icon" />
+        <meta name="title" content="iCines | films | Pelicules">
+        <meta name="description" content="iCines | films | Pelicules">
         <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/home.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <!-- <script src="ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+    </head>
+    <body style="background-color: #9dc9e2">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="page">
+
+            <div class="content">
+                <div class="header">
+                    <div class="header-content">
+                        <a href="#" title="Inici" rel="home" id="logo">
+                            <img src="img/claqueta.png" alt="Inici" />
+                        </a>
+                        <div class="slogan">
+                            iCines: Solucions per a trobar la teva película i el teu cinema ideal.
+                        </div>
+                        <div class="loggin">
+                            <fieldset class="loggin">
+                                <label>Username</label>
+                                <input type="text"placeholder="Usuari">
+                                <label>Password</label>
+                                <input type="password">
+                            </fieldset>
+                            <footer>
+                                <input type="submit" class="button-login" value="Login">
+                                <button class="button-login" id="button-register" href="#">Registrar-se</button>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="navigation">
+                        <ul class="main-menu">
+                            <li class="first active"><a href="#" class="active">Inici</a></li>
+                            <li><a href="#">Pel·lícules</a></li>
+                            <li><a href="#">Cartellera</a></li>
+                            <li><a href="#">Estrenes de la setmana</a></li>
+                            <li><a href="#">Cinemes</a></li>
+                            <li><a href="#">Rànquings</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="breadcrumb">
+                        <!-- espai per saber a quina pagina estem. Crec que no ens cal, pero a nivell de SEO
+                        interessa tenir-ho en compte -->
+                    </div>
+                    <div class="slide-show">
+                        <!-- image -->
+                        <div class="image-view">
+                                    <span>
+                                        <img src="img/example_film.jpg" alt="" title=""  class="image-slide-show" width="910" height="352" />
+                                    </span>
+                        </div>
+                        <!-- title -->
+                        <div class="title-view">
+                            <span>Troba les millors estrenes</span>
+                        </div>
+                        <!-- desc -->
+                        <div class="desc-view">
+                                    <span>
+                                        Tot el que vols saber de les estrenes que trobaràs als cinemes gironins. No et perdis totes les novetats de la cartellera.
+                                    </span>
+                        </div>
+                        <!-- button -->
+                        <div class="button-view">
+                                    <span>
+                                        <a href="#">Veure informació</a>
+                                    </span>
+                        </div>
+                    </div>
+
+                    <div class="menu-conent-boxes">
+                        <div class="box" id="first">
+                            <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                            <h3 class="title-box">Rànquings millor pelicula</h3>
+                            <ol>
+                                <li>
+                                    Intel·ligència artificial
+                                </li>
+                                <li>
+                                    Robots
+                                </li>
+                            </ol>
+                            <span class="small_button_box"><a href="#">Veure Rànquings</a></span>
+                        </div>
+                        <div class="box" id="middle">
+                            <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                            <h3 class="title-box">Pel·lícules</h3>
+                            <p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>
+                            <span class="small_button_box"><a href="#">Veure Pel·lícules</a></span>
+                        </div>
+                        <div class="box" id="last">
+                            <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                            <h3 class="title-box">Publicitat</h3>
+                            <p>Promociona el teu espai aquí</p>
+                            <span class="small_button_box"><a href="#">Accedir a publicitat</a></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-content">
+                    <ul class="footer-menu">
+                        <li>
+                            <a href="#" title="">Avis Legal</a>
+                        </li>
+                        <li>
+                            <a href="#" title="">Politica de privacitat</a>
+                        </li>
+                        <li class="last-link">
+                            <a href="#" title="">Log in</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-more-info">
+                    <ul class="footer-menu">
+                        <li>
+                            telefon: 972972972
+                        </li>
+                        <li>
+                            fax: 972972972
+                        </li>
+                        <li class="last-link">
+                            <a href="mailto:info@icines.com">info@icines.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
+                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
     </body>
 </html>
