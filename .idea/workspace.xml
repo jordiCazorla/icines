@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="396c80da-04aa-4f90-8724-dd741c9ee242" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/public/index.html" afterPath="$PROJECT_DIR$/nodecellar/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/public/js/main.js" afterPath="$PROJECT_DIR$/nodecellar/public/js/main.js" />
     </list>
     <ignored path="icines.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +26,19 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="74" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.56160456">
+            <state line="50" column="40" selection-start="2840" selection-end="2840" vertical-scroll-proportion="0.24637681">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nodecellar/public/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="17" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1365091633782" expanded="true" signature="3870:3886" placeholder="..." />
-                <marker date="1365091633782" expanded="true" signature="4030:4085" placeholder="..." />
+                <marker date="1365092479846" expanded="false" signature="482:498" placeholder="..." />
+                <marker date="1365092479846" expanded="false" signature="598:653" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -76,6 +86,7 @@
         <option value="$PROJECT_DIR$/nodecellar/routes/wines.js" />
         <option value="$PROJECT_DIR$/nodecellar/server.js" />
         <option value="$PROJECT_DIR$/nodecellar/routes/users.js" />
+        <option value="$PROJECT_DIR$/nodecellar/public/js/main.js" />
         <option value="$PROJECT_DIR$/nodecellar/public/index.html" />
       </list>
     </option>
@@ -181,6 +192,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icines" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icines" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nodecellar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -262,11 +295,11 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2905028" sideWeight="0.67045456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2905028" sideWeight="0.67045456" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -332,13 +365,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nodecellar/node_modules/express/node_modules/connect/lib/proto.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="0" selection-start="5242" selection-end="5242" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nodecellar/node_modules/express/node_modules/connect/lib/middleware/static.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="0" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.0">
@@ -437,13 +463,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nodecellar/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="17" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1365092479846" expanded="false" signature="482:498" placeholder="..." />
+            <marker date="1365092479846" expanded="false" signature="598:653" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="74" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.56160456">
-          <folding>
-            <marker date="1365091633782" expanded="true" signature="3870:3886" placeholder="..." />
-            <marker date="1365091633782" expanded="true" signature="4030:4085" placeholder="..." />
-          </folding>
+        <state line="50" column="40" selection-start="2840" selection-end="2840" vertical-scroll-proportion="0.24637681">
+          <folding />
         </state>
       </provider>
     </entry>
