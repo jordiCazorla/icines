@@ -27,3 +27,14 @@ function logut(){
     $('#login-password').val('');
     $('#loggin-box').show();
 }
+
+function animate() {
+    cur.fadeOut( 1000 , function(){
+        if ( cur.attr('class') == 'last' )
+            cur = $('.slide-show li:first');
+        else
+            cur = cur.next();
+        cur.fadeIn( 1000 );
+    });
+
+}

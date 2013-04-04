@@ -67,139 +67,131 @@
                     </div>
                 </div>
                 <div class="main">
-                    <div class="breadcrumb">
-                        <!-- espai per saber a quina pagina estem. Crec que no ens cal, pero a nivell de SEO
-                        interessa tenir-ho en compte -->
-                    </div>
-                    <!-- <ul class="ppt">
-                        <li><img src="img/example_film.jpg" alt="descripción 1"></img></li>
-                        <li><img src="img/claqueta.png" alt="descripción 2"></img></li>
-                        <li><img src="img/claqueta_icon.png" alt="descripción 3"></img></li>
-                    </ul> -->
+                    <div id="inici-info">
+                        <div class="breadcrumb">
+                            <!-- espai per saber a quina pagina estem. Crec que no ens cal, pero a nivell de SEO
+                            interessa tenir-ho en compte -->
+                        </div>
+                        <!-- <ul class="ppt">
+                            <li><img src="img/example_film.jpg" alt="descripción 1"></img></li>
+                            <li><img src="img/claqueta.png" alt="descripción 2"></img></li>
+                            <li><img src="img/claqueta_icon.png" alt="descripción 3"></img></li>
+                        </ul> -->
 
-                    <ul class="slide-show ppt">
-                        <li>
-                            <!-- image -->
-                            <div class="image-view">
+                        <ul class="slide-show ppt">
+                            <li>
+                                <!-- image -->
+                                <div class="image-view">
                                 <span>
                                     <img src="img/example_film.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
                                 </span>
-                            </div>
-                            <!-- title -->
-                            <div class="title-view">
-                                <span>Troba les millors estrenes</span>
-                            </div>
-                            <!-- desc -->
-                            <div class="desc-view">
+                                </div>
+                                <!-- title -->
+                                <div class="title-view">
+                                    <span>Troba les millors estrenes</span>
+                                </div>
+                                <!-- desc -->
+                                <div class="desc-view">
                                 <span>
                                     Tot el que vols saber de les estrenes que trobaràs als cinemes gironins. No et perdis totes les novetats de la cartellera.
                                 </span>
-                            </div>
-                            <!-- button -->
-                            <div class="button-view">
+                                </div>
+                                <!-- button -->
+                                <div class="button-view">
                                 <span>
                                     <a href="#">Veure informació</a>
                                 </span>
-                            </div>
-                        </li>
-                        <li>
-                            <!-- image -->
-                            <div class="image-view">
+                                </div>
+                            </li>
+                            <li>
+                                <!-- image -->
+                                <div class="image-view">
                                 <span>
                                     <img src="img/example_film2.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
                                 </span>
-                            </div>
-                            <!-- title -->
-                            <div class="title-view">
-                                <span>La nostra cartellera</span>
-                            </div>
-                            <!-- desc -->
-                            <div class="desc-view">
+                                </div>
+                                <!-- title -->
+                                <div class="title-view">
+                                    <span>La nostra cartellera</span>
+                                </div>
+                                <!-- desc -->
+                                <div class="desc-view">
                                 <span>
                                     No dubtis en visitar la nostra cartallera per veure poder gaudir de la teva pel·lícula en el teu cinema.
                                 </span>
-                            </div>
-                            <!-- button -->
-                            <div class="button-view">
+                                </div>
+                                <!-- button -->
+                                <div class="button-view">
                                 <span>
                                     <a href="#">Veure cartellera</a>
                                 </span>
-                            </div>
-                        </li>
-                        <li>
-                            <!-- image -->
-                            <div class="image-view">
+                                </div>
+                            </li>
+                            <li>
+                                <!-- image -->
+                                <div class="image-view">
                                 <span>
                                     <img src="img/example_film3.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
                                 </span>
-                            </div>
-                            <!-- title -->
-                            <div class="title-view">
-                                <span>Els cinemes gironins al teu abast</span>
-                            </div>
-                            <!-- desc -->
-                            <div class="desc-view">
+                                </div>
+                                <!-- title -->
+                                <div class="title-view">
+                                    <span>Els cinemes gironins al teu abast</span>
+                                </div>
+                                <!-- desc -->
+                                <div class="desc-view">
                                 <span>
                                     Et posem els cinemes gironins a l'abast d'un sol clic. Accedeix a la cartellera de cada un d'ells.
                                 </span>
-                            </div>
-                            <!-- button -->
-                            <div class="button-view">
+                                </div>
+                                <!-- button -->
+                                <div class="button-view">
                                 <span>
                                     <a href="#">Veure cinemes</a>
                                 </span>
+                                </div>
+                            </li>
+                        </ul>
+                        <script type="text/javascript">
+                            $('.slide-show li:gt(0)').hide();
+                            $('.slide-show li:last').addClass('last');
+
+                            var cur = $('.slide-show li:first');
+
+
+                            $(function() {
+                                setInterval( "animate()", 5000 );
+                            } );
+                        </script>
+
+                        <div class="menu-conent-boxes">
+                            <div class="box" id="first">
+                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <h3 class="title-box">Rànquings millor pelicula</h3>
+                                <ol>
+                                    <li>
+                                        Intel·ligència artificial
+                                    </li>
+                                    <li>
+                                        Robots
+                                    </li>
+                                </ol>
+                                <span class="small_button_box"><a href="#">Veure Rànquings</a></span>
                             </div>
-                        </li>
-                    </ul>
-                    <script type="text/javascript">
-                        $('.slide-show li:gt(0)').hide();
-                        $('.slide-show li:last').addClass('last');
-
-                        var cur = $('.slide-show li:first');
-                        function animate() {
-                            cur.fadeOut( 1000 , function(){
-                                if ( cur.attr('class') == 'last' )
-                                    cur = $('.slide-show li:first');
-                                else
-                                    cur = cur.next();
-                                cur.fadeIn( 1000 );
-                            });
-
-                        }
-
-                        $(function() {
-                            setInterval( "animate()", 5000 );
-                        } );
-                    </script>
-
-                    <div class="menu-conent-boxes">
-                        <div class="box" id="first">
-                            <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
-                            <h3 class="title-box">Rànquings millor pelicula</h3>
-                            <ol>
-                                <li>
-                                    Intel·ligència artificial
-                                </li>
-                                <li>
-                                    Robots
-                                </li>
-                            </ol>
-                            <span class="small_button_box"><a href="#">Veure Rànquings</a></span>
-                        </div>
-                        <div class="box" id="middle">
-                            <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
-                            <h3 class="title-box">Pel·lícules</h3>
-                            <p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>
-                            <span class="small_button_box"><a href="#">Veure Pel·lícules</a></span>
-                        </div>
-                        <div class="box" id="last">
-                            <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
-                            <h3 class="title-box">Publicitat</h3>
-                            <p>Promociona el teu espai aquí</p>
-                            <span class="small_button_box"><a href="#">Accedir a publicitat</a></span>
+                            <div class="box" id="middle">
+                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <h3 class="title-box">Pel·lícules</h3>
+                                <p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>
+                                <span class="small_button_box"><a href="#">Veure Pel·lícules</a></span>
+                            </div>
+                            <div class="box" id="last">
+                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <h3 class="title-box">Publicitat</h3>
+                                <p>Promociona el teu espai aquí</p>
+                                <span class="small_button_box"><a href="#">Accedir a publicitat</a></span>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="footer">
