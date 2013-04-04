@@ -14,6 +14,7 @@ app.get('/users/:id', user.findById);
 app.post('/users', user.addUser);
 app.put('/users/:id', user.updateUser);
 app.delete('/users/:id', user.deleteUser);
+app.get('/users/:name/:password', user.findByName);
 
 app.listen(3000);
 console.log('Listening on port 3000...');

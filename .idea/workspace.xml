@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396c80da-04aa-4f90-8724-dd741c9ee242" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\css\home.css" afterPath="$PROJECT_DIR$/nodecellar/public/css/home.css" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\css\main.css" afterPath="$PROJECT_DIR$/nodecellar/public/css/main.css" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\css\normalize.css" afterPath="$PROJECT_DIR$/nodecellar/public/css/normalize.css" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\img\.gitignore" afterPath="$PROJECT_DIR$/nodecellar/public/img/.gitignore" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\img\claqueta.png" afterPath="$PROJECT_DIR$/nodecellar/public/img/claqueta.png" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\img\claqueta_icon.png" afterPath="$PROJECT_DIR$/nodecellar/public/img/claqueta_icon.png" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\img\example_film.jpg" afterPath="$PROJECT_DIR$/nodecellar/public/img/example_film.jpg" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\img\example_film2.jpg" afterPath="$PROJECT_DIR$/nodecellar/public/img/example_film2.jpg" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\img\example_film3.jpg" afterPath="$PROJECT_DIR$/nodecellar/public/img/example_film3.jpg" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\index.html" afterPath="$PROJECT_DIR$/nodecellar/public/index.html" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\js\main.js" afterPath="$PROJECT_DIR$/nodecellar/public/js/main.js" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\js\plugins.js" afterPath="$PROJECT_DIR$/nodecellar/public/js/plugins.js" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\js\vendor\jquery-1.9.0.min.js" afterPath="$PROJECT_DIR$/nodecellar/public/js/vendor/jquery-1.9.0.min.js" />
-      <change type="MOVED" beforePath="C:\Users\Jordi\Documents\GitHub\icines\js\vendor\modernizr-2.6.2.min.js" afterPath="$PROJECT_DIR$/nodecellar/public/js/vendor/modernizr-2.6.2.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/public/index.html" afterPath="$PROJECT_DIR$/nodecellar/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/routes/users.js" afterPath="$PROJECT_DIR$/nodecellar/routes/users.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/server.js" afterPath="$PROJECT_DIR$/nodecellar/server.js" />
     </list>
     <ignored path="icines.iws" />
@@ -40,7 +27,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="51" selection-start="2759" selection-end="2759" vertical-scroll-proportion="0.7083333">
+            <state line="63" column="71" selection-start="3697" selection-end="3697" vertical-scroll-proportion="0.730659">
               <folding />
             </state>
           </provider>
@@ -49,7 +36,7 @@
       <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nodecellar/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="49" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0">
+            <state line="16" column="51" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -58,16 +45,7 @@
       <file leaf-file-name="users.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nodecellar/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="3" selection-start="568" selection-end="568" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodecellar/public/css/home.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="330" column="0" selection-start="5471" selection-end="5471" vertical-scroll-proportion="0.0">
+            <state line="35" column="0" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,8 +73,9 @@
         <option value="$PROJECT_DIR$/css/home.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/nodecellar/routes/wines.js" />
-        <option value="$PROJECT_DIR$/nodecellar/routes/users.js" />
         <option value="$PROJECT_DIR$/nodecellar/server.js" />
+        <option value="$PROJECT_DIR$/nodecellar/routes/users.js" />
+        <option value="$PROJECT_DIR$/nodecellar/public/index.html" />
       </list>
     </option>
   </component>
@@ -286,7 +265,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -348,99 +327,118 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="12" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/css/home.css">
+    <entry file="file://$PROJECT_DIR$/nodecellar/node_modules/express/node_modules/connect/lib/proto.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="873" column="4" selection-start="14668" selection-end="14705" vertical-scroll-proportion="0.0">
+        <state line="205" column="0" selection-start="5242" selection-end="5242" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
+    <entry file="file://$PROJECT_DIR$/nodecellar/node_modules/express/node_modules/connect/lib/middleware/static.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="72" selection-start="14152" selection-end="14152" vertical-scroll-proportion="0.0">
+        <state line="74" column="0" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/css/home.css">
+    <entry file="file://$PROJECT_DIR$/nodecellar/node_modules/express/node_modules/send/lib/send.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="928" column="17" selection-start="15537" selection-end="15537" vertical-scroll-proportion="0.0">
+        <state line="322" column="0" selection-start="6268" selection-end="6268" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
+    <entry file="file://$USER_HOME$/.WebIde50/system/extLibs/nodejs-v0.8.22-src/core-modules-sources/lib/fs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="49" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
+        <state line="297" column="0" selection-start="8302" selection-end="8302" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/css/home.css">
+    <entry file="file://$PROJECT_DIR$/nodecellar/node_modules/express/lib/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2848" column="0" selection-start="51301" selection-end="51301" vertical-scroll-proportion="0.0">
+        <state line="33" column="0" selection-start="709" selection-end="709" vertical-scroll-proportion="1.626087">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robots.txt">
+    <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/node_modules/bson/lib/bson/objectid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="31" column="0" selection-start="896" selection-end="896" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/lib/mongodb/responses/mongo_reply.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="133" column="0" selection-start="6085" selection-end="6085" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/css.md">
+    <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/lib/mongodb/connection/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="531" column="0" selection-start="22870" selection-end="22870" vertical-scroll-proportion="0.3313253">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/css/main.css">
+    <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/lib/mongodb/connection/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="0" selection-start="0" selection-end="5137" vertical-scroll-proportion="0.0" />
+        <state line="131" column="0" selection-start="4056" selection-end="4056" vertical-scroll-proportion="0.3313253">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/css/normalize.css">
+    <entry file="file://$USER_HOME$/.WebIde50/system/extLibs/nodejs-v0.8.22-src/core-modules-sources/lib/events.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="308" column="4" selection-start="4788" selection-end="4808" vertical-scroll-proportion="0.5752961" />
+        <state line="135" column="0" selection-start="4203" selection-end="4203" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/js/vendor/jquery-1.9.0.min.js">
+    <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/lib/mongodb/db.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="25145" selection-start="89318" selection-end="89322" vertical-scroll-proportion="-1.36" />
+        <state line="1709" column="0" selection-start="74052" selection-end="74052" vertical-scroll-proportion="0.3313253">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodecellar/public/css/home.css">
+    <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/lib/mongodb/cursor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="330" column="0" selection-start="5471" selection-end="5471" vertical-scroll-proportion="0.0">
+        <state line="636" column="0" selection-start="25040" selection-end="25040" vertical-scroll-proportion="0.3313253">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/lib/mongodb/collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1010" column="0" selection-start="41018" selection-end="41018" vertical-scroll-proportion="0.3313253">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nodecellar/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="3" selection-start="568" selection-end="568" vertical-scroll-proportion="0.0">
+        <state line="35" column="0" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nodecellar/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="49" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0">
+        <state line="16" column="51" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="51" selection-start="2759" selection-end="2759" vertical-scroll-proportion="0.7083333">
+        <state line="63" column="71" selection-start="3697" selection-end="3697" vertical-scroll-proportion="0.730659">
           <folding />
         </state>
       </provider>

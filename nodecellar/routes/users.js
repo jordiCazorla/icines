@@ -29,6 +29,26 @@ exports.findById = function(req, res) {
     });
 };
 
+exports.findByName = function(req, res){
+    var name = req.params.name;
+    var password = req.params.password;
+    db.collection('users', function(err, collection) {
+        collection.findOne({'name': name}, function(err, item) {
+            if(err == null){
+                if (item.password == password){
+                    res.send({"result": "ok", "name": item.name, "email": item.email, "rol": item.rol});
+                }
+                else{
+                    res.send({"result": "ko"});
+                }
+            }else{
+                res.send({"result": "ko"});
+            }
+
+        });
+    });
+}
+
 exports.findAll = function(req, res) {
     db.collection('users', function(err, collection) {
         collection.find().toArray(function(err, items) {
@@ -93,15 +113,21 @@ var populateDB = function() {
     var users = [
         {
             name: "admin",
-            password: "admin"
+            password: "admin",
+            email: "admin@admin.com",
+            rol: 1
         },
         {
             name: "ivan",
-            password: "ivan"
+            password: "ivan",
+            email: "u1902293@campus.udg.edu",
+            rol: 1
         },
         {
             name: "jordi",
-            password: "jordi"
+            password: "jordi",
+            email: "u1901962@campus.udg.edu",
+            rol: 1
         }];
 
     db.collection('users', function(err, collection) {

@@ -43,12 +43,32 @@
                         <div class="loggin">
                             <fieldset class="loggin">
                                 <label>Username</label>
-                                <input type="text"placeholder="Usuari">
+                                <input id="login-usuari" type="text" placeholder="Usuari">
                                 <label>Password</label>
-                                <input type="password">
+                                <input type="password" id="login-password">
                             </fieldset>
                             <footer>
-                                <input type="submit" class="button-login" value="Login">
+                                <script type="text/javascript">
+                                    function login() {
+                                        var name = $('#login-usuari').val();
+                                        var password = $('#login-password').val();
+                                        if(name ==  '' || password == ''){
+                                            alert("Algun dels parametres es buit");
+                                        }else
+                                        {
+                                            $.getJSON( 'users/' + name + '/' + password, function(data) {
+                                                if(data.result == 'ok'){
+                                                    alert(data.name);
+                                                }
+                                                else{
+                                                    alert(data.result);
+                                                }
+                                            });
+                                        }
+                                    }
+                                </script>
+                                <!-- <input type="submit" class="button-login" value="Login"> -->
+                                <input type="button" class="button-login" value="Login" onclick="javascript:login()"/>
                                 <button class="button-login" id="button-register" href="#">Registrar-se</button>
                             </footer>
                         </div>
