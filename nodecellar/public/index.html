@@ -40,37 +40,50 @@
                         <div class="slogan">
                             iCines: Solucions per a trobar la teva película i el teu cinema ideal.
                         </div>
-                        <div class="loggin">
-                            <fieldset class="loggin">
-                                <label>Username</label>
-                                <input id="login-usuari" type="text" placeholder="Usuari">
-                                <label>Password</label>
-                                <input type="password" id="login-password">
-                            </fieldset>
-                            <footer>
-                                <script type="text/javascript">
-                                    function login() {
-                                        var name = $('#login-usuari').val();
-                                        var password = $('#login-password').val();
-                                        if(name ==  '' || password == ''){
-                                            alert("Algun dels parametres es buit");
-                                        }else
-                                        {
-                                            $.getJSON( 'users/' + name + '/' + password, function(data) {
-                                                if(data.result == 'ok'){
-                                                    alert(data.name);
-                                                }
-                                                else{
-                                                    alert(data.result);
-                                                }
-                                            });
+                        <div id= "user-info">
+                            <div class="loggin" id="loggin-box">
+                                <fieldset class="loggin">
+                                    <label>Username</label>
+                                    <input id="login-usuari" type="text" placeholder="Usuari">
+                                    <label>Password</label>
+                                    <input type="password" id="login-password">
+                                </fieldset>
+                                <footer>
+                                    <script type="text/javascript">
+                                        function login() {
+                                            var name = $('#login-usuari').val();
+                                            var password = $('#login-password').val();
+                                            if(name ==  '' || password == ''){
+                                                alert("Algun dels parametres es buit");
+                                            }else
+                                            {
+                                                $.getJSON( 'users/' + name + '/' + password, function(data) {
+                                                    if(data.result == 'ok'){
+                                                        //TODO: guardar l'item en un usuari global
+
+                                                        var item;
+                                                        item = '<div class="loggin" id="info-user-logged"><div style="margin-top:25px;"> Benvingut,  ' + data.name +
+                                                                '. <span/><a onclick="javascript:logut()" style="text-decoration: underline; cursor: pointer !important;">logout</a></div></div>';
+                                                        $('#user-info').append(item);
+                                                        $('#loggin-box').hide();
+                                                    }
+                                                    else{
+                                                        alert("L'usuari i/o la contrasenya són incorrectes");
+                                                    }
+                                                });
+                                            }
                                         }
-                                    }
-                                </script>
-                                <!-- <input type="submit" class="button-login" value="Login"> -->
-                                <input type="button" class="button-login" value="Login" onclick="javascript:login()"/>
-                                <button class="button-login" id="button-register" href="#">Registrar-se</button>
-                            </footer>
+                                        function logut(){
+                                            $('#info-user-logged').hide();
+                                            $('#login-password').val('');
+                                            $('#loggin-box').show();
+                                        }
+                                    </script>
+                                    <!-- <input type="submit" class="button-login" value="Login"> -->
+                                    <input type="button" class="button-login" value="Login" onclick="javascript:login()"/>
+                                    <button class="button-login" id="button-register" href="#">Registrar-se</button>
+                                </footer>
+                            </div>
                         </div>
                     </div>
                     <div class="navigation">

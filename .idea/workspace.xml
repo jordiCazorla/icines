@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="396c80da-04aa-4f90-8724-dd741c9ee242" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/public/index.html" afterPath="$PROJECT_DIR$/nodecellar/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/routes/users.js" afterPath="$PROJECT_DIR$/nodecellar/routes/users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/server.js" afterPath="$PROJECT_DIR$/nodecellar/server.js" />
     </list>
     <ignored path="icines.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +25,11 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="71" selection-start="3697" selection-end="3697" vertical-scroll-proportion="0.730659">
-              <folding />
+            <state line="76" column="74" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.56160456">
+              <folding>
+                <marker date="1365091633782" expanded="true" signature="3870:3886" placeholder="..." />
+                <marker date="1365091633782" expanded="true" signature="4030:4085" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -438,8 +439,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nodecellar/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="71" selection-start="3697" selection-end="3697" vertical-scroll-proportion="0.730659">
-          <folding />
+        <state line="76" column="74" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.56160456">
+          <folding>
+            <marker date="1365091633782" expanded="true" signature="3870:3886" placeholder="..." />
+            <marker date="1365091633782" expanded="true" signature="4030:4085" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
