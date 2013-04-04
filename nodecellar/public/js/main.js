@@ -12,7 +12,7 @@ function login() {
 
                 var item;
                 item = '<div class="loggin" id="info-user-logged"><div style="margin-top:25px;"> Benvingut,  ' + data.name +
-                    '. <span/><a onclick="javascript:logut()" style="text-decoration: underline; cursor: pointer !important;">logout</a></div></div>';
+                    '. <span/><a onclick="javascript:logout()" style="text-decoration: underline; cursor: pointer !important;">logout</a></div></div>';
                 $('#user-info').append(item);
                 $('#loggin-box').hide();
             }
@@ -22,8 +22,8 @@ function login() {
         });
     }
 }
-function logut(){
-    $('#info-user-logged').hide();
+function logout(){
+    $('#info-user-logged').remove();
     $('#login-password').val('');
     $('#loggin-box').show();
 }
