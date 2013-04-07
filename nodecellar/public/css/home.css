@@ -28,6 +28,28 @@ body{
     width: 100%;
 }
 
+div.register{
+    background-color: white;
+    height: 400px;
+    width: 500px;
+    border-radius: 5px;
+    position: fixed;
+    top: 25%;
+    left: 33%;
+    z-index: 100;
+}
+
+.FBLabel, .FBInput {
+    display:block;
+}
+
+.form-field{
+    position: relative;
+    left: 150px;
+}
+
+
+
 div.loggin{
     background-color: white;
     height: 75px;

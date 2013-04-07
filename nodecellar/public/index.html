@@ -50,8 +50,25 @@
                                 </fieldset>
                                 <footer>
                                     <input type="button" class="button-login" value="Login" onclick="javascript:login()"/>
-                                    <button class="button-login" id="button-register" href="#">Registrar-se</button>
+                                    <button class="button-login" id="button-register" onclick="javascript:registre()">Registrar-se</button>
                                 </footer>
+                            </div>
+                            <div class="register" id="register-form" hidden z-index="100" style="border: 5px solid #666;">
+                                <div id="register-data" style=" margin-top: 30px;">
+                                    <label class="form-field FBLabel">Name:</label>
+                                    <input class="form-field FBInput" />
+                                    <br/>
+                                    <label class="form-field FBLabel">Email:</label>
+                                    <input class="form-field FBInput" />
+                                    <br/>
+                                    <label class="form-field FBLabel">Password:</label>
+                                    <input class="form-field FBInput" />
+                                    <br/>
+                                    <label class="form-field FBLabel">Confirm Password:</label>
+                                    <input class="form-field FBInput" />
+                                    <br/>
+                                    <input class="button-login form-field" type="button" value="Registrar" onclick="javascript:registrar()" style="float: left;    "/>
+                                </div>
                             </div>
                         </div>
                     </div>
