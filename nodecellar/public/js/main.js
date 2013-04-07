@@ -38,8 +38,21 @@ function animate() {
     });
 }
 
+function getGeneres(){
+    alert("estem dins dels generes");
+    //app.get('/users', user.findAll);
+
+    $.getJSON( '/typeFilm', function(data) {
+        //alert("la data es " + data);
+    });
+
+    return data;
+}
+
 function veurePelicules() {
-    $('#inici-info').hide();
+    $('#inici-info').remove();
+    var typeFilms;
+    //typeFilms= getGeneres();
     var item = '<div id="inici-pelicules">' +
         '<div class="breadcrumb">' +
             '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
@@ -62,7 +75,7 @@ function veurePelicules() {
                 '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />' +
                 '<h3 class="title-box">Pel·lícules</h3>' +
                 "<p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>" +
-                '<span class="small_button_box"><a class="script_function" onclick="javascript:veurePelicules()">Veure Pel·lícules</a></span>' +
+                '<span class="small_button_box"><a class="script_function" onclick="">Veure Pel·lícules</a></span>' +
             '</div>' +
             '<div class="box" id="last">' +
                 '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />' +
@@ -79,6 +92,126 @@ function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
     $('#inici-pelicules').remove();
 
+    var item= '<div id="inici-info">' +
+        '<div class="breadcrumb">' +
+        '</div>' +
+            '<ul class="slide-show ppt">' +
+                '<li>' +
+                    '<!-- image -->' +
+                    '<div class="image-view">' +
+                        '<span>' +
+                            '<img src="img/example_film.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />' +
+                        '</span>' +
+                    '</div>' +
+                    '<!-- title -->' +
+                    '<div class="title-view">' +
+                        '<span>Troba les millors estrenes</span>' +
+                    '</div>' +
+                    '<!-- desc -->' +
+                    '<div class="desc-view">' +
+                        '<span>' +
+                        'Tot el que vols saber de les estrenes que trobaràs als cinemes gironins. No et perdis totes les novetats de la cartellera.' +
+                        '</span>' +
+                    '</div>' +
+                    '<!-- button -->' +
+                    '<div class="button-view">' +
+                        '<span>' +
+                            '<a href="#">Veure estrenes</a>' +
+                        '</span>' +
+                    '</div>' +
+                '</li>' +
+                '<li>' +
+                '<!-- image -->' +
+                '<div class="image-view">' +
+                '<span>' +
+                '<img src="img/example_film2.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />' +
+                '</span>' +
+                '</div>' +
+                '<!-- title -->' +
+                '<div class="title-view">' +
+                '<span>La nostra cartellera</span>' +
+                '</div>' +
+                '<!-- desc -->' +
+                '<div class="desc-view">' +
+                '<span>' +
+                'No dubtis en visitar la nostra cartallera per veure poder gaudir de la teva pel·lícula en el teu cinema.' +
+                '</span>' +
+                '</div>' +
+                '<!-- button -->' +
+                '<div class="button-view">' +
+                '<span>' +
+                '<a href="#">Veure cartellera</a>' +
+                '</span>' +
+                '</div>' +
+                '</li>' +
+                '</li>' +
+                '<li>' +
+                '<!-- image -->' +
+                '<div class="image-view">' +
+                '<span>' +
+                '<img src="img/example_film3.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />' +
+                '</span>' +
+                '</div>' +
+                '<!-- title -->' +
+                '<div class="title-view">' +
+                '<span>Els cinemes gironins al teu abast</span>' +
+                '</div>' +
+                '<!-- desc -->' +
+                '<div class="desc-view">' +
+                '<span>' +
+                "Et posem els cinemes gironins a l'abast d'un sol clic. Accedeix a la cartellera de cada un d'ells." +
+                '</span>' +
+                '</div>' +
+                '<!-- button -->' +
+                '<div class="button-view">' +
+                '<span>' +
+                '<a href="#">Veure cinemes</a>' +
+                '</span>' +
+                '</div>' +
+                '</li>' +
+            '</ul>' +
+            '<script type="text/javascript">' +
+            "$('.slide-show li:gt(0)').hide();" +
+            "$('.slide-show li:last').addClass('last');" +
+
+            "var cur = $('.slide-show li:first');" +
+
+
+            "$(function() {" +
+                'setInterval( "animate()", 5000 );' +
+                '} );' +
+            '</script> ' +
+
+            '<div class="menu-conent-boxes">' +
+                '<div class="box" id="first">' +
+                    '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />' +
+                    '<h3 class="title-box">Rànquings millor pelicula</h3>' +
+                    '<ol>' +
+                        '<li>' +
+                        'Intel·ligència artificial' +
+                        '</li>' +
+                        '<li>' +
+                        'Robots' +
+                        '</li>' +
+                    '</ol>' +
+                    '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
+                '</div>' +
+                '<div class="box" id="middle">' +
+                    '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />' +
+                    '<h3 class="title-box">Pel·lícules</h3>' +
+                    "<p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>" +
+                    '<span class="small_button_box"><a class="script_function" onclick="javascript:veurePelicules()">Veure Pel·lícules</a></span>' +
+                '</div>' +
+                '<div class="box" id="last">' +
+                    '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />' +
+                    '<h3 class="title-box">Publicitat</h3>' +
+                    '<p>Promociona el teu espai aquí</p>' +
+                    '<span class="small_button_box"><a href="#">Accedir a publicitat</a></span>' +
+                '</div>' +
+            '</div>' +
+        '</div>' ;
+
     //Mostrar el div inicial
-    $('#inici-info').show();
+    //$('#inici-info').show();
+    $('#main').append(item);
 }
