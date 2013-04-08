@@ -39,6 +39,7 @@ function registrar(){
 }
 
 function animate() {
+    var cur = $('.slide-show li:first');
     cur.fadeOut( 1000 , function(){
         if ( cur.attr('class') == 'last' )
             cur = $('.slide-show li:first');
@@ -184,7 +185,7 @@ function veureHome(){
             "$('.slide-show li:gt(0)').hide();" +
             "$('.slide-show li:last').addClass('last');" +
 
-            "var cur = $('.slide-show li:first');" +
+
 
 
             "$(function() {" +
