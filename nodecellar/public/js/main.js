@@ -50,20 +50,20 @@ function animate() {
 }
 
 function getGeneres(){
-    alert("estem dins dels generes");
-    //app.get('/users', user.findAll);
-
-    $.getJSON( '/typeFilm', function(data) {
-        //alert("la data es " + data);
+    var typefilms;
+    typefilms= $.getJSON( 'typefilm', function(data) {
+        var returnValue = data;
+        return returnValue.DOMString;
     });
-
-    return data;
+    return typefilms;
 }
 
 function veurePelicules() {
     $('#inici-info').remove();
     var typeFilms;
-    //typeFilms= getGeneres();
+    typeFilms= getGeneres();
+    alert(typeFilms);
+    //alert("hola: " + typeFilms[0].name);
     var item = '<div id="inici-pelicules">' +
         '<div class="breadcrumb">' +
             '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
@@ -184,10 +184,6 @@ function veureHome(){
             '<script type="text/javascript">' +
             "$('.slide-show li:gt(0)').hide();" +
             "$('.slide-show li:last').addClass('last');" +
-
-
-
-
             "$(function() {" +
                 'setInterval( "animate()", 5000 );' +
                 '} );' +
