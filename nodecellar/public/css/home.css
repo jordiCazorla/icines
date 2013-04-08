@@ -260,7 +260,8 @@ h3.title-box{
 }
 
 .small_button_box a:link,
-.small_button_box a:visited
+.small_button_box a:visited,
+.small_button_box .script_function
 {
     background-color:#31537F;
     color:#FFFFFF;
@@ -270,7 +271,9 @@ h3.title-box{
     padding-right: 25px;
     -moz-border-radius: 0.6em;
     -webkit-border-radius: 0.6em;
-    margin-right: 10px
+    margin-right: 10px;
+    cursor: pointer !important;
+    text-decoration: underline;
 }
 
 .small_button_box a:hover,

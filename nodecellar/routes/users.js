@@ -78,7 +78,7 @@ exports.updateUser = function(req, res) {
     console.log('Updating user: ' + id);
     console.log(JSON.stringify(user));
     db.collection('users', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, wine, {safe:true}, function(err, result) {
+        collection.update({'_id':new BSON.ObjectID(id)}, user, {safe:true}, function(err, result) {
             if (err) {
                 console.log('Error updating user: ' + err);
                 res.send({'error':'An error has occurred'});
