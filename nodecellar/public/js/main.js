@@ -39,6 +39,7 @@ function registrar(){
 }
 
 function animate() {
+    var cur = $('.slide-show li:first');
     cur.fadeOut( 1000 , function(){
         if ( cur.attr('class') == 'last' )
             cur = $('.slide-show li:first');
@@ -49,53 +50,77 @@ function animate() {
 }
 
 function getGeneres(){
-    alert("estem dins dels generes");
-    //app.get('/users', user.findAll);
-
-    $.getJSON( '/typeFilm', function(data) {
-        //alert("la data es " + data);
+    var typefilms;
+    typefilms= $.getJSON( 'typefilm', function(data) {
+        var returnValue = data;
+        return returnValue.DOMString;
     });
-
-    return data;
+    return typefilms;
 }
 
 function veurePelicules() {
     $('#inici-info').remove();
     var typeFilms;
-    //typeFilms= getGeneres();
-    var item = '<div id="inici-pelicules">' +
+    typeFilms= getGeneres();
+    alert(typeFilms);
+    typeFilms= [
+        {
+            "name": "acció",
+            "_id": "5161d66fa55d281809000001"
+        },
+        {
+            "name": "comedia",
+            "_id": "5161d66fa55d281809000002"
+        },
+        {
+            "name": "drama",
+            "_id": "5161d66fa55d281809000003"
+        },
+        {
+            "name": "infantil",
+            "_id": "5161d66fa55d281809000004"
+        },
+        {
+            "name": "ciencia-ficció",
+            "_id": "5161d66fa55d281809000005"
+        },
+        {
+            "name": "altres",
+            "_id": "5161d66fa55d281809000006"
+        }
+    ];
+    var llistat = '<div id="inici-pelicules">' +
         '<div class="breadcrumb">' +
-            '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
-        '</div>' +
-        '<div class="menu-conent-boxes">' +
-            '<div class="box" id="first">'+
-                '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />'+
-                '<h3 class="title-box">Rànquings millor pelicula</h3>'+
-                '<ol>'+
-                    '<li>'+
-                        'Intel·ligència artificial'+
-                    '</li>'+
-                    '<li>'+
-                        'Robots'+
-                    '</li>' +
-                '</ol>' +
-                '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
-            '</div>' +
-            '<div class="box" id="middle">' +
-                '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />' +
-                '<h3 class="title-box">Pel·lícules</h3>' +
-                "<p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>" +
-                '<span class="small_button_box"><a class="script_function" onclick="">Veure Pel·lícules</a></span>' +
-            '</div>' +
-            '<div class="box" id="last">' +
-                '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />' +
-                '<h3 class="title-box">Publicitat</h3>' +
-                '<p>Promociona el teu espai aquí</p>' +
-                '<span class="small_button_box"><a href="#">Accedir a publicitat</a></span>'
-            '</div>' +
-        '</div>' +
-    '</div>';
-    $('#main').append(item);
+        '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
+        '</div>';
+    var position = '';
+    var op;
+    //TODO: Per cada un s'haurà de fer una petició
+    for(var i=0; i < typeFilms.length; i++){
+        op = i % 3;
+        if (op == 0){
+            position = 'first';
+            if(i == 3) llistat = llistat + '<div class="menu-conent-boxes" id="second-line">';
+            else llistat = llistat + '<div class="menu-conent-boxes">';
+        }else if(op == 1) position = 'middle';
+        else position = 'last';
+        llistat = llistat + '<div class="box" id="'+position+'">'+
+            '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />'+
+            '<h3 class="title-box">'+typeFilms[i].name+'</h3>'+
+            '<ol>'+
+            '<li>'+
+            'Intel·ligència artificial'+
+            '</li>'+
+            '<li>'+
+            'Robots'+
+            '</li>' +
+            '</ol>' +
+            '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
+            '</div>'
+        if (op == 2) llistat = llistat + '</div>';
+    }
+    llistat = llistat + '</div>' + '</div>';
+    $('#main').append(llistat);
 }
 
 function veureHome(){
@@ -183,10 +208,6 @@ function veureHome(){
             '<script type="text/javascript">' +
             "$('.slide-show li:gt(0)').hide();" +
             "$('.slide-show li:last').addClass('last');" +
-
-            "var cur = $('.slide-show li:first');" +
-
-
             "$(function() {" +
                 'setInterval( "animate()", 5000 );' +
                 '} );' +
