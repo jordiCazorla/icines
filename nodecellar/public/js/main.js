@@ -28,6 +28,16 @@ function logout(){
     $('#loggin-box').show();
 }
 
+function registre(){
+    $('#loggin-box').hide();
+    $('#register-form').show();
+}
+
+function registrar(){
+    $('#register-form').hide();
+    $('#loggin-box').show();
+}
+
 function animate() {
     cur.fadeOut( 1000 , function(){
         if ( cur.attr('class') == 'last' )
