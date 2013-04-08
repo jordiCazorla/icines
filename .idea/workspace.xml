@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396c80da-04aa-4f90-8724-dd741c9ee242" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/public/index.html" afterPath="$PROJECT_DIR$/nodecellar/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/public/js/main.js" afterPath="$PROJECT_DIR$/nodecellar/public/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/routes/users.js" afterPath="$PROJECT_DIR$/nodecellar/routes/users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodecellar/server.js" afterPath="$PROJECT_DIR$/nodecellar/server.js" />
     </list>
     <ignored path="icines.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,14 +43,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nodecellar/public/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="29" selection-start="1800" selection-end="1800" vertical-scroll-proportion="-2.761324">
+            <state line="59" column="29" selection-start="1800" selection-end="1800" vertical-scroll-proportion="63.4">
               <folding>
                 <marker date="1365367830404" expanded="true" signature="482:498" placeholder="..." />
                 <marker date="1365367830404" expanded="true" signature="599:654" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="19" selection-start="156" selection-end="156" vertical-scroll-proportion="0.05676127">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/css/home2.css" />
         <option value="$PROJECT_DIR$/index2.html" />
         <option value="$PROJECT_DIR$/css/home3.css" />
         <option value="$PROJECT_DIR$/css/main.css" />
@@ -123,6 +128,7 @@
         <option value="$PROJECT_DIR$/nodecellar/routes/typeFilm.js" />
         <option value="$PROJECT_DIR$/nodecellar/public/index.html" />
         <option value="$PROJECT_DIR$/nodecellar/public/js/main.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -352,7 +358,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.289454" sideWeight="0.67045456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.289454" sideWeight="0.67045456" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39903846" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -422,13 +428,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.WebIde50/system/extLibs/nodejs-v0.8.22-src/core-modules-sources/lib/fs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="297" column="0" selection-start="8302" selection-end="8302" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../node_modules/mongodb/node_modules/bson/lib/bson/objectid.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="0" selection-start="896" selection-end="896" vertical-scroll-proportion="0.33333334">
@@ -531,11 +530,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nodecellar/public/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="29" selection-start="1800" selection-end="1800" vertical-scroll-proportion="-2.761324">
+        <state line="59" column="29" selection-start="1800" selection-end="1800" vertical-scroll-proportion="63.4">
           <folding>
             <marker date="1365367830404" expanded="true" signature="482:498" placeholder="..." />
             <marker date="1365367830404" expanded="true" signature="599:654" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="19" selection-start="156" selection-end="156" vertical-scroll-proportion="0.05676127">
+          <folding />
         </state>
       </provider>
     </entry>
