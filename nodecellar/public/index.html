@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="css/home.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <!-- <script src="ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write("<script src='js/vendor/jquery-1.9.0.min.js'/>")</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -92,9 +92,120 @@
 <script>
     window.onload = function()
     {
-        veureHome();
+        //veureHome();
     };
 </script>
+
+                    <div id="inici-info">
+                        <div class="breadcrumb">
+                        </div>
+                        <div class="main-slide slide-show ppt">
+                            <div class="slide-show" id="element1">
+                                <div class="image-view">
+                                    <span>
+                                        <img src="img/example_film.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
+                                    </span>
+                                </div>
+                                <!-- title -->
+                                <div class="title-view">
+                                    <span>Troba les millors estrenes</span>
+                                </div>
+                                <!-- desc -->
+                                <div class="desc-view">
+                                    <span>
+                                        Tot el que vols saber de les estrenes que trobaràs als cinemes gironins. No et perdis totes les novetats de la cartellera.
+                                    </span>
+                                </div>
+                                <!-- button -->
+                                <div class="button-view">
+                                    <span>
+                                        <a href="#">Veure estrenes</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slide-show" id="element2">
+                                <!-- image -->
+                                <div class="image-view">
+                                    <span>
+                                        <img src="img/example_film2.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
+                                    </span>
+                                </div>
+                                <!-- title -->
+                                <div class="title-view">
+                                    <span>La nostra cartellera</span>
+                                </div>
+                                <!-- desc -->
+                                <div class="desc-view">
+                                    <span>
+                                        'No dubtis en visitar la nostra cartallera per veure poder gaudir de la teva pel·lícula en el teu cinema.
+                                    </span>
+                                </div>
+                                <!-- button -->
+                                <div class="button-view">
+                                    <span>
+                                        <a href="#">Veure cartellera</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slide-show" id="element3">
+                                <!-- image -->
+                                <div class="image-view">
+                                    <span>
+                                        <img src="img/example_film3.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
+                                    </span>
+                                </div>
+                                <!-- title -->
+                                <div class="title-view">
+                                    <span>Els cinemes gironins al teu abast</span>
+                                </div>
+                                <!-- desc -->
+                                <div class="desc-view">
+                                    <span>
+                                        Et posem els cinemes gironins a l'abast d'un sol clic. Accedeix a la cartellera de cada un d'ells.
+                                    </span>
+                                </div>
+                                <!-- button -->
+                                <div class="button-view">
+                                    <span>
+                                        <a href="#">Veure cinemes</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                                startAnimation();
+                            });
+                        </script>
+
+                        <div class="menu-conent-boxes">
+                            <div class="box" id="first">
+                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <h3 class="title-box">Rànquings millor pelicula</h3>
+                                <ol>
+                                    <li>
+                                        'Intel·ligència artificial
+                                        </li>
+                                    <li>
+                                        'Robots
+                                        </li>
+                                    </ol>
+                                <span class="small_button_box"><a href="#">Veure Rànquings</a></span>
+                                </div>
+                            <div class="box" id="middle">
+                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <h3 class="title-box">Pel·lícules</h3>
+                                "<p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>" +
+                                <span class="small_button_box"><a class="script_function" onclick="javascript:veurePelicules()">Veure Pel·lícules</a></span>
+                                </div>
+                            <div class="box" id="last">
+                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <h3 class="title-box">Publicitat</h3>
+                                <p>Promociona el teu espai aquí</p>
+                                <span class="small_button_box"><a href="#">Accedir a publicitat</a></span>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="footer">

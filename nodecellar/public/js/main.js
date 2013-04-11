@@ -1,5 +1,5 @@
 var globalUser;
-
+var slide_counter = 1;
 
 function login() {
     var name = $('#login-usuari').val();
@@ -142,14 +142,14 @@ function validar(){
 }
 
 function animate() {
-    var cur = $('.slide-show li:first');
+    /*var cur = $('.slide-show li:first');
     cur.fadeOut( 1000 , function(){
         if ( cur.attr('class') == 'last' )
             cur = $('.slide-show li:first');
         else
             cur = cur.next();
         cur.fadeIn( 1000 );
-    });
+    });*/
 }
 
 function getGeneres(){
@@ -281,7 +281,7 @@ function veureHome(){
                 '</div>' +
                 '</li>' +
             '</ul>' +
-            '<script type="text/javascript">' +
+            '<script>' +
             "$('.slide-show li:gt(0)').hide();" +
             "$('.slide-show li:last').addClass('last');" +
             "$(function() {" +
@@ -321,4 +321,31 @@ function veureHome(){
     //Mostrar el div inicial
     //$('#inici-info').show();
     $('#main').append(item);
+}
+
+function startAnimation(){
+    $('#element1').hide();
+    $('#element2').hide();
+    $('#element3').hide();
+
+    $('#element1').show();
+
+    animation();
+}
+
+function animation(){
+
+    var cur = $('#element'+slide_counter);
+    cur.fadeOut( 1000, function(){
+        if (slide_counter == 3){
+            slide_counter = 1;
+        }else{
+            slide_counter+1;
+        }
+            cur = $('#element'+slide_counter);
+        cur.fadeIn( 1000 );
+    });
+    $(function() {
+        setInterval( "animate()", 5000 );
+    } );
 }
