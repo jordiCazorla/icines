@@ -328,7 +328,7 @@ function startAnimation(){
     $('#element2').hide();
     $('#element3').hide();
 
-    $('#element1').show();
+    //$('#element1').show();
 
     animation();
 }
@@ -340,12 +340,13 @@ function animation(){
         if (slide_counter == 3){
             slide_counter = 1;
         }else{
-            slide_counter+1;
+            slide_counter=slide_counter+1;
         }
-            cur = $('#element'+slide_counter);
+        
+        cur = $('#element'+slide_counter);
         cur.fadeIn( 1000 );
     });
     $(function() {
-        setInterval( "animate()", 5000 );
+        setInterval( "animation()", 5000 );
     } );
 }
