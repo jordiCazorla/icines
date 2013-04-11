@@ -1,3 +1,5 @@
+var globalUser;
+
 
 function login() {
     var name = $('#login-usuari').val();
@@ -9,12 +11,17 @@ function login() {
         $.getJSON( 'users/' + name + '/' + password, function(data) {
             if(data.result == 'ok'){
                 //TODO: guardar l'item en un usuari global
+                globalUser = {'name': data.name, 'email': data.email, 'rol': data.rol, '_id': data._id};
 
                 var item;
                 item = '<div class="loggin" id="info-user-logged"><div style="margin-top:25px;"> Benvingut,  ' + data.name +
                     '. <span/><a onclick="javascript:logout()" style="text-decoration: underline; cursor: pointer !important;">logout</a></div></div>';
                 $('#user-info').append(item);
                 $('#loggin-box').hide();
+
+                if(globalUser.rol == 1){
+                    $('#inici-info').remove();
+                }
             }
             else{
                 alert("L'usuari i/o la contrasenya són incorrectes");
@@ -26,6 +33,10 @@ function logout(){
     $('#info-user-logged').remove();
     $('#login-password').val('');
     $('#loggin-box').show();
+    if (globalUser.rol == 1){
+        veureHome();
+    }
+    globalUser = {};
 }
 
 function cancelarRegistre(){

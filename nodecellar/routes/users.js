@@ -36,7 +36,7 @@ exports.findByName = function(req, res){
         collection.findOne({'name': name}, function(err, item) {
             if(item != null){
                 if (item.password == password){
-                    res.send({"result": "ok", "name": item.name, "email": item.email, "rol": item.rol});
+                    res.send({"result": "ok", "name": item.name, "email": item.email, "rol": item.rol, "_id": item._id});
                 }
                 else{
                     res.send({"result": "ko"});
