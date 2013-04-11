@@ -45,12 +45,14 @@ function registre(){
 
 function registrar(){
     if(validar()){
-    $.post("users",
-        {name: $('#register-name').val(), email: $('#register-email').val(), password: $('#register-password').val(), rol: 2},
-        function(data){
-            $('#register-form').hide();
-            $('#loggin-box').show();
-        },"json");
+        $.post("users",
+            {name: $('#register-name').val(), email: $('#register-email').val(), password: $('#register-password').val(), rol: 2},
+            function(data){
+                $('#register-form').hide();
+                $('#login-usuari').val( $('#register-name').val() );
+                $('#login-password').val( $('#register-password').val() );
+                login();
+            },"json");
     }
 }
 
@@ -67,9 +69,9 @@ function validar(){
         $('#register-name').after("<span class='register-error'>* Name cannot be blank</span>");
     }
     else{
-        var pattern = /^w./;
+        var pattern = /^\w+$/;
 
-        if(pattern.test(name)){
+        if(!pattern.test(name)){
             validation = false;
             $('#register-name').after("<span class='register-error'>* Name cannot contain simbols like ($,%,&,...)</span>");
         }
@@ -93,12 +95,12 @@ function validar(){
         $('#register-email').after("<span class='register-error'>* Email cannot be blank</span>");
     }
     else{
-       /* var pattern = /^w./;
+        var pattern = /^\w+@\w+\.\w+$/;
 
-        if(pattern.test(email)){
+        if(!pattern.test(email)){
             validation = false;
-            $('#register-email').after("<span class='register-error'>* Email cannot contain simbols like ($,%,&,...)</span>");
-        }*/
+            $('#register-email').after("<span class='register-error'>* Email error format</span>");
+        }
     }
 
     /*
@@ -112,18 +114,17 @@ function validar(){
         $('#register-password').after("<span class='register-error'>* Password cannot be blank</span>");
     }
     else{
-       /* var pattern = /^w./;
+        var pattern = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 
-        if(pattern.test(password)){
+        if(!pattern.test(password)){
             validation = false;
             $('#register-password').after("<span class='register-error'>* Password cannot contain simbols like ($,%,&,...)</span>");
         }
-        else{
-            if(password != confirm_password){
-                validation = false;
-                $('#register-confirm-password').after("<span class='register-error'>* Must be equal to the password</span>");
-            }
-        }*/
+    }
+
+    if(password != confirm_password){
+        validation = false;
+        $('#register-confirm-password').after("<span class='register-error'>* Must be equal to the password</span>");
     }
 
     return validation;
