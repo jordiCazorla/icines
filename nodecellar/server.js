@@ -16,6 +16,7 @@ app.post('/users', user.addUser);
 app.put('/users/:id', user.updateUser);
 app.delete('/users/:id', user.deleteUser);
 app.get('/users/:name/:password', user.findByName);
+app.get('/exist/:name', user.existUserByName);
 
 app.get('/typefilm', typeFilm.findAll);
 app.get('/typefilm/:id', typeFilm.findById);

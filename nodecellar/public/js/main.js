@@ -28,14 +28,105 @@ function logout(){
     $('#loggin-box').show();
 }
 
+function cancelarRegistre(){
+    $('#loggin-box').show();
+    $('#register-form').hide();
+}
+
 function registre(){
     $('#loggin-box').hide();
+    $(':input','#register-data')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
     $('#register-form').show();
 }
 
 function registrar(){
-    $('#register-form').hide();
-    $('#loggin-box').show();
+    if(validar()){
+    $.post("users",
+        {name: $('#register-name').val(), email: $('#register-email').val(), password: $('#register-password').val(), rol: 2},
+        function(data){
+            $('#register-form').hide();
+            $('#loggin-box').show();
+        },"json");
+    }
+}
+
+function validar(){
+    var validation = true;
+    $('.register-error').remove();
+    /*
+     * Conditions
+     */
+    var name = $('#register-name').val();
+
+    if(name == ""){
+        validation = false;
+        $('#register-name').after("<span class='register-error'>* Name cannot be blank</span>");
+    }
+    else{
+        var pattern = /^w./;
+
+        if(pattern.test(name)){
+            validation = false;
+            $('#register-name').after("<span class='register-error'>* Name cannot contain simbols like ($,%,&,...)</span>");
+        }
+        else{
+            $.getJSON('exist/' + name, function(data){
+                if(data.result == 'ok'){
+                    validation = false;
+                    $('#register-name').after("<span class='register-error'>* Name already in use</span>");
+                }
+            });
+        }
+    }
+
+    /*
+     * Conditions
+     */
+    var email = $('#register-email').val();
+
+    if(email == ""){
+        validation = false;
+        $('#register-email').after("<span class='register-error'>* Email cannot be blank</span>");
+    }
+    else{
+       /* var pattern = /^w./;
+
+        if(pattern.test(email)){
+            validation = false;
+            $('#register-email').after("<span class='register-error'>* Email cannot contain simbols like ($,%,&,...)</span>");
+        }*/
+    }
+
+    /*
+     * Conditions
+     */
+    var password = $('#register-password').val();
+    var confirm_password = $('#register-confirm-password').val();
+
+    if(password == ""){
+        validation = false;
+        $('#register-password').after("<span class='register-error'>* Password cannot be blank</span>");
+    }
+    else{
+       /* var pattern = /^w./;
+
+        if(pattern.test(password)){
+            validation = false;
+            $('#register-password').after("<span class='register-error'>* Password cannot contain simbols like ($,%,&,...)</span>");
+        }
+        else{
+            if(password != confirm_password){
+                validation = false;
+                $('#register-confirm-password').after("<span class='register-error'>* Must be equal to the password</span>");
+            }
+        }*/
+    }
+
+    return validation;
 }
 
 function animate() {
@@ -51,76 +142,49 @@ function animate() {
 
 function getGeneres(){
     var typefilms;
-    typefilms= $.getJSON( 'typefilm', function(data) {
-        var returnValue = data;
-        return returnValue.DOMString;
+    $.getJSON( 'typefilm', {sync: true}, function(data) {
+        var typefilms = data;
+        var position = '';
+        var llistat = '';
+        var op;
+        //TODO: Per cada un s'haurà de fer una petició
+        for(var i=0; i < data.length; i++){
+            op = i % 3;
+            if (op == 0){
+                position = 'first';
+                if(i == 3) llistat = llistat + '<div class="menu-conent-boxes" id="second-line">';
+                else llistat = llistat + '<div class="menu-conent-boxes">';
+            }else if(op == 1) position = 'middle';
+            else position = 'last';
+            llistat = llistat + '<div class="box" id="'+position+'">'+
+                '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />'+
+                '<h3 class="title-box">'+data[i].name+'</h3>'+
+                '<ol>'+
+                '<li>'+
+                'Intel·ligència artificial'+
+                '</li>'+
+                '<li>'+
+                'Robots'+
+                '</li>' +
+                '</ol>' +
+                '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
+                '</div>'
+            if (op == 2) llistat = llistat + '</div>';
+        }
+        llistat = llistat + '</div>' + '</div>';
+        $('#main').append(llistat);
     });
-    return typefilms;
 }
 
 function veurePelicules() {
     $('#inici-info').remove();
     var typeFilms;
-    typeFilms= getGeneres();
-    alert(typeFilms);
-    typeFilms= [
-        {
-            "name": "acció",
-            "_id": "5161d66fa55d281809000001"
-        },
-        {
-            "name": "comedia",
-            "_id": "5161d66fa55d281809000002"
-        },
-        {
-            "name": "drama",
-            "_id": "5161d66fa55d281809000003"
-        },
-        {
-            "name": "infantil",
-            "_id": "5161d66fa55d281809000004"
-        },
-        {
-            "name": "ciencia-ficció",
-            "_id": "5161d66fa55d281809000005"
-        },
-        {
-            "name": "altres",
-            "_id": "5161d66fa55d281809000006"
-        }
-    ];
     var llistat = '<div id="inici-pelicules">' +
         '<div class="breadcrumb">' +
         '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
         '</div>';
-    var position = '';
-    var op;
-    //TODO: Per cada un s'haurà de fer una petició
-    for(var i=0; i < typeFilms.length; i++){
-        op = i % 3;
-        if (op == 0){
-            position = 'first';
-            if(i == 3) llistat = llistat + '<div class="menu-conent-boxes" id="second-line">';
-            else llistat = llistat + '<div class="menu-conent-boxes">';
-        }else if(op == 1) position = 'middle';
-        else position = 'last';
-        llistat = llistat + '<div class="box" id="'+position+'">'+
-            '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />'+
-            '<h3 class="title-box">'+typeFilms[i].name+'</h3>'+
-            '<ol>'+
-            '<li>'+
-            'Intel·ligència artificial'+
-            '</li>'+
-            '<li>'+
-            'Robots'+
-            '</li>' +
-            '</ol>' +
-            '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
-            '</div>'
-        if (op == 2) llistat = llistat + '</div>';
-    }
-    llistat = llistat + '</div>' + '</div>';
-    $('#main').append(llistat);
+
+    getGeneres();
 }
 
 function veureHome(){

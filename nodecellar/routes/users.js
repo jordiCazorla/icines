@@ -49,6 +49,19 @@ exports.findByName = function(req, res){
     });
 }
 
+exports.existUserByName = function(req, res){
+    var name = req.params.name;
+    db.collection('users', function(err, collection) {
+        collection.findOne({'name': name}, function(err, item) {
+            if(item != null){
+                res.send({"result": "ok"});
+            }else{
+                res.send({"result": "ko"});
+            }
+        });
+    });
+}
+
 exports.findAll = function(req, res) {
     db.collection('users', function(err, collection) {
         collection.find().toArray(function(err, items) {

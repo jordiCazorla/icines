@@ -56,18 +56,23 @@
                             <div class="register" id="register-form" hidden z-index="100" style="border: 5px solid #666;">
                                 <div id="register-data" style=" margin-top: 30px;">
                                     <label class="form-field FBLabel">Name:</label>
-                                    <input class="form-field FBInput" />
+                                    <br/>
+                                    <input id="register-name" class="form-field FBInput" />
                                     <br/>
                                     <label class="form-field FBLabel">Email:</label>
-                                    <input class="form-field FBInput" />
+                                    <br/>
+                                    <input id="register-email" class="form-field FBInput" type="email"/>
                                     <br/>
                                     <label class="form-field FBLabel">Password:</label>
-                                    <input class="form-field FBInput" />
+                                    <br/>
+                                    <input id="register-password" class="form-field FBInput" type="password"/>
                                     <br/>
                                     <label class="form-field FBLabel">Confirm Password:</label>
-                                    <input class="form-field FBInput" />
                                     <br/>
-                                    <input class="button-login form-field" type="button" value="Registrar" onclick="javascript:registrar()" style="float: left;    "/>
+                                    <input id="register-confirm-password" class="form-field FBInput" type="password"/>
+                                    <br/>
+                                    <input class="button-login form-field" type="button" value="Registrar" onclick="javascript:registrar()" style="float: left;   margin-top: 10px; "/>
+                                    <input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:cancelarRegistre()" style="float: left; margin: 10px 0px 0px 10px"/>
                                 </div>
                             </div>
                         </div>
