@@ -30,7 +30,7 @@ body{
 
 div.register{
     background-color: white;
-    height: 400px;
+    height: 300px;
     width: 500px;
     border-radius: 5px;
     position: fixed;
@@ -39,13 +39,20 @@ div.register{
     z-index: 100;
 }
 
+.register-error{
+    color: red;
+    font-size: 8pt;
+    position: relative;
+    /*left: 80px;*/
+}
+
 .FBLabel, .FBInput {
-    display:block;
+    /*display:block;*/
 }
 
 .form-field{
     position: relative;
-    left: 150px;
+    margin-left: 80px;
 }
 
 

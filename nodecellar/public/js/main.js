@@ -1,3 +1,5 @@
+var globalUser;
+var slide_counter = 1;
 
 function login() {
     var name = $('#login-usuari').val();
@@ -9,12 +11,17 @@ function login() {
         $.getJSON( 'users/' + name + '/' + password, function(data) {
             if(data.result == 'ok'){
                 //TODO: guardar l'item en un usuari global
+                globalUser = {'name': data.name, 'email': data.email, 'rol': data.rol, '_id': data._id};
 
                 var item;
                 item = '<div class="loggin" id="info-user-logged"><div style="margin-top:25px;"> Benvingut,  ' + data.name +
                     '. <span/><a onclick="javascript:logout()" style="text-decoration: underline; cursor: pointer !important;">logout</a></div></div>';
                 $('#user-info').append(item);
                 $('#loggin-box').hide();
+
+                if(globalUser.rol == 1){
+                    $('#inici-info').remove();
+                }
             }
             else{
                 alert("L'usuari i/o la contrasenya són incorrectes");
@@ -26,41 +33,177 @@ function logout(){
     $('#info-user-logged').remove();
     $('#login-password').val('');
     $('#loggin-box').show();
+    if (globalUser.rol == 1){
+        veureHome();
+    }
+    globalUser = {};
+}
+
+function cancelarRegistre(){
+    $('#loggin-box').show();
+    $('#register-form').hide();
 }
 
 function registre(){
     $('#loggin-box').hide();
+    $(':input','#register-data')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
     $('#register-form').show();
 }
 
 function registrar(){
-    $('#register-form').hide();
-    $('#loggin-box').show();
+    if(validar()){
+        $.post("users",
+            {name: $('#register-name').val(), email: $('#register-email').val(), password: $('#register-password').val(), rol: 2},
+            function(data){
+                $('#register-form').hide();
+                $('#login-usuari').val( $('#register-name').val() );
+                $('#login-password').val( $('#register-password').val() );
+                login();
+            },"json");
+    }
+}
+
+function validar(){
+    var validation = true;
+    $('.register-error').remove();
+    /*
+     * Conditions
+     */
+    var name = $('#register-name').val();
+
+    if(name == ""){
+        validation = false;
+        $('#register-name').after("<span class='register-error'>* Name cannot be blank</span>");
+    }
+    else{
+        var pattern = /^\w+$/;
+
+        if(!pattern.test(name)){
+            validation = false;
+            $('#register-name').after("<span class='register-error'>* Name cannot contain simbols like ($,%,&,...)</span>");
+        }
+        else{
+            $.getJSON('exist/' + name, function(data){
+                if(data.result == 'ok'){
+                    validation = false;
+                    $('#register-name').after("<span class='register-error'>* Name already in use</span>");
+                }
+            });
+        }
+    }
+
+    /*
+     * Conditions
+     */
+    var email = $('#register-email').val();
+
+    if(email == ""){
+        validation = false;
+        $('#register-email').after("<span class='register-error'>* Email cannot be blank</span>");
+    }
+    else{
+        var pattern = /^\w+@\w+\.\w+$/;
+
+        if(!pattern.test(email)){
+            validation = false;
+            $('#register-email').after("<span class='register-error'>* Email error format</span>");
+        }
+    }
+
+    /*
+     * Conditions
+     */
+    var password = $('#register-password').val();
+    var confirm_password = $('#register-confirm-password').val();
+
+    if(password == ""){
+        validation = false;
+        $('#register-password').after("<span class='register-error'>* Password cannot be blank</span>");
+    }
+    else{
+        var pattern = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+        if(!pattern.test(password)){
+            validation = false;
+            $('#register-password').after("<span class='register-error'>* Password cannot contain simbols like ($,%,&,...)</span>");
+        }
+    }
+
+    if(password != confirm_password){
+        validation = false;
+        $('#register-confirm-password').after("<span class='register-error'>* Must be equal to the password</span>");
+    }
+
+    return validation;
 }
 
 function animate() {
+<<<<<<< HEAD
     var cur = $('.slide-show li:first');
+=======
+    /*var cur = $('.slide-show li:first');
+>>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
     cur.fadeOut( 1000 , function(){
         if ( cur.attr('class') == 'last' )
             cur = $('.slide-show li:first');
         else
             cur = cur.next();
         cur.fadeIn( 1000 );
-    });
+    });*/
 }
 
 function getGeneres(){
     var typefilms;
+<<<<<<< HEAD
     typefilms= $.getJSON( 'typefilm', function(data) {
         var returnValue = data;
         return returnValue.DOMString;
     });
     return typefilms;
+=======
+    $.getJSON( 'typefilm', {sync: true}, function(data) {
+        var typefilms = data;
+        var position = '';
+        var llistat = '';
+        var op;
+        //TODO: Per cada un s'haurà de fer una petició
+        for(var i=0; i < data.length; i++){
+            op = i % 3;
+            if (op == 0){
+                position = 'first';
+                if(i == 3) llistat = llistat + '<div class="menu-conent-boxes" id="second-line">';
+                else llistat = llistat + '<div class="menu-conent-boxes">';
+            }else if(op == 1) position = 'middle';
+            else position = 'last';
+            llistat = llistat + '<div class="box" id="'+position+'">'+
+                '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />'+
+                '<h3 class="title-box">'+data[i].name+'</h3>'+
+                '<ol>'+
+                '<li>'+
+                'Intel·ligència artificial'+
+                '</li>'+
+                '<li>'+
+                'Robots'+
+                '</li>' +
+                '</ol>' +
+                '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
+                '</div>'
+            if (op == 2) llistat = llistat + '</div>';
+        }
+        llistat = llistat + '</div>' + '</div>';
+        $('#main').append(llistat);
+    });
+>>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
 }
 
 function veurePelicules() {
     $('#inici-info').remove();
     var typeFilms;
+<<<<<<< HEAD
     typeFilms= getGeneres();
     alert(typeFilms);
     typeFilms= [
@@ -89,10 +232,13 @@ function veurePelicules() {
             "_id": "5161d66fa55d281809000006"
         }
     ];
+=======
+>>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
     var llistat = '<div id="inici-pelicules">' +
         '<div class="breadcrumb">' +
         '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
         '</div>';
+<<<<<<< HEAD
     var position = '';
     var op;
     //TODO: Per cada un s'haurà de fer una petició
@@ -121,6 +267,10 @@ function veurePelicules() {
     }
     llistat = llistat + '</div>' + '</div>';
     $('#main').append(llistat);
+=======
+
+    getGeneres();
+>>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
 }
 
 function veureHome(){
@@ -205,7 +355,7 @@ function veureHome(){
                 '</div>' +
                 '</li>' +
             '</ul>' +
-            '<script type="text/javascript">' +
+            '<script>' +
             "$('.slide-show li:gt(0)').hide();" +
             "$('.slide-show li:last').addClass('last');" +
             "$(function() {" +
@@ -245,4 +395,31 @@ function veureHome(){
     //Mostrar el div inicial
     //$('#inici-info').show();
     $('#main').append(item);
+}
+
+function startAnimation(){
+    $('#element1').hide();
+    $('#element2').hide();
+    $('#element3').hide();
+
+    $('#element1').show();
+
+    animation();
+}
+
+function animation(){
+
+    var cur = $('#element'+slide_counter);
+    cur.fadeOut( 1000, function(){
+        if (slide_counter == 3){
+            slide_counter = 1;
+        }else{
+            slide_counter+1;
+        }
+            cur = $('#element'+slide_counter);
+        cur.fadeIn( 1000 );
+    });
+    $(function() {
+        setInterval( "animate()", 5000 );
+    } );
 }
