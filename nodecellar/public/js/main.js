@@ -142,11 +142,8 @@ function validar(){
 }
 
 function animate() {
-<<<<<<< HEAD
-    var cur = $('.slide-show li:first');
-=======
+
     /*var cur = $('.slide-show li:first');
->>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
     cur.fadeOut( 1000 , function(){
         if ( cur.attr('class') == 'last' )
             cur = $('.slide-show li:first');
@@ -158,13 +155,7 @@ function animate() {
 
 function getGeneres(){
     var typefilms;
-<<<<<<< HEAD
-    typefilms= $.getJSON( 'typefilm', function(data) {
-        var returnValue = data;
-        return returnValue.DOMString;
-    });
-    return typefilms;
-=======
+
     $.getJSON( 'typefilm', {sync: true}, function(data) {
         var typefilms = data;
         var position = '';
@@ -197,80 +188,18 @@ function getGeneres(){
         llistat = llistat + '</div>' + '</div>';
         $('#main').append(llistat);
     });
->>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
 }
 
 function veurePelicules() {
     $('#inici-info').remove();
     var typeFilms;
-<<<<<<< HEAD
-    typeFilms= getGeneres();
-    alert(typeFilms);
-    typeFilms= [
-        {
-            "name": "acció",
-            "_id": "5161d66fa55d281809000001"
-        },
-        {
-            "name": "comedia",
-            "_id": "5161d66fa55d281809000002"
-        },
-        {
-            "name": "drama",
-            "_id": "5161d66fa55d281809000003"
-        },
-        {
-            "name": "infantil",
-            "_id": "5161d66fa55d281809000004"
-        },
-        {
-            "name": "ciencia-ficció",
-            "_id": "5161d66fa55d281809000005"
-        },
-        {
-            "name": "altres",
-            "_id": "5161d66fa55d281809000006"
-        }
-    ];
-=======
->>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
     var llistat = '<div id="inici-pelicules">' +
         '<div class="breadcrumb">' +
         '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
         '</div>';
-<<<<<<< HEAD
-    var position = '';
-    var op;
-    //TODO: Per cada un s'haurà de fer una petició
-    for(var i=0; i < typeFilms.length; i++){
-        op = i % 3;
-        if (op == 0){
-            position = 'first';
-            if(i == 3) llistat = llistat + '<div class="menu-conent-boxes" id="second-line">';
-            else llistat = llistat + '<div class="menu-conent-boxes">';
-        }else if(op == 1) position = 'middle';
-        else position = 'last';
-        llistat = llistat + '<div class="box" id="'+position+'">'+
-            '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />'+
-            '<h3 class="title-box">'+typeFilms[i].name+'</h3>'+
-            '<ol>'+
-            '<li>'+
-            'Intel·ligència artificial'+
-            '</li>'+
-            '<li>'+
-            'Robots'+
-            '</li>' +
-            '</ol>' +
-            '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
-            '</div>'
-        if (op == 2) llistat = llistat + '</div>';
-    }
-    llistat = llistat + '</div>' + '</div>';
-    $('#main').append(llistat);
-=======
+
 
     getGeneres();
->>>>>>> eb79f45181be0bdb924d945707e1cd2284cd7c6b
 }
 
 function veureHome(){
