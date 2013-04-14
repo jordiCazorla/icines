@@ -142,6 +142,7 @@ function validar(){
 }
 
 function animate() {
+
     /*var cur = $('.slide-show li:first');
     cur.fadeOut( 1000 , function(){
         if ( cur.attr('class') == 'last' )
@@ -154,6 +155,7 @@ function animate() {
 
 function getGeneres(){
     var typefilms;
+
     $.getJSON( 'typefilm', {sync: true}, function(data) {
         var typefilms = data;
         var position = '';
@@ -195,6 +197,7 @@ function veurePelicules() {
         '<div class="breadcrumb">' +
         '<a onclick="javascript:veureHome()">Home</a> > <a onclick="">Pel·lícules</a>' +
         '</div>';
+
 
     getGeneres();
 }
