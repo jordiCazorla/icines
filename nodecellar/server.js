@@ -1,6 +1,7 @@
 var express = require('express'),
     user = require('./routes/users');
     typeFilm = require('./routes/typeFilm');
+    films = require('./routes/films');
 
 var app = express();
 
@@ -23,6 +24,12 @@ app.get('/typefilm/:id', typeFilm.findById);
 app.post('/typefilm', typeFilm.addTypeFilm);
 app.put('/typefilm/:id', typeFilm.updateTypeFilm);
 app.delete('/typefilm/:id', typeFilm.deleteTypeFilm);
+
+app.get('/films', films.findAll);
+app.get('/films/:id', films.findById);
+app.post('/films', films.addFilm);
+app.put('/films/:id', films.updateFilm);
+app.delete('/films/:id', films.deleteFilm);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
