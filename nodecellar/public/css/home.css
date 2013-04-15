@@ -363,3 +363,8 @@ ul.ppt {
     padding: 5px;
     background-color: #ececec;
 }
+
+
+.film-list, .film-list th, .film-list tr{
+    border:1px solid black !important;
+}
