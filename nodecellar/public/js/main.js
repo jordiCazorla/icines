@@ -412,54 +412,60 @@ function backoffice_main(){
 
  function crearPelicules(){
      $('#backoffice_admin_pelis').remove();
-     var item;
+     $.getJSON( 'typefilm', function(data) {
 
-     item= '<div class="backoffice_admin_new_peli" id="backoffice_admin_new_peli">' +
-         "<h2>Creació d'una pel·lícula</h2>" +
-         '<div class="new" id="new-form">' +
-         '<div id="register-data" style=" margin-top: 30px;">' +
-         '<label class="form-field FBLabel">Títol:</label>' +
-         '<br/>' +
-         '<input id="new-title" class="form-field FBInput" />' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Titol original:</label>' +
-         '<br/>' +
-         '<input id="new-original-title" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Durada:</label>' +
-         '<br/>' +
-         '<input id="new-duration" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Director:</label>' +
-         '<br/>' +
-         '<input id="new-direction" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Cast:</label>' +
-         '<br/>' +
-         '<input id="new-cast" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Trailer:</label>' +
-         '<br/>' +
-         '<input id="new-trailer" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Genere:</label>' +
-         '<br/>' +
-         '<input id="new-genere" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Data:</label>' +
-         '<br/>' +
-         '<input id="new-data" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<label class="form-field FBLabel">Resum:</label>' +
-         '<br/>' +
-         '<input id="new-review" size="100px" type="text" class="form-field FBInput"/>' +
-         '<br/>' +
-         '<input class="button-login form-field" type="button" value="Nova pel·lícula" onclick="javascript:crearPelicula()" style="float: left;   margin-top: 10px; "/>' +
-         '<input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:cancelarNovaPelicula()" style="float: left; margin: 10px 0px 0px 10px"/>' +
-         '</div>' +
-     '</div>'+
-     '</div> ';
-     $('#main').append(item);
+         var item;
+
+         item= '<div class="backoffice_admin_new_peli" id="backoffice_admin_new_peli">' +
+             "<h2>Creació d'una pel·lícula</h2>" +
+             '<div class="new" id="new-form">' +
+             '<div id="register-data" style=" margin-top: 30px;">' +
+             '<label class="form-field FBLabel">Títol:</label>' +
+             '<br/>' +
+             '<input id="new-title" class="form-field FBInput" />' +
+             '<br/>' +
+             '<label class="form-field FBLabel">Titol original:</label>' +
+             '<br/>' +
+             '<input id="new-original-title" class="form-field FBInput"/>' +
+             '<br/>' +
+             '<label class="form-field FBLabel">Durada:</label>' +
+             '<br/>' +
+             '<input id="new-duration" class="form-field FBInput"/>' +
+             '<br/>' +
+             '<label class="form-field FBLabel">Director:</label>' +
+             '<br/>' +
+             '<input id="new-direction" class="form-field FBInput"/>' +
+             '<br/>' +
+             '<label class="form-field FBLabel">Cast:</label>' +
+             '<br/>' +
+             '<input id="new-cast" class="form-field FBInput"/>' +
+             '<br/>' +
+             '<label class="form-field FBLabel">Trailer:</label>' +
+             '<br/>' +
+             '<input id="new-trailer" class="form-field FBInput"/>' +
+             '<br/>' +
+             '<label class="form-field FBLabel">Genere:</label>' +
+             '<br/> <select id="new-genere">';
+             for(var i=0; i < data.length; i++){
+                item = item + '<option value="' + data[i]._id + '">' + data[i] .name + '</option>';
+             }
+             item = item +
+             '</select><br/>' +
+             '<label class="form-field FBLabel">Data:</label>' +
+             '<br/>' +
+             '<input id="new-data" class="form-field FBInput"/>' +
+             '<br/>' +
+             '<label class="form-field FBLabel">Resum:</label>' +
+             '<br/>' +
+             '<input id="new-review" size="100px" type="text" class="form-field FBInput"/>' +
+             '<br/>' +
+             '<input class="button-login form-field" type="button" value="Nova pel·lícula" onclick="javascript:crearPelicula()" style="float: left;   margin-top: 10px; "/>' +
+             '<input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:cancelarNovaPelicula()" style="float: left; margin: 10px 0px 0px 10px"/>' +
+             '</div>' +
+         '</div>'+
+         '</div> ';
+         $('#main').append(item);
+     });
  }
 
 function cancelarNovaPelicula(){
@@ -480,7 +486,7 @@ function detallPelicula(id){
             '</br><label id="director">Director:</label>' + data.director +
             '</br><label id="cast">Casting:</label>' + data.cast +
             '</br><label id="trailer">Trailer:</label>' + data.trailer +
-            '</br><label id="Genere">Genere:</label>' + data.genere +
+            '</br><label id="Genere">Genere:</label><div style="display: inline;" id="genere_name"></div>' +
             '</br><label id="dataFilm">Data de la pel·lícula:</label>' + data.dataFilm +
             '</br><label id="rating">Puntuació:</label>' + data.rating +
             '</br><label id="review">Resum:</label>' + data.review +
@@ -492,6 +498,10 @@ function detallPelicula(id){
             '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:llistatPelicules()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
             '</div> ';
         $('#main').append(item);
+
+        $.getJSON( 'typefilm/' + data.typeFilm, function(data) {
+            $('#genere_name').append(data.name);
+        });
     });
 }
 
@@ -505,7 +515,7 @@ function eliminarPelicula(id){
 function crearPelicula(){
     $.post("films",
         {title: $('#new-title').val(), original_title: $('#new-original-title').val(), duration: $('#new-duration').val(), director: $('#new-direction').val(),
-            cast: $('#new-cast').val(), trailer: $('#new-trailer').val(), typeFilm: $('#new-genere').val(), dataFilm: $('#new-data').val(), review: $('#new-review').val()},
+            cast: $('#new-cast').val(), trailer: $('#new-trailer').val(), typeFilm: $('#new-genere option:selected').val(), dataFilm: $('#new-data').val(), review: $('#new-review').val()},
         function(data){
             $('#backoffice_admin_new_peli').remove();
             llistatPelicules();
@@ -548,7 +558,7 @@ function editMenuPelicula(id){
             '<br/>' +
             '<label class="form-field FBLabel">Genere:</label>' +
             '<br/>' +
-            '<input id="new-genere" class="form-field FBInput" value="' + data.typeFilm + '"/>' +
+            '<select id="new-genere" class="form-field FBInput"></select>' +
             '<br/>' +
             '<label class="form-field FBLabel">Data:</label>' +
             '<br/>' +
@@ -564,6 +574,22 @@ function editMenuPelicula(id){
             '</div>'+
             '</div> ';
         $('#main').append(item);
+        $.getJSON( 'typefilm/' + data.typeFilm, function(data) {
+            var item;
+            var gen= data._id;
+            item = '<option selected value=' + data._id + '>' + data.name + '</option>';
+            $('#new-genere').append(item);
+            $.getJSON( 'typefilm', function(data) {
+                var item;
+                for(var i=0; i < data.length; i++){
+                    if( data[i]._id != gen){
+                        item= item + '<option value=' + data[i]._id + '>' + data[i].name + '</option>';
+                    }
+                }
+                $('#new-genere').append(item);
+            });
+        });
+
     });
 
 }
@@ -571,7 +597,7 @@ function editMenuPelicula(id){
 function editPelicula(id){
     $.put("films",
         {title: $('#new-title').val(), original_title: $('#new-original-title').val(), duration: $('#new-duration').val(), director: $('#new-direction').val(),
-            cast: $('#new-cast').val(), trailer: $('#new-trailer').val(), typeFilm: $('#new-genere').val(), dataFilm: $('#new-data').val(), review: $('#new-review').val()},
+            cast: $('#new-cast').val(), trailer: $('#new-trailer').val(), typeFilm: $('#new-genere option:selected').val(), dataFilm: $('#new-data').val(), review: $('#new-review').val()},
         function(data){
             $('#backoffice_admin_new_peli').remove();
             detallPelicula(data._id);
