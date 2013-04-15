@@ -2,6 +2,10 @@ body{
     font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 .page{
     overflow-y: visible;
     color: #000000;
@@ -182,7 +186,7 @@ ul.slide-show{
 }
 
 .breadcrumb{
-    height: 50px;
+    height: 10px;
 }
 
 .title-view {
@@ -280,7 +284,7 @@ h3.title-box{
     -webkit-border-radius: 0.6em;
     margin-right: 10px;
     cursor: pointer !important;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .small_button_box a:hover,
@@ -331,6 +335,10 @@ h3.title-box{
     font-size: 12px;
     margin-right: 135px;
     float:right;
+}
+
+.menu-conent-boxes{
+    margin-top: 30px;
 }
 
 .menu-conent-boxes#second-line{
