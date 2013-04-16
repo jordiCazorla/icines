@@ -209,6 +209,7 @@ function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
     $('#inici-pelicules').remove();
     $('#backoffice_admin_main').remove();
+    $('#inici-info').remove(); //TODO: revisar si s'ha de canviar per hide
 
     var item= '<div id="inici-info">' +
         '<div class="breadcrumb">' +
