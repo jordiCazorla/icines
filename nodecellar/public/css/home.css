@@ -368,3 +368,8 @@ ul.ppt {
 .film-list, .film-list th, .film-list tr{
     border:1px solid black !important;
 }
+
+a#loggin_admin_menu{
+    text-decoration: underline;
+    cursor: pointer;
+}

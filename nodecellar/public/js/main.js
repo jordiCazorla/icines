@@ -16,11 +16,14 @@ function login() {
                 var item;
                 item = '<div class="loggin" id="info-user-logged"><div style="margin-top:25px;"> Benvingut,  ' + data.name +
                     '. <span/><a onclick="javascript:logout()" style="text-decoration: underline; cursor: pointer !important;">logout</a></div></div>';
+
                 $('#user-info').append(item);
                 $('#loggin-box').hide();
 
                 if(globalUser.rol != 2){
                     backoffice_main();
+                    var menu = '<a id="loggin_admin_menu" onclick="javascript:backoffice_main()">' + "Menu d'administrador." + '</a>';
+                    $('#info-user-logged').append(menu);
                 }
             }
             else{
@@ -205,6 +208,7 @@ function veurePelicules() {
 function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
     $('#inici-pelicules').remove();
+    $('#backoffice_admin_main').remove();
 
     var item= '<div id="inici-info">' +
         '<div class="breadcrumb">' +
@@ -358,6 +362,7 @@ function backoffice_main(){
     //TODO: comprovar si ha de ser un remove o un hide, depen de si canviem l'slideshow.
     $('#inici-info').remove();
     $('#backoffice_admin_pelis').remove();
+    $('#backoffice_admin_main').remove();
 
 
     //Mirem quin tipus d'usuari estem. Si som admins o cinema
@@ -366,6 +371,7 @@ function backoffice_main(){
         item= '<div class="backoffice_admin_main" id="backoffice_admin_main">'+
             "<h2>Menú backoffice rol d'admin</h2>" +
             '<ul><li><a onclick="javascript:gestioPelicules()"> Gestió de pel·lícules </a></li></ul>' +
+            '<input class="button-login" type="button" value="Pàgina principal" onclick="javascript:veureHome()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
         '</div>';
         $('#main').append(item);
     }
