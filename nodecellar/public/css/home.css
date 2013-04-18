@@ -373,3 +373,7 @@ a#loggin_admin_menu{
     text-decoration: underline;
     cursor: pointer;
 }
+
+a{
+    cursor: pointer;
+}
