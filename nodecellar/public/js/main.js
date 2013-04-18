@@ -399,10 +399,11 @@ function detallPelicula(id){
 }
 
 function eliminarPelicula(id){
-    /*$.ajax({url: "films/", data: id, type: 'DELETE', success: function(result){
-        $('#backoffice_admin_detail_peli').remove();
-        llistatPelicules();
-    }});*/
+    $.ajax({url: "/films/" + id,
+        type: 'DELETE',
+        success: function(result){
+            llistatPelicules();
+    }});
 }
 
 function crearPelicula(){
@@ -422,7 +423,6 @@ function crearPelicula(){
         $.post("films",
         data,
         function(data){
-            $('#backoffice_admin_new_peli').remove();
             llistatPelicules();
         },"json");
 }
