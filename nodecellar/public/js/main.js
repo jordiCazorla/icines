@@ -406,9 +406,21 @@ function eliminarPelicula(id){
 }
 
 function crearPelicula(){
-    $.post("films",
-        {title: $('#new-title').val(), original_title: $('#new-original-title').val(), duration: $('#new-duration').val(), director: $('#new-direction').val(),
-            cast: $('#new-cast').val(), trailer: $('#new-trailer').val(), typeFilm: $('#new-genere option:selected').val(), dataFilm: $('#new-data').val(), review: $('#new-review').val()},
+    var data = {
+            title: $('#new-title').val(),
+            original_title: $('#new-original-title').val(),
+            duration: $('#new-duration').val(),
+            director: $('#new-direction').val(),
+            cast: $('#new-cast').val(),
+            trailer: $('#new-trailer').val(),
+            typeFilm: $('#new-genere option:selected').val(),
+            rating: 0,
+            dataFilm: $('#new-data').val(),
+            review: $('#new-review').val()
+    };
+
+        $.post("films",
+        data,
         function(data){
             $('#backoffice_admin_new_peli').remove();
             llistatPelicules();
@@ -488,11 +500,23 @@ function editMenuPelicula(id){
 }
 
 function editPelicula(id){
-    $.put("films",
-        {title: $('#new-title').val(), original_title: $('#new-original-title').val(), duration: $('#new-duration').val(), director: $('#new-direction').val(),
-            cast: $('#new-cast').val(), trailer: $('#new-trailer').val(), typeFilm: $('#new-genere option:selected').val(), dataFilm: $('#new-data').val(), review: $('#new-review').val()},
-        function(data){
-            $('#backoffice_admin_new_peli').remove();
-            detallPelicula(data._id);
-        },"json");
+    var data = {
+        title: $('#new-title').val(),
+        original_title: $('#new-original-title').val(),
+        duration: $('#new-duration').val(),
+        director: $('#new-direction').val(),
+        cast: $('#new-cast').val(),
+        trailer: $('#new-trailer').val(),
+        typeFilm: $('#new-genere option:selected').val(),
+        dataFilm: $('#new-data').val(),
+        review: $('#new-review').val()
+    };
+    $.ajax({
+        url: '/films/' + id,
+        type: 'PUT',
+        data: data,
+        success: function(result){
+            detallPelicula(id);
+        }
+    });
 }
