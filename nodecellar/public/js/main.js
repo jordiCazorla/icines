@@ -1,5 +1,13 @@
 var globalUser;
 var slide_counter = 1;
+var started = false;
+var interval;
+$(document).ready(function(){
+        if(!started){
+            startAnimation();
+            started = true;
+        }
+});
 
 function login() {
     var name = $('#login-usuari').val();
@@ -144,18 +152,6 @@ function validar(){
     return validation;
 }
 
-function animate() {
-
-    /*var cur = $('.slide-show li:first');
-    cur.fadeOut( 1000 , function(){
-        if ( cur.attr('class') == 'last' )
-            cur = $('.slide-show li:first');
-        else
-            cur = cur.next();
-        cur.fadeIn( 1000 );
-    });*/
-}
-
 function veureGeneres() {
     amagar();
 
@@ -196,7 +192,6 @@ function veureGeneres() {
         llistat = llistat + '</div>' + '</div>';
         $('#main').append(llistat);
     });
-    getGeneres();
 }
 
 
@@ -207,6 +202,7 @@ function veureHome(){
 
     //Mostrar el div inicial
     $('#inici-info').show(); //TODO: revisar si s'ha de canviar per hide
+    startAnimation();
 }
 
 function amagar(){
@@ -218,6 +214,8 @@ function amagar(){
     $('#backoffice_admin_list_pelis').remove(); //Backoffice list pelis
     $('#backoffice_admin_edit_peli').remove(); //Backoffice edit pelis
     $('#backoffice_admin_detail_peli').remove(); //Backoffice detail pelis
+
+    window.clearInterval(interval);
 }
 
 function startAnimation(){
@@ -225,13 +223,13 @@ function startAnimation(){
     $('#element2').hide();
     $('#element3').hide();
 
-    //$('#element1').show();
+    $('#element'+slide_counter).show();
 
-    animation();
+    interval = setInterval(function(){ animation() },5000);
+    //animation();
 }
 
 function animation(){
-
     var cur = $('#element'+slide_counter);
     cur.fadeOut( 1000, function(){
         if (slide_counter == 3){
@@ -239,13 +237,12 @@ function animation(){
         }else{
             slide_counter=slide_counter+1;
         }
-        
+
         cur = $('#element'+slide_counter);
         cur.fadeIn( 1000 );
+
+      // timeout = setTimeout(function(){animation()}, 1000000000000000000000);
     });
-    $(function() {
-        setInterval( "animation()", 5000 );
-    } );
 }
 
 function backoffice_main(){

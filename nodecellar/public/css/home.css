@@ -237,6 +237,7 @@ ul.slide-show{
     border:1px solid #E3E4E4;
     position: absolute;
     font-size: 0.75em;
+    margin-top: 20px;
 }
 
 div#first{
