@@ -241,6 +241,7 @@ ul.slide-show{
     border:1px solid #E3E4E4;
     position: absolute;
     font-size: 0.75em;
+    margin-top: 20px;
 }
 
 div#first{
@@ -375,4 +376,13 @@ ul.ppt {
 
 .film-list, .film-list th, .film-list tr{
     border:1px solid black !important;
+}
+
+a#loggin_admin_menu{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a{
+    cursor: pointer;
 }
