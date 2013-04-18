@@ -157,7 +157,7 @@ function animate() {
 }
 
 function veureGeneres() {
-    amagarHome();
+    amagar();
 
     var typeFilms;
     var llistat = '<div id="inici-pelicules">' +
@@ -203,23 +203,21 @@ function veureGeneres() {
 
 function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
-    amagarPelicules();
-    amagarBackoffice();
+    amagar();
 
     //Mostrar el div inicial
     $('#inici-info').show(); //TODO: revisar si s'ha de canviar per hide
 }
 
-function amagarHome() {
-    $('#inici-info').hide();
-}
-
-function amagarPelicules() {
-    $('#inici-pelicules').remove();
-}
-
-function amagarBackoffice() {
-    $('#backoffice_admin_main').remove();
+function amagar(){
+    $('#inici-info').hide(); //Home
+    $('#inici-pelicules').remove(); //Genere
+    $('#backoffice_admin_main').remove(); //Backoffice main
+    $('#backoffice_admin_pelis').remove(); //Backoffice pelis
+    $('#backoffice_admin_new_peli').remove(); //Backoffice new peli
+    $('#backoffice_admin_list_pelis').remove(); //Backoffice list pelis
+    $('#backoffice_admin_edit_peli').remove(); //Backoffice edit pelis
+    $('#backoffice_admin_detail_peli').remove(); //Backoffice detail pelis
 }
 
 function startAnimation(){
@@ -252,9 +250,7 @@ function animation(){
 
 function backoffice_main(){
     //TODO: comprovar si ha de ser un remove o un hide, depen de si canviem l'slideshow.
-    $('#inici-info').remove();
-    $('#backoffice_admin_pelis').remove();
-    $('#backoffice_admin_main').remove();
+    amagar();
 
 
     //Mirem quin tipus d'usuari estem. Si som admins o cinema
@@ -309,7 +305,7 @@ function backoffice_main(){
  }
 
  function crearPelicules(){
-     $('#backoffice_admin_pelis').remove();
+     amagar();
      $.getJSON( 'typefilm', function(data) {
 
          var item;
@@ -367,13 +363,12 @@ function backoffice_main(){
  }
 
 function cancelarNovaPelicula(){
-    $('#backoffice_admin_new_peli').remove();
+    amagar();
     gestioPelicules();
 }
 
 function detallPelicula(id){
-    $('#backoffice_admin_list_pelis').remove();
-    $('#backoffice_admin_edit_peli').remove();
+    amagar();
     $.getJSON( 'films/' + id, function(data) {
         var item;
         item = '<div class="backoffice_admin_detail_peli" id="backoffice_admin_detail_peli">' +
@@ -421,7 +416,7 @@ function crearPelicula(){
 }
 
 function editMenuPelicula(id){
-    $('#backoffice_admin_detail_peli').remove();
+    amagar();
 
     $.getJSON( 'films/' + id, function(data) {
         var item;
