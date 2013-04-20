@@ -156,7 +156,7 @@ function veureGeneres() {
     amagar();
 
     var typeFilms;
-    var llistat = '<div id="inici-pelicules">' +
+    var llistat = '<div id="inici-generes">' +
         '<div class="breadcrumb">' +
         '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="">Pel·lícules</a>' +
         '</div>';
@@ -175,7 +175,7 @@ function veureGeneres() {
             }else if(op == 1) position = 'middle';
             else position = 'last';
             llistat = llistat + '<div class="box" id="'+position+'">'+
-                '<img src="img/example_film.jpg" alt="" title="" width="267" height="172" />'+
+                '<img src="img/'+data[i].name+'.jpg" alt="" title="" width="267" height="172" />'+
                 '<h3 class="title-box">'+data[i].name+'</h3>'+
                 '<ol>'+
                 '<li>'+
@@ -207,7 +207,7 @@ function veureHome(){
 
 function amagar(){
     $('#inici-info').hide(); //Home
-    $('#inici-pelicules').remove(); //Genere
+    $('#inici-generes').remove(); //Genere
     $('#backoffice_admin_main').remove(); //Backoffice main
     $('#backoffice_admin_pelis').remove(); //Backoffice pelis
     $('#backoffice_admin_new_peli').remove(); //Backoffice new peli
