@@ -185,7 +185,7 @@ function veureGeneres() {
                 'Robots'+
                 '</li>' +
                 '</ol>' +
-                '<span class="small_button_box"><a href="#">Veure Rànquings</a></span>' +
+                '<span class="small_button_box"><a class="script_function" onclick="javascript:veurePelicules(\''+data[i]._id +'\',\''+data[i].name+'\')">Veure Pel·lícules</a></span>' +
                 '</div>'
             if (op == 2) llistat = llistat + '</div>';
         }
@@ -194,7 +194,48 @@ function veureGeneres() {
     });
 }
 
+function veurePelicules(genereId, genereNom){
+    amagar();
+    var films;
+    var llistat = '<div id="inici-pelicules">' +
+        '<div class="breadcrumb">' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a onclick="">'+genereNom+'</a>' +
+        '</div>';
 
+    $.getJSON( 'filmByType/'+genereId, function(data) {
+        var films = data;
+
+        //TODO: Per cada un s'haurà de fer una petició
+        for(var i=0; i < films.length; i++){
+            if(i == 0)    llistat = llistat + '<div class="film-list" ><ul>';
+
+            llistat = llistat + '<li><a class="script_function" onclick="javascript:veurePelicula(\''+films[i]._id+'\',\''+genereNom+'\')">'+films[i].title+'</a> (<a class="script_function" onclick="javascript:veurePelicula(\''+films[i]._id+'\',\''+genereNom+'\')">'+films[i].original_title+'</a>) </li>';
+
+            if(i == films.length-1) llistat = llistat + '</ul></div>'
+        }
+        llistat = llistat + '</div>' + '</div>';
+        $('#main').append(llistat);
+    });
+}
+
+function veurePelicula(peliculaId, genereNom){
+    amagar();
+    var film;
+    var llistat;
+
+    $.getJSON( 'films/'+peliculaId, function(data) {
+        var film = data;
+
+        llistat = '<div id="inici-pelicula">' +
+            '<div class="breadcrumb">' +
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a>' +
+            '</div>';
+
+
+        llistat = llistat + '</div>';
+        $('#main').append(llistat);
+    });
+}
 
 function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
@@ -208,6 +249,8 @@ function veureHome(){
 function amagar(){
     $('#inici-info').hide(); //Home
     $('#inici-generes').remove(); //Genere
+    $('#inici-pelicules').remove(); //Pelicules
+    $('#inici-pelicula').remove(); //Pelicula
     $('#backoffice_admin_main').remove(); //Backoffice main
     $('#backoffice_admin_pelis').remove(); //Backoffice pelis
     $('#backoffice_admin_new_peli').remove(); //Backoffice new peli

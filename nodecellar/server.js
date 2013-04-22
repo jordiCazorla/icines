@@ -27,6 +27,7 @@ app.delete('/typefilm/:id', typeFilm.deleteTypeFilm);
 
 app.get('/films', films.findAll);
 app.get('/films/:id', films.findById);
+app.get('/filmByType/:idType', films.findByIdType);
 app.post('/films', films.addFilm);
 app.put('/films/:id', films.updateFilm);
 app.delete('/films/:id', films.deleteFilm);

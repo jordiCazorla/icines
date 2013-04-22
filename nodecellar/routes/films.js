@@ -29,6 +29,16 @@ exports.findById = function(req, res) {
     });
 };
 
+exports.findByIdType = function(req, res) {
+    var idType = req.params.idType;
+    console.log('Retrieving films: ' + id);
+    db.collection('films', function(err, collection) {
+        collection.find({typeFilm: idType}).toArray(function(err, item) {
+            res.send(item);
+        });
+    });
+};
+
 exports.findAll = function(req, res) {
     db.collection('films', function(err, collection) {
         collection.find().toArray(function(err, items) {
