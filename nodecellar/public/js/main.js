@@ -231,7 +231,18 @@ function veurePelicula(peliculaId, genereNom){
             '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a>' +
             '</div>';
 
-
+        llistat = llistat + '<div class="pelicula">' +
+                '<div class="pelicula-title">'+film.title+'</div>' +
+                '<div class="pelicula-original-title">'+film.original_title+'</div>' +
+                '<div class="pelicula-duration">'+film.duration+'</div>' +
+                '<div class="pelicula-director">'+film.director+'</div>' +
+                '<div class="pelicula-cast">'+film.cast+'</div>' +
+                '<div class="pelicula-trailer">'+film.trailer+'</div>' +
+                '<div class="pelicula-type"><a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a></div>' +
+                '<div class="pelicula-data">'+film.dataFilm+'</div>' +
+                '<div class="pelicula-rating">'+film.rating+'</div>' +
+                '<div class="pelicula-review">'+film.review+'</div>' +
+            '</div>';
         llistat = llistat + '</div>';
         $('#main').append(llistat);
     });
