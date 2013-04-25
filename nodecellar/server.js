@@ -3,6 +3,7 @@ var express = require('express'),
     typeFilm = require('./routes/typeFilm');
     films = require('./routes/films');
     cines = require('./routes/cines');
+    votes = require('./routes/votes');
 
 var app = express();
 
@@ -38,6 +39,13 @@ app.get('/cines/:id', cines.findById);
 app.post('/cines', cines.addCine);
 app.put('/cines/:id', cines.updateCine);
 app.delete('/cines/:id', cines.deleteCine);
+
+app.get('/votes', votes.findAll);
+app.get('/votes/:id', votes.findById);
+app.post('/votes', votes.addVote);
+app.put('/votes/:id', votes.updateVote);
+app.delete('/votes/:id', votes.deleteVote);
+app.get('/votesByElemUser/:element_id/:user_id', votes.findByElementAndUser);
 
 app.listen(3000);
 console.log('Listening on port 3000...');

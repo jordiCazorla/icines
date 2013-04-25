@@ -3,10 +3,11 @@ var slide_counter = 1;
 var started = false;
 var interval;
 $(document).ready(function(){
-        if(!started){
-            startAnimation();
-            started = true;
-        }
+    if(!started){
+        startAnimation();
+        started = true;
+    }
+    globalUser = null;
 });
 
 function login() {
@@ -47,7 +48,7 @@ function logout(){
     if (globalUser.rol != 2){
         veureHome();
     }
-    globalUser = {};
+    globalUser = null;
 }
 
 function cancelarRegistre(){
@@ -228,6 +229,10 @@ function veurePelicula(peliculaId, genereNom){
 
     $.getJSON( 'films/'+peliculaId, function(data) {
         var film = data;
+        var rating = parseInt(film.vote_sum) + 0.0;
+        if (film.votes != 0){
+            rating = rating / film.votes;
+        }
 
         llistat = '<div id="inici-pelicula">' +
             '<div class="breadcrumb">' +
@@ -243,12 +248,101 @@ function veurePelicula(peliculaId, genereNom){
                 '<div class="pelicula-trailer">'+film.trailer+'</div>' +
                 '<div class="pelicula-type"><a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a></div>' +
                 '<div class="pelicula-data">'+film.dataFilm+'</div>' +
-                '<div class="pelicula-rating">'+film.rating+'</div>' +
+                '<div class="pelicula-rating">'+ rating +'</div>' +
                 '<div class="pelicula-review">'+film.review+'</div>' +
+                '<div class="votar-film" id="votar-film">' +
+                '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
+                '<input type="radio" name="votes" value="2"> 2 </input>' +
+                '<input type="radio" name="votes" value="3"> 3 </input>' +
+                '<input type="radio" name="votes" value="4"> 4 </input>' +
+                '<input type="radio" name="votes" value="5"> 5 </input>' +
+                '<input class="button-login" type="button" value="Votar" onclick="javascript:votarPelicula(\''+film._id+'\',\''+genereNom+'\')" style="float:none; right:0"/>' +
+                '</div>' +
             '</div>';
         llistat = llistat + '</div>';
         $('#main').append(llistat);
     });
+}
+
+function votarPelicula(id, genereNom){
+    if(globalUser != null){
+        var votacio = $('input[name=votes]:checked', '#votar-film').val();
+
+        $.getJSON( 'films/'+id, function(film) {
+            var votes = parseInt(film.votes) + 1;
+            var vote_sum = parseInt(film.vote_sum) + parseInt(votacio);
+            var data = {
+                title: film.title,
+                original_title: film.original_title,
+                duration: film.duration,
+                director: film.director,
+                cast: film.cast,
+                trailer: film.trailer,
+                typeFilm: film.typeFilm,
+                dataFilm: film.dataFilm,
+                review: film.review,
+                vote_sum: vote_sum,
+                votes: votes
+            };
+
+            $.getJSON( 'votesByElemUser/'+film._id+'/'+globalUser._id, function(votation_result) {
+                var nova_votacio = {
+                    element_id: film._id,
+                    user_id: globalUser._id,
+                    vote:  parseInt(votacio)
+                };
+                if(!votation_result.error){
+                    //Hem d'actualitzar
+                    alert("Actualitzar vot");
+                    $.ajax({
+                        url: '/votes/' + votation_result._id,
+                        type: 'PUT',
+                        data: nova_votacio,
+                        success: function(result){
+                            if(!result.error){ //tot ha anat be
+                                data.vote_sum = data.vote_sum - votation_result.vote;
+                                data.votes = data.votes - 1;
+                                alert(data.votes);
+                                alert(data.vote_sum);
+                                $.ajax({
+                                    url: '/films/' + id,
+                                    type: 'PUT',
+                                    data: data,
+                                    success: function(result){
+                                        veurePelicula(id, genereNom);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+                else{
+                    //Hem de crear
+                    alert("Crear vot");
+                    $.post("votes",
+                        nova_votacio,
+                        function(final_result){
+                            if(!final_result.error){ //tot ha anat be
+                                $.ajax({
+                                    url: '/films/' + id,
+                                    type: 'PUT',
+                                    data: data,
+                                    success: function(result){
+                                        veurePelicula(id, genereNom);
+                                    }
+                                });
+                            }
+                        },"json");
+                }
+            });
+
+        });
+    }
+    else{
+        alert("Has d'estar logat per poder votar");
+    }
+
+
 }
 
 function veureHome(){
@@ -276,7 +370,6 @@ function amagar(){
     $('#backoffice_admin_detail_cine').remove(); //Backoffice detail cines
     $('#backoffice_admin_new_cinema').remove(); //Backoffice new cines
     $('#backoffice_admin_edit_cine').remove(); //Backoffice edit cines
-
 
     window.clearInterval(interval);
 }
@@ -341,8 +434,7 @@ function backoffice_main(){
  }
 
  function llistatPelicules(){
-     $('#backoffice_admin_pelis').remove();
-     $('#backoffice_admin_detail_peli').remove();
+     amagar();
 
      $.getJSON( 'films', function(data) {
          var films = data;
@@ -432,6 +524,10 @@ function detallPelicula(id){
     amagar();
     $.getJSON( 'films/' + id, function(data) {
         var item;
+        var rating = parseInt(data.vote_sum) + 0.0;
+        if (data.votes != 0){
+            rating = rating / data.votes;
+        }
         item = '<div class="backoffice_admin_detail_peli" id="backoffice_admin_detail_peli">' +
             "<h2>Detall d'una pel·lícula</h2>" +
             '<label id="title">Títol:</label>' + data.title +
@@ -442,7 +538,7 @@ function detallPelicula(id){
             '</br><label id="trailer">Trailer:</label>' + data.trailer +
             '</br><label id="Genere">Genere:</label><div style="display: inline;" id="genere_name"></div>' +
             '</br><label id="dataFilm">Data de la pel·lícula:</label>' + data.dataFilm +
-            '</br><label id="rating">Puntuació:</label>' + data.rating +
+            '</br><label id="rating">Puntuació:</label>' + rating +
             '</br><label id="review">Resum:</label>' + data.review +
             '</br>' +
             '<input class="button-login" type="button" value="Editar" onclick="javascript:editMenuPelicula(' +
@@ -476,7 +572,8 @@ function crearPelicula(){
             cast: $('#new-cast').val(),
             trailer: $('#new-trailer').val(),
             typeFilm: $('#new-genere option:selected').val(),
-            rating: 0,
+            vote_sum: 0,
+            votes: 0,
             dataFilm: $('#new-data').val(),
             review: $('#new-review').val()
     };
@@ -491,7 +588,7 @@ function crearPelicula(){
 function editMenuPelicula(id){
     amagar();
 
-    $.getJSON( 'cines/' + id, function(data) {
+    $.getJSON( 'films/' + id, function(data) {
         var item;
 
         item= '<div class="backoffice_admin_edit_peli" id="backoffice_admin_edit_peli">' +
@@ -534,6 +631,8 @@ function editMenuPelicula(id){
             '<br/>' +
             '<input id="new-review" size="100px" type="text" class="form-field FBInput" value="' + data.review + '"/>' +
             '<br/>' +
+            '<input id="edit-vote-sum" value=' + data.vote_sum + ' type="hidden" />' +
+            '<input id="edit-votes" value=' + data.votes + ' type="hidden" />' +
             '<input class="button-login form-field" type="button" value="Editar" onclick="javascript:editPelicula(' + "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; "/>' +
             '<input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:detallPelicula(' + "'" + data._id + "'" + ')" style="float: left; margin: 10px 0px 0px 10px"/>' +
             '</div>' +
@@ -570,7 +669,9 @@ function editPelicula(id){
         trailer: $('#new-trailer').val(),
         typeFilm: $('#new-genere option:selected').val(),
         dataFilm: $('#new-data').val(),
-        review: $('#new-review').val()
+        review: $('#new-review').val(),
+        vote_sum: $('#edit-vote-sum').val(),
+        votes: $('#edit-votes').val()
     };
     $.ajax({
         url: '/films/' + id,
