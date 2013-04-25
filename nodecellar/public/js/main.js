@@ -268,6 +268,12 @@ function amagar(){
     $('#backoffice_admin_list_pelis').remove(); //Backoffice list pelis
     $('#backoffice_admin_edit_peli').remove(); //Backoffice edit pelis
     $('#backoffice_admin_detail_peli').remove(); //Backoffice detail pelis
+    $('#backoffice_admin_cines').remove(); //Backoffice cines
+    $('#backoffice_admin_list_cines').remove(); //Backoffice list cines
+    $('#backoffice_admin_detail_cine').remove(); //Backoffice detail cines
+    $('#backoffice_admin_new_cinema').remove(); //Backoffice new cines
+    $('#backoffice_admin_edit_cine').remove(); //Backoffice edit cines
+
 
     window.clearInterval(interval);
 }
@@ -309,7 +315,8 @@ function backoffice_main(){
     if (globalUser.rol == 1){
         item= '<div class="backoffice_admin_main" id="backoffice_admin_main">'+
             "<h2>Menú backoffice rol d'admin</h2>" +
-            '<ul><li><a onclick="javascript:gestioPelicules()"> Gestió de pel·lícules </a></li></ul>' +
+            '<ul><li><a onclick="javascript:gestioPelicules()"> Gestió de pel·lícules </a></li>'+
+            '<li><a onclick="javascript:gestioCinemes()"> Gestió de cinemes </a></li></ul>' +
             '<input class="button-login" type="button" value="Pàgina principal" onclick="javascript:veureHome()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
         '</div>';
         $('#main').append(item);
@@ -481,7 +488,7 @@ function crearPelicula(){
 function editMenuPelicula(id){
     amagar();
 
-    $.getJSON( 'films/' + id, function(data) {
+    $.getJSON( 'cines/' + id, function(data) {
         var item;
 
         item= '<div class="backoffice_admin_edit_peli" id="backoffice_admin_edit_peli">' +
@@ -570,4 +577,207 @@ function editPelicula(id){
             detallPelicula(id);
         }
     });
+}
+
+function gestioCinemes(){
+    amagar();
+
+    var item;
+    item= '<div class="backoffice_admin_cines" id="backoffice_admin_cines">'+
+        "<h2>Gestió de cinemes</h2>" +
+        '<ul><li><a onclick="javascript:llistatCinemes()"> Llistat de cinemes </a></li>' +
+        '<li><a onclick="javascript:crearMenuCinema()"> Crear Cinema </a></li>' +
+        '</ul>' +
+        '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:backoffice_main()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+        '</div>';
+    $('#main').append(item);
+}
+
+function llistatCinemes(){
+    amagar();
+
+    $.getJSON( 'cines', function(data) {
+        var cines = data;
+        var item;
+        item = '<div class="backoffice_admin_list_cines" id="backoffice_admin_list_cines">'+
+            "<h2>Llistat de cinemes</h2>" +
+            '<table class="cines-list">' +
+            '<tr><th>Nom</th><th>Ciutat</th></tr>';
+        for(var i=0; i < data.length; i++){
+            item = item + '<tr><th>' +
+                '<a onclick="javascript:detallCinema(' +
+                "'" + data[i]._id + "'" + ')">' + data[i].name + '</a></th>' +
+                '<th>' + data[i].city + '</th></tr>';
+        }
+        item = item + '</table>' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:gestioCinemes()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div>';
+        $('#main').append(item);
+    });
+}
+
+function crearMenuCinema(){
+    amagar();
+
+    var item;
+    item= '<div class="backoffice_admin_new_cinema" id="backoffice_admin_new_cinema">' +
+        "<h2>Creació d'una pel·lícula</h2>" +
+        '<div class="new" id="new-form">' +
+        '<div id="register-data" style=" margin-top: 30px;">' +
+        '<label class="form-field FBLabel">Nom:</label>' +
+        '<br/>' +
+        '<input id="new-name" class="form-field FBInput" />' +
+        '<br/>' +
+        '<label class="form-field FBLabel">Direcció: </label>' +
+        '<br/>' +
+        '<input id="new-direction" class="form-field FBInput"/>' +
+        '<br/>' +
+        '<label class="form-field FBLabel">Ciutat: </label>' +
+        '<br/>' +
+        '<input id="new-city" class="form-field FBInput"/>' +
+        '<br/>' +
+        '<label class="form-field FBLabel">Telefon: </label>' +
+        '<br/>' +
+        '<input id="new-phone" class="form-field FBInput"/>' +
+        '<br/>' +
+        '<label class="form-field FBLabel">Email: </label>' +
+        '<br/>' +
+        '<input id="new-email" class="form-field FBInput"/>' +
+        '<br/>' +
+        '<label class="form-field FBLabel">Latitud: </label>' +
+        '<br/>' +
+        '<input id="new-latitud" class="form-field FBInput"/>' +
+        '<br/>' +
+        '<label class="form-field FBLabel">Longitud: </label>' +
+        '<br/>' +
+        '<input id="new-longitud" class="form-field FBInput"/>' +
+        '<br/>' +
+        '<input class="button-login form-field" type="button" value="Nou cinema" onclick="javascript:crearCinema()" style="float: left;   margin-top: 10px; "/>' +
+        '<input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:cancelarNouCinema()" style="float: left; margin: 10px 0px 0px 10px"/>' +
+        '</div>' +
+        '</div>'+
+        '</div> ';
+    $('#main').append(item);
+}
+
+function crearCinema(){
+    var data = {
+        name: $('#new-name').val(),
+        direction: $('#new-direction').val(),
+        city: $('#new-city').val(),
+        phone: $('#new-phone').val(),
+        email: $('#new-email').val(),
+        latitud: $('#new-latitud').val(),
+        longitud: $('#new-longitud').val()
+    };
+
+    $.post("cines",
+        data,
+        function(data){
+            llistatCinemes();
+        },"json");
+}
+
+function cancelarNouCinema(){
+    amagar();
+    gestioCinemes();
+}
+
+function detallCinema(id){
+    amagar();
+    $.getJSON( 'cines/' + id, function(data) {
+        var item;
+        item = '<div class="backoffice_admin_detail_cine" id="backoffice_admin_detail_cine">' +
+            "<h2>Detall d'un cinema</h2>" +
+            '<label id="title">Nom: </label>' + data.name +
+            '</br><label id="direction">Direcció: </label>' + data.direction +
+            '</br><label id="city">Ciutat: </label>' + data.city +
+            '</br><label id="phone">Telefon: </label>' + data.phone +
+            '</br><label id="email">Email: </label>' + data.email +
+            '</br><label id="latitud">Latitud: </label>' + data.latitud +
+            '</br><label id="longitud">Longitud: </label>' + data.longitud +
+            '</br>' +
+            '<input class="button-login" type="button" value="Editar" onclick="javascript:editMenuCinema(' +
+            "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Eliminar" onclick="javascript:eliminarCinema(' +
+            "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:llistatCinemes()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div> ';
+        $('#main').append(item);
+
+        $.getJSON( 'typefilm/' + data.typeFilm, function(data) {
+            $('#genere_name').append(data.name);
+        });
+    });
+}
+
+function editMenuCinema(id){
+    amagar();
+    $.getJSON( 'cines/' + id, function(data) {
+        var item;
+        item = '<div class="backoffice_admin_edit_cine" id="backoffice_admin_edit_cine">' +
+            "<h2>Detall d'un cinema</h2>" +
+            '<label class="form-field FBLabel">Nom:</label>' +
+            '<br/>' +
+            '<input id="new-name" class="form-field FBInput" value="' + data.name + '"/>' +
+            '<br/>' +
+            '<label class="form-field FBLabel">Direcció:</label>' +
+            '<br/>' +
+            '<input id="new-direction" class="form-field FBInput" value="' + data.direction + '"/>' +
+            '<br/>' +
+            '<label class="form-field FBLabel">Ciutat:</label>' +
+            '<br/>' +
+            '<input id="new-city" class="form-field FBInput" value="' + data.city + '"/>' +
+            '<br/>' +
+            '<label class="form-field FBLabel">Telefon:</label>' +
+            '<br/>' +
+            '<input id="new-phone" class="form-field FBInput" value="' + data.phone + '"/>' +
+            '<br/>' +
+            '<label class="form-field FBLabel">Email:</label>' +
+            '<br/>' +
+            '<input id="new-email" class="form-field FBInput" value="' + data.email + '"/>' +
+            '<br/>' +
+            '<label class="form-field FBLabel">Latitud:</label>' +
+            '<br/>' +
+            '<input id="new-latitud" class="form-field FBInput" value="' + data.latitud + '"/>' +
+            '<br/>' +
+            '<label class="form-field FBLabel">Longitud:</label>' +
+            '<br/>' +
+            '<input id="new-longitud" class="form-field FBInput" value="' + data.longitud + '"/>' +
+            '</br>' +
+            '<input class="button-login" type="button" value="Editar" onclick="javascript:editCinema(' +
+            "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:detallCinema(' +
+            "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div> ';
+        $('#main').append(item);
+    });
+}
+
+function editCinema(id){
+    var data = {
+        name: $('#new-name').val(),
+        direction: $('#new-direction').val(),
+        city: $('#new-city').val(),
+        phone: $('#new-phone').val(),
+        email: $('#new-email').val(),
+        latitud: $('#new-latitud').val(),
+        longitud: $('#new-longitud').val()
+    };
+    $.ajax({
+        url: '/cines/' + id,
+        type: 'PUT',
+        data: data,
+        success: function(result){
+            detallCinema(id);
+        }
+    });
+}
+
+function eliminarCinema(id){
+    $.ajax({url: "/cines/" + id,
+        type: 'DELETE',
+        success: function(result){
+            llistatCinemes();
+        }});
 }
