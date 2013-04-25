@@ -204,16 +204,19 @@ function veurePelicules(genereId, genereNom){
 
     $.getJSON( 'filmByType/'+genereId, function(data) {
         var films = data;
+        if (films.length == 0) {
+            llistat = llistat + '<div>No tenim pelicules</div>';
+        }else{
+            //TODO: Per cada un s'haurà de fer una petició
+            for(var i=0; i < films.length; i++){
+                if(i == 0)    llistat = llistat + '<div class="film-list" ><ul>';
 
-        //TODO: Per cada un s'haurà de fer una petició
-        for(var i=0; i < films.length; i++){
-            if(i == 0)    llistat = llistat + '<div class="film-list" ><ul>';
+                llistat = llistat + '<li><a class="script_function" onclick="javascript:veurePelicula(\''+films[i]._id+'\',\''+genereNom+'\')">'+films[i].title+'</a> (<a class="script_function" onclick="javascript:veurePelicula(\''+films[i]._id+'\',\''+genereNom+'\')">'+films[i].original_title+'</a>) </li>';
 
-            llistat = llistat + '<li><a class="script_function" onclick="javascript:veurePelicula(\''+films[i]._id+'\',\''+genereNom+'\')">'+films[i].title+'</a> (<a class="script_function" onclick="javascript:veurePelicula(\''+films[i]._id+'\',\''+genereNom+'\')">'+films[i].original_title+'</a>) </li>';
-
-            if(i == films.length-1) llistat = llistat + '</ul></div>'
+                if(i == films.length-1) llistat = llistat + '</ul></div>'
+            }
         }
-        llistat = llistat + '</div>' + '</div>';
+        llistat = llistat + '</div>' ;
         $('#main').append(llistat);
     });
 }

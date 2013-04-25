@@ -31,7 +31,7 @@ exports.findById = function(req, res) {
 
 exports.findByIdType = function(req, res) {
     var idType = req.params.idType;
-    console.log('Retrieving films: ' + id);
+    console.log('Retrieving films: ' + idType);
     db.collection('films', function(err, collection) {
         collection.find({typeFilm: idType}).toArray(function(err, item) {
             res.send(item);
@@ -100,22 +100,12 @@ exports.deleteFilm = function(req, res) {
 // You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
 
-    var films = [
+    /*var films = [
         {
-            title: "acció",
-            original_title: "action",
-            duration: "120 minuts",
-            director: "Jordi Cazorla",
-            cast: "nose",
-            trailer: "",
-            typeFilm: "action",
-            dataFilm: "14/04/2013",
-            rating: 0,
-            review: ""
         }];
 
     db.collection('films', function(err, collection) {
         collection.insert(films, {safe:true}, function(err, result) {});
-    });
+    });*/
 
 };

@@ -109,9 +109,10 @@ var populateDB = function() {
         {
             name: "altres"
         }];
-
+console.log('aqui dins');
     db.collection('typeFilms', function(err, collection) {
         collection.insert(typeFilms, {safe:true}, function(err, result) {});
+        console.log('i aqui');
     });
 
 };
