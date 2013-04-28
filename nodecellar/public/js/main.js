@@ -242,22 +242,22 @@ function veurePelicula(peliculaId, genereNom){
         llistat = llistat + '<div class="pelicula">' +
                 '<div class="pelicula-title">'+film.title+'</div>' +
                 '<div class="pelicula-original-title">'+film.original_title+'</div>' +
-                '<div class="pelicula-duration">'+film.duration+'</div>' +
-                '<div class="pelicula-director">'+film.director+'</div>' +
-                '<div class="pelicula-cast">'+film.cast+'</div>' +
-                '<div class="pelicula-trailer">'+film.trailer+'</div>' +
-                '<div class="pelicula-type"><a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a></div>' +
-                '<div class="pelicula-data">'+film.dataFilm+'</div>' +
-                '<div class="pelicula-rating">'+ rating +'</div>' +
-                '<div class="pelicula-review">'+film.review+'</div>' +
+                '<div class="pelicula-duration">Durada: '+film.duration+'</div>' +
+                '<div class="pelicula-director">Director: '+film.director+'</div>' +
+                '<div class="pelicula-cast">Actors: '+film.cast+'</div>' +
+                '<div class="pelicula-type">Genere: <a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a></div>' +
+                '<div class="pelicula-data">Estrena: '+film.dataFilm+'</div>' +
+                '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
+                '<div class="pelicula-review">Sinopsis: '+film.review+'</div>' +
                 '<div class="votar-film" id="votar-film">' +
-                '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
-                '<input type="radio" name="votes" value="2"> 2 </input>' +
-                '<input type="radio" name="votes" value="3"> 3 </input>' +
-                '<input type="radio" name="votes" value="4"> 4 </input>' +
-                '<input type="radio" name="votes" value="5"> 5 </input>' +
-                '<input class="button-login" type="button" value="Votar" onclick="javascript:votarPelicula(\''+film._id+'\',\''+genereNom+'\')" style="float:none; right:0"/>' +
+                    '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
+                    '<input type="radio" name="votes" value="2"> 2 </input>' +
+                    '<input type="radio" name="votes" value="3"> 3 </input>' +
+                    '<input type="radio" name="votes" value="4"> 4 </input>' +
+                    '<input type="radio" name="votes" value="5"> 5 </input>' +
+                    '<input class="button-login" type="button" value="Votar" onclick="javascript:votarPelicula(\''+film._id+'\',\''+genereNom+'\')" style="float:none; right:0"/>' +
                 '</div>' +
+                '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
             '</div>';
         llistat = llistat + '</div>';
         $('#main').append(llistat);

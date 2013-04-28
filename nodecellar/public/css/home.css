@@ -386,3 +386,12 @@ a#loggin_admin_menu{
 a{
     cursor: pointer;
 }
+
+.pelicula{
+    margin: 40px 70px 0 70px;
+
+}
+
+.votar-film{
+    float: right;
+}
