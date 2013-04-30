@@ -23,7 +23,7 @@ a{
 }
 
 .main{
-    background-color: #ffffcc;
+    background: #ffffff url('../img/bg-site.png') left top;
     border-radius: 10px;
 }
 
