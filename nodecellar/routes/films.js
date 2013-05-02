@@ -31,7 +31,6 @@ exports.findById = function(req, res) {
 
 exports.findByIdType = function(req, res) {
     var idType = req.params.idType;
-    console.log('Retrieving films: ' + idType);
     db.collection('films', function(err, collection) {
         collection.find({typeFilm: idType}).toArray(function(err, item) {
             res.send(item);

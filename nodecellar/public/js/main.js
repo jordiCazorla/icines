@@ -190,22 +190,54 @@ function veureGeneres() {
             else position = 'last';
             llistat = llistat + '<div class="box" id="'+position+'">'+
                 '<img src="img/'+data[i].name+'.jpg" alt="" title="" width="267" height="172" />'+
-                '<h3 class="title-box">'+data[i].name+'</h3>'+
-                '<ol>'+
-                '<li>'+
-                'Intel·ligència artificial'+
-                '</li>'+
-                '<li>'+
-                'Robots'+
-                '</li>' +
-                '</ol>' +
+                '<h3 class="title-box">'+data[i].name+'</h3><div id="genere_'+i+'"></div>' +
                 '<span class="small_button_box"><a class="script_function" onclick="javascript:veurePelicules(\''+data[i]._id +'\',\''+data[i].name+'\')">Veure Pel·lícules</a></span>' +
                 '</div>'
             if (op == 2) llistat = llistat + '</div>';
         }
         llistat = llistat + '</div>' + '</div>';
         $('#main').append(llistat);
+        for(var j=0; j < data.length; j++){
+            $.getJSON('filmByType/' + data[j]._id, function(pos) {
+                return function(films_result){
+                    var llistat_pelis = '';
+                    if(films_result.length == 0){
+                        llistat_pelis = llistat_pelis + 'No hi ha resultats';
+                    }else{
+                        llistat_pelis = llistat_pelis + '<ol>';
+                        var max = 5;
+                        if(films_result.length < max){
+                            max = films_result.length;
+                        }
+                        films_result.sort(compare_film_rating);
+                        for(var z = 0; z < max; z++){
+                            llistat_pelis = llistat_pelis + '<li>' + films_result[z].title +
+                                '</li>';
+                        }
+                        llistat_pelis = llistat_pelis + '</ol>';
+                    }
+                    $('#genere_' + pos).append(llistat_pelis);
+                    }
+            }(j)
+            );
+        }
     });
+}
+
+function compare_film_rating(a,b) {
+    var ratinga = parseInt(a.vote_sum) + 0.0;
+    if (a.votes != 0){
+        ratinga = ratinga / a.votes;
+    }
+    var ratingb = parseInt(b.vote_sum) + 0.0;
+    if (b.votes != 0){
+        ratingb = ratingb / b.votes;
+    }
+    if (ratingb < ratinga)
+        return -1;
+    if (ratingb > ratinga)
+        return 1;
+    return 0;
 }
 
 function veurePelicules(genereId, genereNom){
