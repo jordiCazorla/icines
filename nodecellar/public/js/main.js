@@ -370,6 +370,11 @@ function amagar(){
     $('#backoffice_admin_detail_cine').remove(); //Backoffice detail cines
     $('#backoffice_admin_new_cinema').remove(); //Backoffice new cines
     $('#backoffice_admin_edit_cine').remove(); //Backoffice edit cines
+    $('#backoffice_admin_pelis_cinema').remove(); //Backoffice pelis cinema
+    $('#backoffice_admin_pelis_cinema_choose_peli').remove(); //Backoffice pelis cinema choose film
+    $('#backoffice_admin_pelis_cinema_timetable').remove(); //Backoffice pelis cinema timetable
+    $('#backoffice_admin_info_pelis_cinema_timetable').remove(); //Backoffice info peli cinema timetable
+
 
     window.clearInterval(interval);
 }
@@ -412,7 +417,9 @@ function backoffice_main(){
         item= '<div class="backoffice_admin_main" id="backoffice_admin_main">'+
             "<h2>Menú backoffice rol d'admin</h2>" +
             '<ul><li><a onclick="javascript:gestioPelicules()"> Gestió de pel·lícules </a></li>'+
-            '<li><a onclick="javascript:gestioCinemes()"> Gestió de cinemes </a></li></ul>' +
+            '<li><a onclick="javascript:gestioCinemes()"> Gestió de cinemes </a></li>' +
+            '<li><a onclick="javascript:gestioPeliculaCinema()"> Gestió de pel·lícules a cinema </a></li>' +
+            '</ul>' +
             '<input class="button-login" type="button" value="Pàgina principal" onclick="javascript:veureHome()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
         '</div>';
         $('#main').append(item);
@@ -545,7 +552,8 @@ function detallPelicula(id){
             "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
             '<input class="button-login" type="button" value="Eliminar" onclick="javascript:eliminarPelicula(' +
             "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
-            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:llistatPelicules()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Llistat de Pel·lícules" onclick="javascript:llistatPelicules()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Menú backoffice" onclick="javascript:backoffice_main()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>'
             '</div> ';
         $('#main').append(item);
 
@@ -884,4 +892,147 @@ function eliminarCinema(id){
         success: function(result){
             llistatCinemes();
         }});
+}
+
+
+function gestioPeliculaCinema(){
+    amagar();
+    $.getJSON( 'cines', function(data) {
+        var cines = data;
+        var item;
+        item = '<div class="backoffice_admin_pelis_cinema" id="backoffice_admin_pelis_cinema">'+
+            "<h2>Escull el teu cinema</h2><ul>";
+
+        for(var i=0; i < data.length; i++){
+            item = item +
+                '<li>' +
+                '<a onclick="javascript:escollirPelicula(' +
+                "'" + data[i]._id + "'" + ')">' + data[i].name + '</a>' +
+                '</li>';
+
+        }
+        item = item + '</ul>' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:backoffice_main()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div>';
+        $('#main').append(item);
+    });
+}
+
+function escollirPelicula(idCine){
+    amagar();
+    $.getJSON( 'films', function(data) {
+        var films = data;
+        var item;
+        item = '<div class="backoffice_admin_pelis_cinema_choose_peli" id="backoffice_admin_pelis_cinema_choose_peli">'+
+            "<h2>Escull una pel·lícula</h2><ul>";
+
+        for(var i=0; i < data.length; i++){
+            item = item +
+                '<li>' +
+                '<a onclick="javascript:veureTimetables(' +
+                "'" + data[i]._id + "','" + idCine + "'"+ ')">' + data[i].title + '</a>' +
+                '</li>';
+
+        }
+        item = item + '</ul>' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:gestioPeliculaCinema()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div>';
+        $('#main').append(item);
+    });
+}
+
+function veureTimetables(idPeli, idCine){
+    amagar();
+    $.getJSON( 'timetable', function(data) {
+        var timetable = data;
+        var item;
+        item = '<div class="backoffice_admin_pelis_cinema_timetable" id="backoffice_admin_pelis_cinema_timetable">'+
+            "<h2>Escull l'horari </h2>" +
+            "<h3>(has de mantenir seleccionat la tecla 'Control' per seleccionar més d'un valor)</h3>" +
+            "<select multiple style='height: 500px' id='timetable_list'>";
+
+        for(var i=0; i < data.length; i++){
+            item = item +
+                    '<option value="'+data[i]._id+'">' + data[i].time +'</option>' ;
+            /*'<a onclick="javascript:veureTimetables(' +
+            "'" + data[i]._id + "','" + idCine + ')">' + data[i].name + '</a>' +*/
+
+        }
+        item = item + '</select>' +
+            '<input class="button-login" type="button" value="Submit" onclick="javascript:assignCineFilm('+"'" + idPeli + "','" + idCine + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:escollirPelicula(' + "'" + idCine + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div>';
+        $('#main').append(item);
+    });
+}
+
+function assignCineFilm(idPeli, idCine){
+
+    var selectedValues = [];
+    $("#timetable_list :selected").each(function(){
+        selectedValues.push($(this).val());
+    });
+
+    amagar();
+
+    for (var i = 0; i < selectedValues.length; i++){
+        var data = {
+            cine_id: idCine, peli_id: idPeli, timetable_id: selectedValues[i]
+        };
+
+        /*$.post("billboard",
+            data,
+            function(data){
+
+            },"json");*/
+        $.ajax({url: "/billboard",
+            type: 'POST',
+            data: data,
+            async: false
+            });
+    }
+    mostrarPeliculaTimetable(idPeli, idCine);
+
+}
+
+function mostrarPeliculaTimetable(idPeli, idCine){
+    amagar();
+
+    $.getJSON( 'findAllBillboard/'+idCine+'/'+idPeli, function(billboard_result) {
+        if(!billboard_result.error){
+            //Tenim resultats
+            $.getJSON( 'cines/'+idCine, function(cine) {
+                var item =  '<div class="backoffice_admin_info_pelis_cinema_timetable" id="backoffice_admin_info_pelis_cinema_timetable">'+
+                    "<h2>Cinema, pel·lícula i horari </h2>" +
+                    '<label id="cine_title">El cinema es: </label>' + cine.name + '</br>';
+                $.getJSON( 'films/'+idPeli, function(peli) {
+                    item = item + '<label id="peli_title">La pel·lícula es: </label>' + peli.title + '</br>' +
+                        '<label id="list_timetable">Llistat d'+"'" + 'horaris: </label> ';
+                    item = item + '</div>';
+                    $('#main').append(item);
+                    for(var i = 0; i < billboard_result.length; i++){
+                        if(i == billboard_result.length -1){
+                            $.getJSON( 'timetable/'+billboard_result[i].timetable_id, function(timetable) {
+                                var time = timetable.time + '<br/>';
+                                $('#list_timetable').append(time);
+                            });
+
+                        }else{
+                            $.getJSON( 'timetable/'+billboard_result[i].timetable_id, function(timetable) {
+                                var time = timetable.time + '<br/>';
+                                $('#list_timetable').append(time);
+                            });
+                        }
+                    }
+
+                });
+
+
+            });
+
+        }
+        else{
+            alert("quelcom ha anat malament");
+        }
+    });
 }
