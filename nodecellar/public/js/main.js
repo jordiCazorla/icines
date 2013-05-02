@@ -30,6 +30,7 @@ function login() {
                 $('#loggin-box').hide();
 
                 if(globalUser.rol != 2){
+                    desactivarMenus();
                     backoffice_main();
                     var menu = '<a id="loggin_admin_menu" onclick="javascript:backoffice_main()">' + "Menu d'administrador." + '</a>';
                     $('#info-user-logged').append(menu);
@@ -153,8 +154,20 @@ function validar(){
     return validation;
 }
 
+function desactivarMenus(){
+    $('#menu_inici').removeClass('active');
+    $('#menu_pelicules').removeClass('active');
+    $('#menu_cartellera').removeClass('active');
+    $('#menu_estrenes').removeClass('active');
+    $('#menu_cinemes').removeClass('active');
+    $('#menu_ranquing').removeClass('active');
+}
+
 function veureGeneres() {
     amagar();
+
+    desactivarMenus();
+    $('#menu_pelicules').addClass('active');
 
     var typeFilms;
     var llistat = '<div id="inici-generes">' +
@@ -241,7 +254,7 @@ function veurePelicula(peliculaId, genereNom){
 
         llistat = llistat + '<div class="pelicula">' +
                 '<div class="pelicula-title">'+film.title+'</div>' +
-                '<div class="pelicula-original-title">'+film.original_title+'</div>' +
+                '<div class="pelicula-original-title">'+film.original_title+' (original title)</div>' +
                 '<div class="pelicula-duration">Durada: '+film.duration+'</div>' +
                 '<div class="pelicula-director">Director: '+film.director+'</div>' +
                 '<div class="pelicula-cast">Actors: '+film.cast+'</div>' +
@@ -249,7 +262,7 @@ function veurePelicula(peliculaId, genereNom){
                 '<div class="pelicula-data">Estrena: '+film.dataFilm+'</div>' +
                 '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
                 '<div class="pelicula-review">Sinopsis: '+film.review+'</div>' +
-                '<div class="votar-film" id="votar-film">' +
+                '<div class="votar-film" id="votar-film">Votar: ' +
                     '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
                     '<input type="radio" name="votes" value="2"> 2 </input>' +
                     '<input type="radio" name="votes" value="3"> 3 </input>' +
@@ -348,7 +361,8 @@ function votarPelicula(id, genereNom){
 function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
     amagar();
-
+    desactivarMenus();
+    $('#menu_inici').addClass('active');
     //Mostrar el div inicial
     $('#inici-info').show(); //TODO: revisar si s'ha de canviar per hide
     startAnimation();

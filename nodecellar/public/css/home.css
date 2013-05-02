@@ -7,7 +7,7 @@ a{
 }
 
 .page{
-    background: url('../img/butacas cine.jpg') no-repeat center center fixed;
+    background: url('../img/theater.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -33,7 +33,7 @@ a{
 .header {
     position: relative;
     top: 25px;
-    color: #7688ee;
+    color: #000000;
     font-style:italic;
     width: 100%;
 }
@@ -128,6 +128,7 @@ div.loggin{
     position: absolute;
     top: 0px;
     right: 0px;
+    color: #FFFFFF !important;
 }
 
 .navigation .section{
@@ -156,6 +157,13 @@ div.loggin{
 .navigation a, .navigation a:hover, .navigation .active{
     color: #31537f;
 }
+
+.active{
+    font-weight: bold;
+    text-decoration: underline;
+    color: #FFFFFF !important;
+}
+
 .main-menu{
     list-style-type: none;
     width: 100%;
@@ -302,9 +310,9 @@ h3.title-box{
 }
 
 .footer{
-    background-color: #2e2b32;
+    /*background-color: #2e2b32;*/
     width: 100%;
-    height: 90px;
+    /*height: 90px;*/
     bottom: 55px;
     position: absolute;
     top: 1090px;
@@ -336,6 +344,10 @@ h3.title-box{
 
 .footer-content li.last-link, .footer-more-info li.last-link{
     border-right: none;
+}
+
+.footer-menu {
+    float:left;
 }
 
 .footer-more-info{
@@ -399,5 +411,17 @@ a{
 }
 
 .votar-film{
-    float: right;
+    /*float: right;*/
+}
+.pelicula-trailer{
+    display: table;
+    margin: 20px auto;
+}
+
+.pelicula-title{
+    font-size: 30px;
+}
+
+.pelicula-original-title{
+    font-style: italic;
 }

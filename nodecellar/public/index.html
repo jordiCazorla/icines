@@ -82,12 +82,12 @@
                     </div>
                     <div class="navigation">
                         <ul class="main-menu">
-                            <li class="first active"><a onclick="javascript:veureHome()" class="active">Inici</a></li>
-                            <li><a href="#">Pel·lícules</a></li>
-                            <li><a href="#">Cartellera</a></li>
-                            <li><a href="#">Estrenes de la setmana</a></li>
-                            <li><a href="#">Cinemes</a></li>
-                            <li><a href="#">Rànquings</a></li>
+                            <li class="first"><a id="menu_inici" onclick="javascript:veureHome()" class="active" >Inici</a></li>
+                            <li><a class="" id="menu_pelicules" onclick="javascript:veureGeneres()">Pel·lícules</a></li>
+                            <li><a id="menu_cartellera" href="#">Cartellera</a></li>
+                            <li><a id="menu_estrenes" href="#">Estrenes de la setmana</a></li>
+                            <li><a id="menu_cinemes" onclick="javascript:veureCinemes()">Cinemes</a></li>
+                            <li><a id="menu_ranquing" href="#">Rànquings</a></li>
                         </ul>
                     </div>
                 </div>
@@ -218,13 +218,13 @@
                 <div class="footer-content">
                     <ul class="footer-menu">
                         <li>
-                            <a href="#" title="">Avis Legal</a>
+                            <a href="#" title="Avis Legal">Avis Legal</a>
                         </li>
                         <li>
-                            <a href="#" title="">Politica de privacitat</a>
+                            <a href="#" title="Politica de privacitat">Politica de privacitat</a>
                         </li>
                         <li class="last-link">
-                            <a href="#" title="">Log in</a>
+                            <a href="#" title="Registre" onclick="javascript:registre()">Registre</a>
                         </li>
                     </ul>
                 </div>
