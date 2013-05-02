@@ -4,6 +4,8 @@ var express = require('express'),
     films = require('./routes/films');
     cines = require('./routes/cines');
     votes = require('./routes/votes');
+    timetable = require('./routes/timetable');
+    billboard = require('./routes/billboard');
 
 var app = express();
 
@@ -46,6 +48,21 @@ app.post('/votes', votes.addVote);
 app.put('/votes/:id', votes.updateVote);
 app.delete('/votes/:id', votes.deleteVote);
 app.get('/votesByElemUser/:element_id/:user_id', votes.findByElementAndUser);
+
+app.get('/timetable', timetable.findAll);
+app.get('/timetable/:id', timetable.findById);
+app.post('/timetable', timetable.addTimetable);
+app.put('/timetable/:id', timetable.updateTimetable);
+app.delete('/timetable/:id', timetable.deleteTimetable);
+
+app.get('/billboard', billboard.findAll);
+app.get('/billboard/:id', billboard.findById);
+app.post('/billboard', billboard.addBillboard);
+app.put('/billboard/:id', billboard.updateBillboard);
+app.delete('/billboard/:id', billboard.deleteBillboard);
+//app.delete('/deleteBillboards/:idPeli/:idCine', billboard.deleteBillboardsPeliCine);
+app.get('/findAllBillboard/:idCine/:idPeli', billboard.findBillboardPeliCine);
+
 
 app.listen(3000);
 console.log('Listening on port 3000...');
