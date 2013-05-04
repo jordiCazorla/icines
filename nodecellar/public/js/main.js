@@ -8,6 +8,7 @@ $(document).ready(function(){
         started = true;
     }
     globalUser = null;
+    bestFilm(5,"best_films");
 });
 
 function login() {
@@ -396,14 +397,17 @@ function veureHome(){
     $('#menu_inici').addClass('active');
     //Mostrar el div inicial
     $('#inici-info').show(); //TODO: revisar si s'ha de canviar per hide
+    bestFilm(5,"best_films")
     startAnimation();
 }
 
 function amagar(){
     $('#inici-info').hide(); //Home
+    $('#best_films').children().remove(); //Content of a Ranquing home
     $('#inici-generes').remove(); //Genere
     $('#inici-pelicules').remove(); //Pelicules
     $('#inici-pelicula').remove(); //Pelicula
+    $('#inici_ranquings').remove(); //Ranquings
     $('#backoffice_admin_main').remove(); //Backoffice main
     $('#backoffice_admin_pelis').remove(); //Backoffice pelis
     $('#backoffice_admin_new_peli').remove(); //Backoffice new peli
@@ -1078,6 +1082,93 @@ function mostrarPeliculaTimetable(idPeli, idCine){
         }
         else{
             alert("quelcom ha anat malament");
+        }
+    });
+}
+
+function veureRanquings(){
+    amagar();
+
+    desactivarMenus();
+    $('#menu_ranquing').addClass('active');
+
+    var llistat = '<div id="inici_ranquings">' +
+        '<div class="breadcrumb">' +
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureRanquings()">Rànquings</a>' +
+        '</div>';
+
+    div_id_ranquings = "best_films" + "_ranquings";
+    div_id_cinemes = "best_films" + "_cinemes";
+
+    llistat = llistat +
+        '<div class="menu-conent-boxes">' +
+            '<div class="box" id="first">' +
+                '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Top 10 millor pelicula</h3>' +
+                '<div class="film_list" id="' + div_id_ranquings + '"></div>' +
+            '</div>' +
+        '</div>' +
+            '<div class="box" id="middle">' +
+                '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Top cinemes</h3>' +
+                '<div class="film_list" id="' + div_id_cinemes + '"></div>' +
+            '</div>'
+        '</div>';
+
+    bestFilm(10, div_id_ranquings);
+    bestCinema(10, div_id_cinemes);
+
+    llistat = llistat + '</div>';
+
+    $('#main').append(llistat);
+}
+
+function bestFilm(numberFilms, div_id){
+    $.getJSON('films', function(films_result) {
+            var llistat_pelis = '';
+            if(films_result.length == 0){
+                llistat_pelis = llistat_pelis + 'No hi ha resultats';
+                $('#'+div_id).append(llistat_pelis);
+            }else{
+                var max = numberFilms;
+                if(films_result.length < max){
+                    max = films_result.length;
+                }
+                llistat_pelis = llistat_pelis + '<ol>';
+                if(films_result.length > 1){
+                    films_result.sort(compare_film_rating);
+                    for(var z = 0; z < max; z++){
+                        llistat_pelis = llistat_pelis + '<li>' + films_result[z].title + '</li>';
+                    }
+                }else{
+                    llistat_pelis = llistat_pelis + '<li>' + films_result[0].title + '</li>';
+                }
+                llistat_pelis = llistat_pelis + '</ol>';
+                $('#'+div_id).append(llistat_pelis);
+            }
+    });
+}
+
+function bestCinema(numberCinemes, div_id){
+    $.getJSON('cines', function(cines_result) {
+        var llistat_cines = '';
+        if(cines_result.length == 0){
+            llistat_cines = llistat_cines + 'No hi ha resultats';
+            $('#'+div_id).append(llistat_cines);
+        }else{
+            var max = numberCinemes;
+            if(cines_result.length < max){
+                max = cines_result.length;
+            }
+            llistat_cines = llistat_cines + '<ol>';
+            if(cines_result.length > 1){
+                llistat_cines.sort(compare_film_rating);
+                for(var z = 0; z < max; z++){
+                    llistat_cines = llistat_cines + '<li>' + films_result[z].name + '</li>';
+                }
+            }else{
+                llistat_cines = llistat_cines + '<li>' + cines_result[0].name + '</li>';
+            }
+            llistat_cines = llistat_cines + '</ol>';
+            $('#'+div_id).append(llistat_cines);
         }
     });
 }

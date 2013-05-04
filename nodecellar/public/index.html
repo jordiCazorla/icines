@@ -87,7 +87,7 @@
                             <li><a id="menu_cartellera" href="#">Cartellera</a></li>
                             <li><a id="menu_estrenes" href="#">Estrenes de la setmana</a></li>
                             <li><a id="menu_cinemes" onclick="javascript:veureCinemes()">Cinemes</a></li>
-                            <li><a id="menu_ranquing" href="#">Rànquings</a></li>
+                            <li><a id="menu_ranquing" onclick="javascript:veureRanquings()">Rànquings</a></li>
                         </ul>
                     </div>
                 </div>
@@ -178,15 +178,8 @@
                             <div class="box" id="first">
                                 <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
                                 <h3 class="title-box">Rànquings millor pelicula</h3>
-                                <ol>
-                                    <li>
-                                        'Intel·ligència artificial
-                                    </li>
-                                    <li>
-                                        'Robots
-                                    </li>
-                                </ol>
-                                <span class="small_button_box"><a href="#">Veure Rànquings</a></span>
+                                <div class="film_list" id="best_films"></div>
+                                <span class="small_button_box"><a class="script_function" onclick="javascript:veureRanquings()">Veure Rànquings</a></span>
                             </div>
 
                             <div class="box" id="middle">
