@@ -1038,6 +1038,13 @@ function assignCineFilm(idPeli, idCine){
     });
 
     amagar();
+    $.getJSON('findAllBillboard/' + idCine + '/' + idPeli, function(results){
+        for(var j = 0; j < results.length; j++){
+            $.ajax({url: "/billboard/" + results[j]._id,
+                type: 'DELETE',
+                success: function(result){}});
+        }
+    });
 
     for (var i = 0; i < selectedValues.length; i++){
         var data = {
@@ -1047,7 +1054,7 @@ function assignCineFilm(idPeli, idCine){
             type: 'POST',
             data: data,
             async: false
-            });
+        });
     }
     mostrarPeliculaTimetable(idPeli, idCine);
 
