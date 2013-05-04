@@ -363,7 +363,6 @@ function votarPelicula(id, genereNom){
                 }
                 else{
                     //Hem de crear
-                    alert("Crear vot");
                     $.post("votes",
                         nova_votacio,
                         function(final_result){

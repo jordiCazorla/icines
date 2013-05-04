@@ -98,7 +98,9 @@ var populateDB = function() {
             phone: "972972972",
             email: "ocine@ocine.com",
             latitud: "41.992033",
-            longitud: "2.818851"
+            longitud: "2.818851",
+            vote_sum: 0,
+            votes: 0
         }];
 
     db.collection('cines', function(err, collection) {
