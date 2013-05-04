@@ -943,7 +943,6 @@ function eliminarCinema(id){
         }});
 }
 
-
 function gestioPeliculaCinema(){
     amagar();
     $.getJSON( 'cines', function(data) {
@@ -993,25 +992,41 @@ function escollirPelicula(idCine){
 function veureTimetables(idPeli, idCine){
     amagar();
     $.getJSON( 'timetable', function(data) {
-        var timetable = data;
-        var item;
-        item = '<div class="backoffice_admin_pelis_cinema_timetable" id="backoffice_admin_pelis_cinema_timetable">'+
-            "<h2>Escull l'horari </h2>" +
-            "<h3>(has de mantenir seleccionat la tecla 'Control' per seleccionar més d'un valor)</h3>" +
-            "<select multiple style='height: 500px' id='timetable_list'>";
+        $.getJSON( 'findAllBillboard/' + idCine + '/' + idPeli, function(billboards) {
+            var timetable = data;
+            var item;
+            item = '<div class="backoffice_admin_pelis_cinema_timetable" id="backoffice_admin_pelis_cinema_timetable">'+
+                "<h2>Escull l'horari </h2>" +
+                "<h3>(has de mantenir seleccionat la tecla 'Control' per seleccionar més d'un valor)</h3>" +
+                "<select multiple style='height: 500px' id='timetable_list'>";
 
-        for(var i=0; i < data.length; i++){
-            item = item +
-                    '<option value="'+data[i]._id+'">' + data[i].time +'</option>' ;
-            /*'<a onclick="javascript:veureTimetables(' +
-            "'" + data[i]._id + "','" + idCine + ')">' + data[i].name + '</a>' +*/
-
-        }
-        item = item + '</select>' +
-            '<input class="button-login" type="button" value="Submit" onclick="javascript:assignCineFilm('+"'" + idPeli + "','" + idCine + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
-            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:escollirPelicula(' + "'" + idCine + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
-            '</div>';
-        $('#main').append(item);
+            for(var i=0; i < data.length; i++){
+                var trobat = false;
+                var j = 0;
+                if(billboards.length == 0){
+                    item = item +
+                        '<option value="'+data[i]._id+'">' + data[i].time +'</option>' ;
+                }else{
+                    while(!trobat && j < billboards.length){
+                        if(billboards[j]._id == data[i]._id){
+                            trobat = true;
+                            item = item +
+                                '<option value="'+data[i]._id+'" selected>' + data[i].time +'</option>' ;
+                        }
+                        else{
+                            item = item +
+                                '<option value="'+data[i]._id+'">' + data[i].time +'</option>' ;
+                        }
+                        j=j+1;
+                    }
+                }
+            }
+            item = item + '</select>' +
+                '<input class="button-login" type="button" value="Submit" onclick="javascript:assignCineFilm('+"'" + idPeli + "','" + idCine + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+                '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:escollirPelicula(' + "'" + idCine + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+                '</div>';
+            $('#main').append(item);
+        });
     });
 }
 
@@ -1028,12 +1043,6 @@ function assignCineFilm(idPeli, idCine){
         var data = {
             cine_id: idCine, peli_id: idPeli, timetable_id: selectedValues[i]
         };
-
-        /*$.post("billboard",
-            data,
-            function(data){
-
-            },"json");*/
         $.ajax({url: "/billboard",
             type: 'POST',
             data: data,
@@ -1073,12 +1082,8 @@ function mostrarPeliculaTimetable(idPeli, idCine){
                             });
                         }
                     }
-
                 });
-
-
             });
-
         }
         else{
             alert("quelcom ha anat malament");
