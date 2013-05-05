@@ -389,6 +389,148 @@ function votarPelicula(id, genereNom){
 
 }
 
+function veureCines(){
+    amagar();
+    var llistat = '<div id="inici-cines">' +
+        '<div class="breadcrumb">' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="">Cines</a>' +
+        '</div>';
+
+    $.getJSON( 'cines', function(data) {
+        var cines = data;
+        if (cines.length == 0) {
+            llistat = llistat + '<div>No tenim cines</div>';
+        }else{
+            //TODO: Per cada un s'haurà de fer una petició
+            for(var i=0; i < cines.length; i++){
+                if(i == 0)    llistat = llistat + '<div class="cine-list" ><ul>';
+
+                llistat = llistat + '<li><a class="script_function" onclick="javascript:veureCine(\''+cines[i]._id+'\',\''+cines[i].name+'\')">'+cines[i].name+'</a></li>';
+
+                if(i == cines.length-1) llistat = llistat + '</ul></div>'
+            }
+        }
+        llistat = llistat + '</div>' ;
+        $('#main').append(llistat);
+    });
+}
+
+function veureCine(cineId, cineNom){
+    amagar();
+    var llistat;
+
+    $.getJSON( 'cines/'+cineId, function(data) {
+        var cine = data;
+        var rating = parseInt(cine.vote_sum) + 0.0;
+        if (cine.votes != 0){
+            rating = rating / cine.votes;
+        }
+
+        llistat = '<div id="inici-cine">' +
+            '<div class="breadcrumb">' +
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureCines()">Cines</a> > <a onclick="">'+cineNom+'</a>' +
+            '</div>';
+
+        llistat = llistat + '<div class="cine">' +
+            '<div class="cine_name">'+cine.name+'</div>' +
+            '<div class="cine_direction">Adreça: '+cine.direction+'</div>' +
+            '<div class="cine_city">Ciutat: '+cine.city+'</div>' +
+            '<div class="cine_phone">teléfon: '+cine.phone+'</div>' +
+            '<div class="cine_email">Email: '+cine.email+'</div>' +
+            '<div class="cine_map">Localització: </div>' +
+            '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
+            '<div class="votar-cine" id="votar-cine">Votar: ' +
+            '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
+            '<input type="radio" name="votes" value="2"> 2 </input>' +
+            '<input type="radio" name="votes" value="3"> 3 </input>' +
+            '<input type="radio" name="votes" value="4"> 4 </input>' +
+            '<input type="radio" name="votes" value="5"> 5 </input>' +
+            '<input class="button-login" type="button" value="Votar" onclick="javascript:votarCine(\''+cine._id+'\',\''+cineNom+'\')" style="float:none; right:0"/>' +
+            '</div>';
+        llistat = llistat + '</div>';
+        $('#main').append(llistat);
+    });
+}
+
+function votarCine(id, cineNom){
+    if(globalUser != null){
+        var votacio = $('input[name=votes]:checked', '#votar-cine').val();
+
+        $.getJSON( 'cines/'+id, function(cine) {
+            var votes = parseInt(cine.votes) + 1;
+            var vote_sum = parseInt(cine.vote_sum) + parseInt(votacio);
+            var data = {
+                name: cine.name,
+                direction: cine.direction,
+                city: cine.city,
+                phone: cine.phone,
+                email: cine.email,
+                latitud: cine.latitud,
+                longitud: cine.longitud,
+                vote_sum: vote_sum,
+                votes: votes
+            };
+
+            $.getJSON( 'votesByElemUser/'+cine._id+'/'+globalUser._id, function(votation_result) {
+                var nova_votacio = {
+                    element_id: cine._id,
+                    user_id: globalUser._id,
+                    vote:  parseInt(votacio)
+                };
+                if(!votation_result.error){
+                    //Hem d'actualitzar
+                    alert("Actualitzar vot");
+                    $.ajax({
+                        url: '/votes/' + votation_result._id,
+                        type: 'PUT',
+                        data: nova_votacio,
+                        success: function(result){
+                            if(!result.error){ //tot ha anat be
+                                data.vote_sum = data.vote_sum - votation_result.vote;
+                                data.votes = data.votes - 1;
+                                alert(data.votes);
+                                alert(data.vote_sum);
+                                $.ajax({
+                                    url: '/films/' + id,
+                                    type: 'PUT',
+                                    data: data,
+                                    success: function(result){
+                                        veureCine(id, cineNom);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+                else{
+                    //Hem de crear
+                    $.post("votes",
+                        nova_votacio,
+                        function(final_result){
+                            if(!final_result.error){ //tot ha anat be
+                                $.ajax({
+                                    url: '/films/' + id,
+                                    type: 'PUT',
+                                    data: data,
+                                    success: function(result){
+                                        veureCine(id, cineNom);
+                                    }
+                                });
+                            }
+                        },"json");
+                }
+            });
+
+        });
+    }
+    else{
+        alert("Has d'estar logat per poder votar");
+    }
+
+
+}
+
+
 function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
     amagar();
@@ -404,6 +546,8 @@ function amagar(){
     $('#inici-generes').remove(); //Genere
     $('#inici-pelicules').remove(); //Pelicules
     $('#inici-pelicula').remove(); //Pelicula
+    $('#inici-cines').remove(); //Cines
+    $('#inici-cine').remove(); //Cine
     $('#backoffice_admin_main').remove(); //Backoffice main
     $('#backoffice_admin_pelis').remove(); //Backoffice pelis
     $('#backoffice_admin_new_peli').remove(); //Backoffice new peli
