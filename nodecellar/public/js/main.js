@@ -1042,6 +1042,7 @@ function assignCineFilm(idPeli, idCine){
         for(var j = 0; j < results.length; j++){
             $.ajax({url: "/billboard/" + results[j]._id,
                 type: 'DELETE',
+                async: false,
                 success: function(result){}});
         }
     });
