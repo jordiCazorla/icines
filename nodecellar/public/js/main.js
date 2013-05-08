@@ -294,18 +294,50 @@ function veurePelicula(peliculaId, genereNom){
                 '<div class="pelicula-data">Estrena: '+film.dataFilm+'</div>' +
                 '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
                 '<div class="pelicula-review">Sinopsis: '+film.review+'</div>' +
-                '<div class="votar-film" id="votar-film">Votar: ' +
-                    '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
-                    '<input type="radio" name="votes" value="2"> 2 </input>' +
-                    '<input type="radio" name="votes" value="3"> 3 </input>' +
-                    '<input type="radio" name="votes" value="4"> 4 </input>' +
-                    '<input type="radio" name="votes" value="5"> 5 </input>' +
-                    '<input class="button-login" type="button" value="Votar" onclick="javascript:votarPelicula(\''+film._id+'\',\''+genereNom+'\')" style="float:none; right:0"/>' +
-                '</div>' +
-                '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
-            '</div>';
-        llistat = llistat + '</div>';
-        $('#main').append(llistat);
+                '<div class="votar-film" id="votar-film">Votar: ';
+                if(globalUser == null){
+                    llistat = llistat + '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
+                        '<input type="radio" name="votes" value="2"> 2 </input>' +
+                        '<input type="radio" name="votes" value="3"> 3 </input>' +
+                        '<input type="radio" name="votes" value="4"> 4 </input>' +
+                        '<input type="radio" name="votes" value="5"> 5 </input>' +
+                        '<input class="button-login" type="button" value="Votar" onclick="javascript:votarPelicula(\''+film._id+'\',\''+genereNom+'\')" style="float:none; right:0"/>' +
+                        '</div>' +
+                        '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
+                        '</div>';
+                    llistat = llistat + '</div>';
+                    $('#main').append(llistat);
+                }
+                else{
+                    $.getJSON("votesByElemUser/" + film._id + "/" + globalUser._id, function(vote){
+                        if(vote.error){
+                            llistat = llistat + '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
+                                '<input type="radio" name="votes" value="2"> 2 </input>' +
+                                '<input type="radio" name="votes" value="3"> 3 </input>' +
+                                '<input type="radio" name="votes" value="4"> 4 </input>' +
+                                '<input type="radio" name="votes" value="5"> 5 </input>' +
+                                '<input class="button-login" type="button" value="Votar" onclick="javascript:votarPelicula(\''+film._id+'\',\''+genereNom+'\')" style="float:none; right:0"/>' +
+                                '</div>' +
+                                '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
+                                '</div>';
+                        }else{
+                            for(var bucle = 1; bucle <= 5; bucle++){
+                                if(bucle == vote.vote){
+                                    llistat = llistat + '<input type="radio" name="votes" value="' + bucle + '" checked> ' + bucle + ' </input>';
+                                }
+                                else{
+                                    llistat = llistat + '<input type="radio" name="votes" value="' + bucle + '"> ' + bucle + ' </input>';
+                                }
+                            }
+                            llistat = llistat + '<input class="button-login" type="button" value="Votar" onclick="javascript:votarPelicula(\''+film._id+'\',\''+genereNom+'\')" style="float:none; right:0"/>' +
+                                '</div>' +
+                                '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
+                                '</div>';
+                        }
+                        llistat = llistat + '</div>';
+                        $('#main').append(llistat);
+                    });
+                }
     });
 }
 
@@ -338,7 +370,6 @@ function votarPelicula(id, genereNom){
                 };
                 if(!votation_result.error){
                     //Hem d'actualitzar
-                    alert("Actualitzar vot");
                     $.ajax({
                         url: '/votes/' + votation_result._id,
                         type: 'PUT',
@@ -347,8 +378,6 @@ function votarPelicula(id, genereNom){
                             if(!result.error){ //tot ha anat be
                                 data.vote_sum = data.vote_sum - votation_result.vote;
                                 data.votes = data.votes - 1;
-                                alert(data.votes);
-                                alert(data.vote_sum);
                                 $.ajax({
                                     url: '/films/' + id,
                                     type: 'PUT',
