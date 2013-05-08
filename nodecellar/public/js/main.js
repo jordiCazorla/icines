@@ -212,8 +212,7 @@ function veureGeneres() {
                         }
                         films_result.sort(compare_film_rating);
                         for(var z = 0; z < max; z++){
-                            llistat_pelis = llistat_pelis + '<li>' + films_result[z].title +
-                                '</li>';
+                            llistat_pelis = llistat_pelis + '<li><a class="script_function" onclick="javascript:veurePelicula(\''+films_result[z]._id+'\',\''+data[pos].name+'\')">' + films_result[z].title + '</a></li>';
                         }
                         llistat_pelis = llistat_pelis + '</ol>';
                     }
@@ -1147,11 +1146,15 @@ function bestFilm(numberFilms, div_id){
                 llistat_pelis = llistat_pelis + '<ol>';
                 if(films_result.length > 1){
                     films_result.sort(compare_film_rating);
-                    for(var z = 0; z < max; z++){
-                        llistat_pelis = llistat_pelis + '<li>' + films_result[z].title + '</li>';
-                    }
-                }else{
-                    llistat_pelis = llistat_pelis + '<li>' + films_result[0].title + '</li>';
+                }
+                for(var z = 0; z < max; z++){
+                    $.ajax({
+                        url: "typefilm/"+films_result[z].typeFilm,
+                        async: false,
+                        success: function(genere){
+                                llistat_pelis = llistat_pelis + '<li><a class="script_function" onclick="javascript:veurePelicula(\''+films_result[z]._id+'\',\''+genere.name+'\')">' + films_result[z].title + '</a></li>';
+                            }
+                    });
                 }
                 llistat_pelis = llistat_pelis + '</ol>';
                 $('#'+div_id).append(llistat_pelis);
