@@ -993,7 +993,7 @@ function veureTimetables(idPeli, idCine){
     amagar();
     $.getJSON( 'timetable', function(data) {
         $.getJSON( 'findAllBillboard/' + idCine + '/' + idPeli, function(billboards) {
-            var timetable = data;
+            //var timetable = data;
             var item;
             item = '<div class="backoffice_admin_pelis_cinema_timetable" id="backoffice_admin_pelis_cinema_timetable">'+
                 "<h2>Escull l'horari </h2>" +
@@ -1008,16 +1008,16 @@ function veureTimetables(idPeli, idCine){
                         '<option value="'+data[i]._id+'">' + data[i].time +'</option>' ;
                 }else{
                     while(!trobat && j < billboards.length){
-                        if(billboards[j]._id == data[i]._id){
+                        if(billboards[j].timetable_id == data[i]._id){
                             trobat = true;
                             item = item +
                                 '<option value="'+data[i]._id+'" selected>' + data[i].time +'</option>' ;
                         }
-                        else{
-                            item = item +
-                                '<option value="'+data[i]._id+'">' + data[i].time +'</option>' ;
-                        }
                         j=j+1;
+                    }
+                    if(!trobat){
+                        item = item +
+                            '<option value="'+data[i]._id+'">' + data[i].time +'</option>' ;
                     }
                 }
             }
@@ -1045,19 +1045,18 @@ function assignCineFilm(idPeli, idCine){
                 async: false,
                 success: function(result){}});
         }
+        for (var i = 0; i < selectedValues.length; i++){
+            var data = {
+                cine_id: idCine, peli_id: idPeli, timetable_id: selectedValues[i]
+            };
+            $.ajax({url: "/billboard",
+                type: 'POST',
+                data: data,
+                async: false
+            });
+        }
+        mostrarPeliculaTimetable(idPeli, idCine);
     });
-
-    for (var i = 0; i < selectedValues.length; i++){
-        var data = {
-            cine_id: idCine, peli_id: idPeli, timetable_id: selectedValues[i]
-        };
-        $.ajax({url: "/billboard",
-            type: 'POST',
-            data: data,
-            async: false
-        });
-    }
-    mostrarPeliculaTimetable(idPeli, idCine);
 
 }
 
