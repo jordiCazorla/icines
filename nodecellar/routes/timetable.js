@@ -91,12 +91,43 @@ exports.deleteTimetable = function(req, res) {
 var populateDB = function() {
 
     var timetables = [
+        { time: "16:00h" },
+        { time: "16:15h" },
+        { time: "16:30h" },
+        { time: "16:45h" },
+        { time: "17:00h" },
+        { time: "17:15h" },
+        { time: "17:30h" },
+        { time: "17:45h" },
+        { time: "18:00h" },
+        { time: "18:15h" },
+        { time: "18:30h" },
+        { time: "18:45h" },
+        { time: "19:00h" },
+        { time: "19:15h" },
+        { time: "19:30h" },
+        { time: "19:45h" },
+        { time: "20:00h" },
+        { time: "20:15h" },
+        { time: "20:30h" },
+        { time: "20:45h" },
+        { time: "21:00h" },
+        { time: "21:15h" },
+        { time: "21:30h" },
+        { time: "21:45h" },
+        { time: "22:00h" },
+        { time: "22:15h" },
+        { time: "22:30h" },
+        { time: "22:45h" },
+        { time: "23:00h" },
+        { time: "23:15h" },
+        { time: "23:30h" },
+        { time: "23:45h" },
         { time: "00:00h" },
-        { time: "00:05h" },
-        { time: "00:10h" },
         { time: "00:15h" },
-        { time: "00:20h" },
-        { time: "00:25h" }];
+        { time: "00:30h" },
+        { time: "00:45h" },
+        { time: "01:00h" }];
 
     db.collection('timetables', function(err, collection) {
         collection.insert(timetables, {safe:true}, function(err, result) {});
