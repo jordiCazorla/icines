@@ -285,6 +285,8 @@ function veurePelicula(peliculaId, genereNom){
             '</div>';
 
         llistat = llistat + '<div class="pelicula">' +
+            '<div class="pelicula-image"><img height="325" width="220" src="'+film.image+'"/></div>' +
+            '<div class="pelicula-info">' +
                 '<div class="pelicula-title">'+film.title+'</div>' +
                 '<div class="pelicula-original-title">'+film.original_title+' (original title)</div>' +
                 '<div class="pelicula-duration">Durada: '+film.duration+'</div>' +
@@ -294,6 +296,7 @@ function veurePelicula(peliculaId, genereNom){
                 '<div class="pelicula-data">Estrena: '+film.dataFilm+'</div>' +
                 '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
                 '<div class="pelicula-review">Sinopsis: '+film.review+'</div>' +
+            '</div>' +
                 '<div class="votar-film" id="votar-film">Votar: ';
                 if(globalUser == null){
                     llistat = llistat + '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
@@ -418,6 +421,194 @@ function votarPelicula(id, genereNom){
 
 }
 
+function veureCines(){
+    amagar();
+    var cines;
+    var llistat = '<div id="inici_cines">' +
+        '<div class="breadcrumb">' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a>Cines</a>' +
+        '</div>';
+
+    $.getJSON(url = "cines/", function(data){
+        var cines = data;
+
+        var position = '';
+        var op;
+        //TODO: Per cada un s'haurà de fer una petició
+        for(var i=0; i < cines.length; i++){
+            op = i % 3;
+            if (op == 0){
+                position = 'first';
+                if(i == 3) llistat = llistat + '<div class="menu-conent-boxes" id="second-line">';
+                else llistat = llistat + '<div class="menu-conent-boxes">';
+            }else if(op == 1) position = 'middle';
+            else position = 'last';
+            llistat = llistat + '<div class="box" id="'+position+'">'+
+                '<img src="'+cines[i].image+'" alt="" title="" width="267" height="172" />'+
+                '<h3 class="title-box">'+cines[i].name+'</h3>' +
+                '<span class="small_button_box"><a class="script_function" onclick="javascript:veureCine(\''+cines[i]._id+'\',\''+cines[i].name+'\')">Veure Cinema</a></span>' +
+                '</div>'
+            if (op == 2) llistat = llistat + '</div>';
+        }
+        llistat = llistat + '</div>' + '</div>';
+        $('#main').append(llistat);
+    });
+}
+
+function initialize(lat,long){
+    var mapOptions = {
+        center: new google.maps.LatLng(lat,long),
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("cine_map"),
+        mapOptions);
+}
+
+function veureCine(cineId, cineNom){
+    amagar();
+    var cine;
+    var llistat;
+
+    $.getJSON( 'cines/'+cineId, function(data) {
+        var cine = data;
+        var rating = parseInt(cine.vote_sum) + 0.0;
+        if (cine.votes != 0){
+            rating = rating / cine.votes;
+        }
+
+        llistat = '<div id="inici_cine">' +
+            '<div class="breadcrumb">' +
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureCines()">Cinemes</a> > <a>'+cineNom+'</a>' +
+            '</div>';
+
+        llistat = llistat + '<div class="cine" onload=initialize('+cine.latitud+','+cine.longitud+')>' +
+            '<div class="cine_name">'+cine.name+'</div>' +
+            '<div class="cine_direction">Adreça: '+cine.direction+'</div>' +
+            '<div class="cine_city">Ciutat: '+cine.city+'</div>' +
+            '<div class="cine_phone">Telèfon: '+cine.phone+'</div>' +
+            '<div class="cine_email">Email: '+cine.email+'</div>' +
+            '<div class="cine_map" id="cine_map"></div>' +
+            '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
+            '<div class="votar-cine" id="votar-cine">Votar: ';
+        if(globalUser == null){
+            llistat = llistat + '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
+                '<input type="radio" name="votes" value="2"> 2 </input>' +
+                '<input type="radio" name="votes" value="3"> 3 </input>' +
+                '<input type="radio" name="votes" value="4"> 4 </input>' +
+                '<input type="radio" name="votes" value="5"> 5 </input>' +
+                '<input class="button-login" type="button" value="Votar" onclick="javascript:votarCine(\''+cine._id+'\',\''+cineNom+'\')" style="float:none; right:0"/>' +
+                '</div>' +
+                '</div>';
+            llistat = llistat + '</div>';
+            $('#main').append(llistat);
+        }
+        else{
+            $.getJSON("votesByElemUser/" + cine._id + "/" + globalUser._id, function(vote){
+                if(vote.error){
+                    llistat = llistat + '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
+                        '<input type="radio" name="votes" value="2"> 2 </input>' +
+                        '<input type="radio" name="votes" value="3"> 3 </input>' +
+                        '<input type="radio" name="votes" value="4"> 4 </input>' +
+                        '<input type="radio" name="votes" value="5"> 5 </input>' +
+                        '<input class="button-login" type="button" value="Votar" onclick="javascript:votarCine(\''+cine._id+'\',\''+cineNom+'\')" style="float:none; right:0"/>' +
+                        '</div>' +
+                        '</div>';
+                }else{
+                    for(var bucle = 1; bucle <= 5; bucle++){
+                        if(bucle == vote.vote){
+                            llistat = llistat + '<input type="radio" name="votes" value="' + bucle + '" checked> ' + bucle + ' </input>';
+                        }
+                        else{
+                            llistat = llistat + '<input type="radio" name="votes" value="' + bucle + '"> ' + bucle + ' </input>';
+                        }
+                    }
+                    llistat = llistat + '<input class="button-login" type="button" value="Votar" onclick="javascript:votarCine(\''+cine._id+'\',\''+cineNom+'\')" style="float:none; right:0"/>' +
+                        '</div>' +
+                        '</div>';
+                }
+                llistat = llistat + '</div>';
+                $('#main').append(llistat);
+            });
+        }
+    });
+}
+
+function votarCine(id, cineNom){
+    if(globalUser != null){
+        var votacio = $('input[name=votes]:checked', '#votar-cine').val();
+
+        $.getJSON( 'cines/'+id, function(cine) {
+            var votes = parseInt(cine.votes) + 1;
+            var vote_sum = parseInt(cine.vote_sum) + parseInt(votacio);
+            var data = {
+                name: cine.name,
+                direction: cine.direction,
+                city: cine.city,
+                phone: cine.phone,
+                email: cine.email,
+                latitud: cine.latitud,
+                longitud: cine.longitud,
+                image: cine.image,
+                vote_sum: vote_sum,
+                votes: votes
+            };
+            $.getJSON( 'votesByElemUser/'+cine._id+'/'+globalUser._id, function(votation_result) {
+                var nova_votacio = {
+                    element_id: cine._id,
+                    user_id: globalUser._id,
+                    vote:  parseInt(votacio)
+                };
+                if(!votation_result.error){
+                    //Hem d'actualitzar
+                    $.ajax({
+                        url: '/votes/' + votation_result._id,
+                        type: 'PUT',
+                        data: nova_votacio,
+                        success: function(result){
+                            if(!result.error){ //tot ha anat be
+                                data.vote_sum = data.vote_sum - votation_result.vote;
+                                data.votes = data.votes - 1;
+                                $.ajax({
+                                    url: '/cines/' + id,
+                                    type: 'PUT',
+                                    data: data,
+                                    success: function(result){
+                                        veureCine(id, cineNom);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+                else{
+                    //Hem de crear
+                    $.post("votes",
+                        nova_votacio,
+                        function(final_result){
+                            if(!final_result.error){ //tot ha anat be
+                                $.ajax({
+                                    url: '/cines/' + id,
+                                    type: 'PUT',
+                                    data: data,
+                                    success: function(result){
+                                        veureCine(id, cineNom);
+                                    }
+                                });
+                            }
+                        },"json");
+                }
+            });
+
+        });
+    }
+    else{
+        alert("Has d'estar logat per poder votar");
+    }
+
+
+}
+
 function veureHome(){
     //Eliminar tot possible div que s'hagi pogut afegir en algun moment
     amagar();
@@ -436,6 +627,8 @@ function amagar(){
     $('#inici-pelicules').remove(); //Pelicules
     $('#inici-pelicula').remove(); //Pelicula
     $('#inici_ranquings').remove(); //Ranquings
+    $('#inici_cines').remove(); //Cines
+    $('#inici_cine').remove(); //Cine
     $('#backoffice_admin_main').remove(); //Backoffice main
     $('#backoffice_admin_pelis').remove(); //Backoffice pelis
     $('#backoffice_admin_new_peli').remove(); //Backoffice new peli
@@ -590,6 +783,10 @@ function backoffice_main(){
              '<br/>' +
              '<input id="new-review" size="100px" type="text" class="form-field FBInput"/>' +
              '<br/>' +
+             '<label class="form-field FBLabel">Imatge:</label>' +
+             '<br/>' +
+             '<input id="new-image" size="100px" type="text" class="form-field FBInput"/>' +
+             '<br/>' +
              '<input class="button-login form-field" type="button" value="Nova pel·lícula" onclick="javascript:crearPelicula()" style="float: left;   margin-top: 10px; "/>' +
              '<input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:cancelarNovaPelicula()" style="float: left; margin: 10px 0px 0px 10px"/>' +
              '</div>' +
@@ -624,6 +821,7 @@ function detallPelicula(id){
             '</br><label id="dataFilm">Data de la pel·lícula:</label>' + data.dataFilm +
             '</br><label id="rating">Puntuació:</label>' + rating +
             '</br><label id="review">Resum:</label>' + data.review +
+            '</br><label id="image">Imatge:</label>' + data.image +
             '</br>' +
             '<input class="button-login" type="button" value="Editar" onclick="javascript:editMenuPelicula(' +
             "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
@@ -660,7 +858,8 @@ function crearPelicula(){
             vote_sum: 0,
             votes: 0,
             dataFilm: $('#new-data').val(),
-            review: $('#new-review').val()
+            review: $('#new-review').val(),
+            image: $('#new-image').val()
     };
 
         $.post("films",
@@ -885,6 +1084,7 @@ function detallCinema(id){
             '</br><label id="email">Email: </label>' + data.email +
             '</br><label id="latitud">Latitud: </label>' + data.latitud +
             '</br><label id="longitud">Longitud: </label>' + data.longitud +
+            '</br><label id="image">Imatge: </label>' + data.image +
             '</br>' +
             '<input class="button-login" type="button" value="Editar" onclick="javascript:editMenuCinema(' +
             "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
@@ -934,6 +1134,10 @@ function editMenuCinema(id){
             '<br/>' +
             '<input id="new-longitud" class="form-field FBInput" value="' + data.longitud + '"/>' +
             '</br>' +
+            '<label class="form-field FBLabel">Imatge:</label>' +
+            '<br/>' +
+            '<input id="new-image" class="form-field FBInput" value="' + data.image + '"/>' +
+            '</br>' +
             '<input class="button-login" type="button" value="Editar" onclick="javascript:editCinema(' +
             "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
             '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:detallCinema(' +
@@ -951,7 +1155,8 @@ function editCinema(id){
         phone: $('#new-phone').val(),
         email: $('#new-email').val(),
         latitud: $('#new-latitud').val(),
-        longitud: $('#new-longitud').val()
+        longitud: $('#new-longitud').val(),
+        image: $('#new-image').val()
     };
     $.ajax({
         url: '/cines/' + id,

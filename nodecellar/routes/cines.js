@@ -99,6 +99,7 @@ var populateDB = function() {
             email: "ocine@ocine.com",
             latitud: "41.992033",
             longitud: "2.818851",
+            image: "http://www.infovt.com/images/ocine.jpg",
             vote_sum: 0,
             votes: 0
         }];

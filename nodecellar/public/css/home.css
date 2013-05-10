@@ -425,3 +425,18 @@ a{
 .pelicula-original-title{
     font-style: italic;
 }
+
+.pelicula-image{
+    float: left;
+}
+
+.pelicula-info{
+    float: left;
+    width: 600px;
+    margin-left: 10px;
+}
+
+.votar-film {
+    clear: both;
+    padding-top: 10px;
+}
