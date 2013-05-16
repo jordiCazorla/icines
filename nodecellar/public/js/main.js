@@ -13,11 +13,22 @@ $(document).ready(function(){
 });
 
 function selectImagesSlideShow(){
-    $.getJSON('films', function(data){
-        for(var i = 0; i < data.length; i++){
-            var img = '<span><img src="'+
-                data[i] +
-                '" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+    $.getJSON('slideimages', function(data){
+        if(data.length == 0){
+            for(var i = 0; i < 3; i++){
+                var img = '<span><img src="" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+            }
+        }
+        for(var i = 0; i < 3; i++){
+            if(data.length == i){
+                var img = '<span><img src="img/example_film' + (i+1) + '.jpg" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+            }
+            else{
+                var img = '<span><img src="'+
+                    data[i].url +
+                    '" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+            }
+            $('#element'+(i+1)).append(img);
         }
     });
 }
@@ -660,7 +671,7 @@ function amagar(){
     $('#backoffice_admin_slideshow').remove(); //Backoffice slideshow
     $('#backoffice_admin_list_slideshow').remove(); //Backoffice slideshow list
     $('#backoffice_admin_new_slideshow').remove(); //Backoffice slideshow list
-
+    $('#backoffice_admin_slideshow_element').remove(); //Backoffice slideshow detail
 
 
 
@@ -735,15 +746,14 @@ function llistatSlideshow(){
         var slideshows = data;
         var item;
         item = '<div class="backoffice_admin_list_slideshow" id="backoffice_admin_list_slideshow">'+
-            "<h2>Llistat de l'slideshow</h2>" +
-            '<table class="slide-list">';
+            "<h2>Llistat de l'slideshow</h2>";
         for(var i=0; i < data.length; i++){
-            item = item + '<tr><th>' +
+            item = item +
                 '<a onclick="javascript:detallSlideshow(' +
-                "'" + data[i]._id + "'" + ')"><img src="' + data[i].url + '" width="300px" height="150px"></a></th>';
+                "'" + data[i]._id + "'" + ')"><img src="' + data[i].url + '" width="300px" height="150px" style="float:left;"></a>';
         }
-        item = item + '</table>' +
-            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:gestioSlideshow()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+        item = item +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:gestioSlideshow()" style="float: left; clear: both;  margin-top: 10px; margin-left: 50px;"/>' +
             '</div>';
         $('#main').append(item);
     });
@@ -782,6 +792,28 @@ function crearSlideshow(){
         },"json");
 }
 
+function detallSlideshow(idSlideshow){
+    amagar();
+    $.getJSON( 'slideimages/' + idSlideshow, function(data) {
+        var slideshows = data;
+        var item;
+        item = '<div class="backoffice_admin_slideshow_element" id="backoffice_admin_slideshow_element">'+
+            "<h2>Imatge</h2>" +
+            '<img src="' + data.url + '" width="300px" height="150px" style="float:left;" >' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:llistatSlideshow()" style="float: left; clear: both;  margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Eliminar" onclick="javascript:eliminaSlideshow('+ "'" + idSlideshow +"'" +')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div>';
+        $('#main').append(item);
+    });
+}
+
+function eliminaSlideshow(idSlideshow){
+    $.ajax({url: "/slideimages/" + idSlideshow,
+        type: 'DELETE',
+        success: function(result){
+            llistatSlideshow();
+        }});
+}
 
  function gestioPelicules(){
      $('#backoffice_admin_main').remove();
