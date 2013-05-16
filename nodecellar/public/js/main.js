@@ -13,11 +13,22 @@ $(document).ready(function(){
 });
 
 function selectImagesSlideShow(){
-    $.getJSON('films', function(data){
-        for(var i = 0; i < data.length; i++){
-            var img = '<span><img src="'+
-                data[i] +
-                '" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+    $.getJSON('slideimages', function(data){
+        if(data.length == 0){
+            for(var i = 0; i < 3; i++){
+                var img = '<span><img src="" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+            }
+        }
+        for(var i = 0; i < 3; i++){
+            if(data.length == i){
+                var img = '<span><img src="img/example_film' + (i+1) + '.jpg" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+            }
+            else{
+                var img = '<span><img src="'+
+                    data[i].url +
+                    '" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+            }
+            $('#element'+(i+1)).append(img);
         }
     });
 }
@@ -686,6 +697,11 @@ function amagar(){
     $('#backoffice_admin_pelis_cinema_choose_peli').remove(); //Backoffice pelis cinema choose film
     $('#backoffice_admin_pelis_cinema_timetable').remove(); //Backoffice pelis cinema timetable
     $('#backoffice_admin_info_pelis_cinema_timetable').remove(); //Backoffice info peli cinema timetable
+    $('#backoffice_admin_slideshow').remove(); //Backoffice slideshow
+    $('#backoffice_admin_list_slideshow').remove(); //Backoffice slideshow list
+    $('#backoffice_admin_new_slideshow').remove(); //Backoffice slideshow list
+    $('#backoffice_admin_slideshow_element').remove(); //Backoffice slideshow detail
+
 
 
     window.clearInterval(interval);
@@ -731,11 +747,101 @@ function backoffice_main(){
             '<ul><li><a onclick="javascript:gestioPelicules()"> Gestió de pel·lícules </a></li>'+
             '<li><a onclick="javascript:gestioCinemes()"> Gestió de cinemes </a></li>' +
             '<li><a onclick="javascript:gestioPeliculaCinema()"> Gestió de pel·lícules a cinema </a></li>' +
+            '<li><a onclick="javascript:gestioSlideshow()">' + " Gestió de l'slideshow </a></li>" +
             '</ul>' +
             '<input class="button-login" type="button" value="Pàgina principal" onclick="javascript:veureHome()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
         '</div>';
         $('#main').append(item);
     }
+}
+
+function gestioSlideshow(){
+    amagar();
+    var item;
+    item= '<div class="backoffice_admin_slideshow" id="backoffice_admin_slideshow">'+
+        "<h2>Gestió de l'slideshow</h2>" +
+        '<ul><li><a onclick="javascript:llistatSlideshow()">' + " Llistat de l'slideshow </a></li>" +
+        '<li><a onclick="javascript:crearMenuSlideshow()"> Crear slideshow </a></li>' +
+        '</ul>' +
+        '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:backoffice_main()" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+        '</div>';
+    $('#main').append(item);
+}
+
+function llistatSlideshow(){
+    amagar();
+
+    $.getJSON( 'slideimages', function(data) {
+        var slideshows = data;
+        var item;
+        item = '<div class="backoffice_admin_list_slideshow" id="backoffice_admin_list_slideshow">'+
+            "<h2>Llistat de l'slideshow</h2>";
+        for(var i=0; i < data.length; i++){
+            item = item +
+                '<a onclick="javascript:detallSlideshow(' +
+                "'" + data[i]._id + "'" + ')"><img src="' + data[i].url + '" width="300px" height="150px" style="float:left;"></a>';
+        }
+        item = item +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:gestioSlideshow()" style="float: left; clear: both;  margin-top: 10px; margin-left: 50px;"/>' +
+            '</div>';
+        $('#main').append(item);
+    });
+
+}
+
+function crearMenuSlideshow(){
+    amagar();
+
+    var item;
+    item= '<div class="backoffice_admin_new_slideshow" id="backoffice_admin_new_slideshow">' +
+        "<h2>Creació de la imatge</h2>" +
+        '<div class="new" id="new-form">' +
+        '<div id="register-data" style=" margin-top: 30px;">' +
+        '<label class="form-field FBLabel">Url de la imatge:</label>' +
+        '<br/>' +
+        '<input id="new_url" class="form-field FBInput" />' +
+        '<br/>' +
+        '<input class="button-login form-field" type="button" value="Nova imatge" onclick="javascript:crearSlideshow()" style="float: left;   margin-top: 10px; "/>' +
+        '<input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:llistatSlideshow()" style="float: left; margin: 10px 0px 0px 10px"/>' +
+        '</div>' +
+        '</div>'+
+        '</div> ';
+    $('#main').append(item);
+}
+
+function crearSlideshow(){
+    var data = {
+        url: $('#new_url').val()
+    };
+
+    $.post("slideimages",
+        data,
+        function(data){
+            llistatSlideshow();
+        },"json");
+}
+
+function detallSlideshow(idSlideshow){
+    amagar();
+    $.getJSON( 'slideimages/' + idSlideshow, function(data) {
+        var slideshows = data;
+        var item;
+        item = '<div class="backoffice_admin_slideshow_element" id="backoffice_admin_slideshow_element">'+
+            "<h2>Imatge</h2>" +
+            '<img src="' + data.url + '" width="300px" height="150px" style="float:left;" >' +
+            '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:llistatSlideshow()" style="float: left; clear: both;  margin-top: 10px; margin-left: 50px;"/>' +
+            '<input class="button-login" type="button" value="Eliminar" onclick="javascript:eliminaSlideshow('+ "'" + idSlideshow +"'" +')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
+            '</div>';
+        $('#main').append(item);
+    });
+}
+
+function eliminaSlideshow(idSlideshow){
+    $.ajax({url: "/slideimages/" + idSlideshow,
+        type: 'DELETE',
+        success: function(result){
+            llistatSlideshow();
+        }});
 }
 
  function gestioPelicules(){

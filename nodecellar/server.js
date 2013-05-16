@@ -6,6 +6,7 @@ var express = require('express'),
     votes = require('./routes/votes');
     timetable = require('./routes/timetable');
     billboard = require('./routes/billboard');
+    slideimages = require('./routes/slideimages');
 
 var app = express();
 
@@ -64,6 +65,11 @@ app.delete('/billboard/:id', billboard.deleteBillboard);
 app.get('/findAllBillboard/:idCine/:idPeli', billboard.findBillboardPeliCine);
 app.get('/findAllPeliFromCine/:idCine', billboard.findAllPeliFromCine);
 
+app.get('/slideimages', slideimages.findAll);
+app.get('/slideimages/:id', slideimages.findById);
+app.post('/slideimages', slideimages.addImage);
+app.put('/slideimages/:id', slideimages.updateImage);
+app.delete('/slideimages/:id', slideimages.deleteImage);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
