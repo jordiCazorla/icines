@@ -12,21 +12,78 @@ $(document).ready(function(){
     bestFilm(5,"best_films");
 });
 
+function compare_film_date(a,b) {
+    if (b.dataFilm < a.dataFilm)
+        return -1;
+    if (b.dataFilm > a.dataFilm)
+        return 1;
+    return 0;
+}
+
+function veureEstrenes(){
+    amagar();
+
+    desactivarMenus();
+    $('#menu_estrenes').addClass('active');
+
+    var llistat = '<div id="inici_estrenes">' +
+        '<div class="breadcrumb">' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureEstrenes()">Estrenes</a>' +
+        '</div>';
+
+    llistat = llistat +
+        '<div class="menu-conent-boxes">' +
+        '<div class="box" id="first">' +
+        '<h3 class="title-box">Estrenes de la setmana</h3>' +
+        '<div class="film_list" id="estrenes"></div>' +
+        '</div>' +
+        '</div>' +
+    '</div>';
+
+    $('#main').append(llistat);
+
+    $.getJSON('films', function(films_result) {
+        var llistat_pelis = '';
+        if(films_result.length == 0){
+            llistat_pelis = llistat_pelis + 'No hi ha resultats';
+            $('#estrenes').append(llistat_pelis);
+        }else{
+
+            var fi = false;
+            var max = films_result.length;
+            llistat_pelis = llistat_pelis + '<ol>';
+            if(films_result.length > 1){
+                films_result.sort(compare_film_date);
+            }
+            var t = new Date();
+            var limit_date = new Date(t.getTime() - 604800000);
+            var i = 0;
+            while(i < max && !fi){
+                $.ajax({
+                    url: "typefilm/"+films_result[i].typeFilm,
+                    async: false,
+                    success: function(genere){
+
+                        if(new Date(films_result[i].dataFilm)  < limit_date) fi = true;
+                        else llistat_pelis = llistat_pelis + '<li><a class="script_function" onclick="javascript:veurePelicula(\''+films_result[i]._id+'\',\''+genere.name+'\')">' + films_result[i].title + '</a></li>';
+
+                        i++;
+                    }
+                });
+            }
+            llistat_pelis = llistat_pelis + '</ol>';
+            $('#estrenes').append(llistat_pelis);
+        }
+    });
+}
 function selectImagesSlideShow(){
     $.getJSON('slideimages', function(data){
-        if(data.length == 0){
-            for(var i = 0; i < 3; i++){
-                var img = '<span><img src="" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
-            }
-        }
         for(var i = 0; i < 3; i++){
-            if(data.length == i){
+            if(data.length <= i){
                 var img = '<span><img src="img/example_film' + (i+1) + '.jpg" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
             }
             else{
-                var img = '<span><img src="'+
-                    data[i].url +
-                    '" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+                var img = '<span><img src="'+ data[i].url +'" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
             }
             $('#element'+(i+1)).append(img);
         }
@@ -445,6 +502,10 @@ function votarPelicula(id, genereNom){
 
 function veureCines(){
     amagar();
+
+    desactivarMenus();
+    $('#menu_cinemes').addClass('active');
+
     var cines;
     var llistat = '<div id="inici_cines">' +
         '<div class="breadcrumb">' +
@@ -682,6 +743,7 @@ function amagar(){
     $('#inici_cine').remove(); //Cine
     $('#inici_cartellera').remove(); //Cartellera
     $('#inici_cartellera_cinema').remove(); //Mostrar Cartellera de cinema
+    $('#inici_estrenes').remove(); //Estrenes
     $('#backoffice_admin_main').remove(); //Backoffice main
     $('#backoffice_admin_pelis').remove(); //Backoffice pelis
     $('#backoffice_admin_new_peli').remove(); //Backoffice new peli
@@ -925,7 +987,7 @@ function eliminaSlideshow(idSlideshow){
              '</select><br/>' +
              '<label class="form-field FBLabel">Data:</label>' +
              '<br/>' +
-             '<input id="new-data" class="form-field FBInput"/>' +
+             '<input type="date" id="new-data" class="form-field FBInput"/>' +
              '<br/>' +
              '<label class="form-field FBLabel">Resum:</label>' +
              '<br/>' +
