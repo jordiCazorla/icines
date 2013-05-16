@@ -455,14 +455,30 @@ function veureCines(){
     });
 }
 
-function initialize(lat,long){
+var latitud;
+var longitud;
+var cine_name;
+function initializeMap(){
     var mapOptions = {
-        center: new google.maps.LatLng(lat,long),
-        zoom: 8,
+        center: new google.maps.LatLng(latitud,longitud),
+        zoom: 17,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("cine_map"),
-        mapOptions);
+    var map = new google.maps.Map(document.getElementById("cine_map"), mapOptions);
+
+    var myLatlng = new google.maps.LatLng(latitud,longitud);
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title:cine_name
+    });
+}
+
+function loadScript() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyDEsCaFJWuB1z79UlfELSpITu2RGz-azyc&sensor=false&callback=initializeMap";
+    document.body.appendChild(script);
 }
 
 function veureCine(cineId, cineNom){
@@ -482,15 +498,17 @@ function veureCine(cineId, cineNom){
             '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureCines()">Cinemes</a> > <a>'+cineNom+'</a>' +
             '</div>';
 
-        llistat = llistat + '<div class="cine" onload=initialize('+cine.latitud+','+cine.longitud+')>' +
-            '<div class="cine_name">'+cine.name+'</div>' +
-            '<div class="cine_direction">Adreça: '+cine.direction+'</div>' +
-            '<div class="cine_city">Ciutat: '+cine.city+'</div>' +
-            '<div class="cine_phone">Telèfon: '+cine.phone+'</div>' +
-            '<div class="cine_email">Email: '+cine.email+'</div>' +
-            '<div class="cine_map" id="cine_map"></div>' +
-            '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
-            '<div class="votar-cine" id="votar-cine">Votar: ';
+        llistat = llistat + '<div class="cine">' +
+            '<div class="cine_image"><img src="'+cine.image+'" alt="" title="'+cine.name+'" width="300" height="350" /></div>' +
+            '<div class="cine_info">' +
+                '<div class="cine_name">'+cine.name+'</div>' +
+                '<div class="cine_direction">Adreça: '+cine.direction+'</div>' +
+                '<div class="cine_city">Ciutat: '+cine.city+'</div>' +
+                '<div class="cine_phone">Telèfon: '+cine.phone+'</div>' +
+                '<div class="cine_email">Email: '+cine.email+'</div>' +
+                '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
+
+                '<div class="votar-cine" id="votar-cine">Votar: ';
         if(globalUser == null){
             llistat = llistat + '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
                 '<input type="radio" name="votes" value="2"> 2 </input>' +
@@ -499,6 +517,8 @@ function veureCine(cineId, cineNom){
                 '<input type="radio" name="votes" value="5"> 5 </input>' +
                 '<input class="button-login" type="button" value="Votar" onclick="javascript:votarCine(\''+cine._id+'\',\''+cineNom+'\')" style="float:none; right:0"/>' +
                 '</div>' +
+                '</div>' +
+                '<div class="cine_map" id="cine_map"></div>' +
                 '</div>';
             llistat = llistat + '</div>';
             $('#main').append(llistat);
@@ -513,6 +533,8 @@ function veureCine(cineId, cineNom){
                         '<input type="radio" name="votes" value="5"> 5 </input>' +
                         '<input class="button-login" type="button" value="Votar" onclick="javascript:votarCine(\''+cine._id+'\',\''+cineNom+'\')" style="float:none; right:0"/>' +
                         '</div>' +
+                        '</div>' +
+                        '<div class="cine_map" id="cine_map"></div>' +
                         '</div>';
                 }else{
                     for(var bucle = 1; bucle <= 5; bucle++){
@@ -525,12 +547,19 @@ function veureCine(cineId, cineNom){
                     }
                     llistat = llistat + '<input class="button-login" type="button" value="Votar" onclick="javascript:votarCine(\''+cine._id+'\',\''+cineNom+'\')" style="float:none; right:0"/>' +
                         '</div>' +
+                        '</div>' +
+                        '<div class="cine_map" id="cine_map"></div>' +
                         '</div>';
                 }
                 llistat = llistat + '</div>';
                 $('#main').append(llistat);
             });
         }
+        latitud = cine.latitud;
+        longitud = cine.longitud;
+        cine_name = cine.name;
+        loadScript();
+        //initializeMap(cine.latitud, cine.longitud);
     });
 }
 

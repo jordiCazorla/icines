@@ -440,3 +440,37 @@ a{
     clear: both;
     padding-top: 10px;
 }
+
+.inici_cine{
+    margin-left: 20px;
+}
+
+.cine{
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.cine_name{
+    font-size: 30px;
+}
+
+.cine_image{
+    float: left;
+    margin-bottom: 20px;
+}
+
+.cine_info{
+    float: left;
+    margin-left: 20px;
+}
+
+.votar-cine{
+
+}
+.cine_map{
+    clear: both;
+    width: 850px;
+    height: 380px;
+    display: table;
+    margin: 20px auto;
+}
