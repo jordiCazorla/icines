@@ -3,6 +3,7 @@ var slide_counter = 1;
 var started = false;
 var interval;
 $(document).ready(function(){
+    selectImagesSlideShow();
     if(!started){
         startAnimation();
         started = true;
@@ -10,6 +11,16 @@ $(document).ready(function(){
     globalUser = null;
     bestFilm(5,"best_films");
 });
+
+function selectImagesSlideShow(){
+    $.getJSON('films', function(data){
+        for(var i = 0; i < data.length; i++){
+            var img = '<span><img src="'+
+                data[i] +
+                '" alt="" title="" class="image-slide-show" width="910" height="352" /></span>';
+        }
+    });
+}
 
 function login() {
     var name = $('#login-usuari').val();
