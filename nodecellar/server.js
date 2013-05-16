@@ -62,6 +62,7 @@ app.put('/billboard/:id', billboard.updateBillboard);
 app.delete('/billboard/:id', billboard.deleteBillboard);
 //app.delete('/deleteBillboards/:idPeli/:idCine', billboard.deleteBillboardsPeliCine);
 app.get('/findAllBillboard/:idCine/:idPeli', billboard.findBillboardPeliCine);
+app.get('/findAllPeliFromCine/:idCine', billboard.findAllPeliFromCine);
 
 
 app.listen(3000);

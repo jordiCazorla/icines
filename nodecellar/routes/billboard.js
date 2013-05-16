@@ -106,9 +106,30 @@ exports.newBillboard = function(req, res){
 exports.findBillboardPeliCine = function(req, res){
     var idPeli = req.params.idPeli;
     var idCine = req.params.idCine;
-    console.log("encara funciono");
     db.collection('billboards', function(err, collection) {
         collection.find({cine_id: idCine, peli_id: idPeli }).toArray(function(err, item) {
+            if (item != null) {
+                res.send(item);
+            } else {
+                res.send({'error': 'error'});
+            }
+        });
+    });
+}
+
+exports.findAllPeliFromCine = function(req, res){
+    var idCine = req.params.idCine;
+    db.collection('billboards', function(err, collection) {
+        //collection.find({cine_id: idCine}).toArray(function(err, item) {
+        /*collection.aggregate(
+            { $group : {
+                _id : "peli_id"}}).toArray(function (err, item){*/
+        //collection.find({cine_id: idCine}).toArray(function(err, item) {
+        //collection.group({peli_id: 1}).toArray(function(err, item ){
+        var options = { group: 'peli_id'
+        }
+        //collection.find({cine_id: idCine}, options).toArray(function (err, item){
+        collection.group(['peli_id'], {}, {"count":0}, "function (obj, prev) { prev.count++; }", function(err, item) {
             if (item != null) {
                 res.send(item);
             } else {
