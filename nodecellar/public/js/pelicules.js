@@ -144,7 +144,7 @@ function veurePelicula(peliculaId, genereNom){
                 for(var i=0; i < data.length; i++){
                     llistat = llistat + '<div class="comment">'+data[i].comment+'</div>';
                 }
-                llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\')">Comentar</button></div>' +
+                llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\',\''+genereNom+'\')">Comentar</button></div>' +
                     '</div>';
                 llistat = llistat + '</div>';
                 $('#main').append(llistat);
@@ -169,7 +169,7 @@ function veurePelicula(peliculaId, genereNom){
                         for(var i=0; i < data.length; i++){
                             llistat = llistat + '<div class="comment">'+data[i].comment+'</div>';
                         }
-                        llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\')">Comentar</button></div>' +
+                        llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\',\''+genereNom+'\')">Comentar</button></div>' +
                             '</div>';
                         llistat = llistat + '</div>';
                         $('#main').append(llistat);
@@ -193,7 +193,7 @@ function veurePelicula(peliculaId, genereNom){
                         for(var i=0; i < data.length; i++){
                             llistat = llistat + '<div class="comment">'+data[i].comment+'</div>';
                         }
-                        llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\')">Comentar</button></div>' +
+                        llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\',\''+genereNom+'\')">Comentar</button></div>' +
                             '</div>';
                         llistat = llistat + '</div>';
                         $('#main').append(llistat);
@@ -426,7 +426,7 @@ function cartelleraCinema(idCinema){
     });
 }
 
-function comentarPelicula(elementId){
+function comentarPelicula(elementId, genereNom){
     if(globalUser != null){
         var comment = $('#addComment').val();
         var nou_comentari = {
