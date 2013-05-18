@@ -1682,7 +1682,7 @@ function showCinemes(){
         '</div>' +
         '<div class="menu-conent-boxes">' +
         '<div class="box" id="first">' +
-        '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Top 10 millor pelicula</h3>' +
+        '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Escull el cinema</h3>' +
         '<div class="film_list" id="cartellera_cinema_list">';
     $.getJSON('cines', function(cines_result) {
         if(cines_result.length == 0){
