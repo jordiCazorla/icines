@@ -1660,7 +1660,7 @@ function showCinemes(){
                     llistat = llistat + '<li><a onclick="javascript:cartelleraCinema('+"'" + cines_result[z]._id + "'" + ')">' + cines_result[z].name + '</a></li>';
                 }
             }else{
-                llistat = llistat + '<li><a onclick="javascript:cartelleraCinema('+"'" + cines_result[0]._id + "'" + ')">' + cines_result[z].name + '</a></li>';
+                llistat = llistat + '<li><a onclick="javascript:cartelleraCinema('+"'" + cines_result[0]._id + "'" + ')">' + cines_result[0].name + '</a></li>';
             }
             llistat = llistat + '</ol>';
         }
