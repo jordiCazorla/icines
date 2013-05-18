@@ -1,14 +1,17 @@
 var express = require('express'),
-    user = require('./routes/users');
-    typeFilm = require('./routes/typeFilm');
-    films = require('./routes/films');
-    cines = require('./routes/cines');
-    votes = require('./routes/votes');
-    timetable = require('./routes/timetable');
-    billboard = require('./routes/billboard');
-    slideimages = require('./routes/slideimages');
+    user = require('./routes/users'),
+    typeFilm = require('./routes/typeFilm'),
+    films = require('./routes/films'),
+    cines = require('./routes/cines'),
+    votes = require('./routes/votes'),
+    timetable = require('./routes/timetable'),
+    billboard = require('./routes/billboard'),
+    slideimages = require('./routes/slideimages'),
+    http = require('http');
 
 var app = express();
+
+app.set('port', process.env.PORT || 3000);
 
 app.configure(function () {
     app.use(express.logger('dev')); /* 'default', 'short', 'tiny', 'dev' */
@@ -71,5 +74,22 @@ app.post('/slideimages', slideimages.addImage);
 app.put('/slideimages/:id', slideimages.updateImage);
 app.delete('/slideimages/:id', slideimages.deleteImage);
 
-app.listen(3000);
+
+
+var server = http.createServer(app);
+server.listen(app.get('port'), function(){
+    console.log("soc aqui amb el port" + app.get('port'));
+});
 console.log('Listening on port 3000...');
+
+
+
+var io = require('socket.io').listen(server);
+io.set('log level',1);
+
+io.sockets.on('connection', function (socket) {
+   socket.on('votar', function(){
+       io.sockets.emit('actualitzar_votar');
+   }) ;
+});
+

@@ -2,6 +2,7 @@ var globalUser;
 var slide_counter = 1;
 var started = false;
 var interval;
+var socket = io.connect('http://localhost:3000/');
 $(document).ready(function(){
     selectImagesSlideShow();
     if(!started){
@@ -12,6 +13,10 @@ $(document).ready(function(){
     bestFilm(5,"best_films");
     insertGeneresHome();
     selectSubImagesHome();
+
+    socket.on('actualitzar_votar', function(){
+        //veureHome();
+    });
 });
 
 function compare_film_date(a,b) {
@@ -712,6 +717,7 @@ function votarCine(id, cineNom){
                             }
                         },"json");
                 }
+                socket.emit('votar');
             });
 
         });
