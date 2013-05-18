@@ -7,6 +7,7 @@ var express = require('express'),
     timetable = require('./routes/timetable'),
     billboard = require('./routes/billboard'),
     slideimages = require('./routes/slideimages'),
+    comments = require('./routes/comments'),
     http = require('http');
 
 var app = express();
@@ -74,6 +75,12 @@ app.post('/slideimages', slideimages.addImage);
 app.put('/slideimages/:id', slideimages.updateImage);
 app.delete('/slideimages/:id', slideimages.deleteImage);
 
+app.get('/comments', comments.findAll);
+app.get('/comments/:id', comments.findById);
+app.post('/comments', comments.addComment);
+app.put('/comments/:id', comments.updateComment);
+app.delete('/comments/:id', comments.deleteComment);
+app.get('/commentsByElem/:element_id', comments.findByElement);
 
 
 var server = http.createServer(app);

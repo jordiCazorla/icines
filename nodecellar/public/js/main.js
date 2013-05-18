@@ -399,8 +399,18 @@ function veurePelicula(peliculaId, genereNom){
                         '</div>' +
                         '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
                         '</div>';
-                    llistat = llistat + '</div>';
-                    $('#main').append(llistat);
+                    $.getJSON('commentsByElem/'+peliculaId, function(data) {
+                        llistat = llistat + '<div class="comments_peli">'+
+                            '<div class="comment_title">Comentaris:</div>';
+                        for(var i=0; i < data.length; i++){
+                            llistat = llistat + '<div class="comment">'+data[i].comment+'</div>';
+                        }
+                        llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\')">Comentar</button></div>' +
+                            '</div>';
+                        llistat = llistat + '</div>';
+                        $('#main').append(llistat);
+                    });
+
                 }
                 else{
                     $.getJSON("votesByElemUser/" + film._id + "/" + globalUser._id, function(vote){
@@ -414,6 +424,17 @@ function veurePelicula(peliculaId, genereNom){
                                 '</div>' +
                                 '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
                                 '</div>';
+                            $.getJSON('commentsByElem/'+peliculaId, function(data) {
+                                llistat = llistat + '<div class="comments_peli">'+
+                                    '<div class="comment_title">Comentaris:</div>';
+                                for(var i=0; i < data.length; i++){
+                                    llistat = llistat + '<div class="comment">'+data[i].comment+'</div>';
+                                }
+                                llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\')">Comentar</button></div>' +
+                                    '</div>';
+                                llistat = llistat + '</div>';
+                                $('#main').append(llistat);
+                            });
                         }else{
                             for(var bucle = 1; bucle <= 5; bucle++){
                                 if(bucle == vote.vote){
@@ -427,14 +448,44 @@ function veurePelicula(peliculaId, genereNom){
                                 '</div>' +
                                 '<div class="pelicula-trailer"><iframe type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + film.trailer + '" frameborder="0"></iframe></div>' +
                                 '</div>';
+                            $.getJSON('commentsByElem/'+peliculaId, function(data) {
+                                llistat = llistat + '<div class="comments_peli">' +
+                                    '<div class="comment_title">Comentaris:</div>';
+                                for(var i=0; i < data.length; i++){
+                                    llistat = llistat + '<div class="comment">'+data[i].comment+'</div>';
+                                }
+                                llistat = llistat + '<div class="addComment"><textarea id="addComment"></textarea><br/><button onclick="javascript:comentarPelicula(\''+film._id+'\')">Comentar</button></div>' +
+                                    '</div>';
+                                llistat = llistat + '</div>';
+                                $('#main').append(llistat);
+                            });
                         }
-                        llistat = llistat + '</div>';
-                        $('#main').append(llistat);
                     });
                 }
     });
 }
+function comentarPelicula(elementId){
+    if(globalUser != null){
+        var comment = $('#addComment').val();
+        var nou_comentari = {
+            element_id: elementId,
+            comment:  comment
+        };
+        //Hem de crear
+        $.post("comments",
+            nou_comentari,
+            function(final_result){
+                if(!final_result.error){ //tot ha anat be
+                    alert("dins del votar");
+                    veurePelicula(elementId, genereNom);
+                }
+            },"json");
+    }
+    else{
+        alert("Has d'estar logat per poder votar");
+    }
 
+}
 function votarPelicula(id, genereNom){
     if(globalUser != null){
         var votacio = $('input[name=votes]:checked', '#votar-film').val();

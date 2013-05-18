@@ -520,3 +520,19 @@ a{
     display: table;
     margin: 20px auto;
 }
+
+.comments_peli{
+    background: #FFFFFF;
+    margin: 0 40px 10px 40px;
+}
+.comments_peli div{
+    margin-left: 10px;
+}
+
+.comment{
+    margin-left: 20px !important;
+}
+
+#addComment{
+    width: 700px;
+}
