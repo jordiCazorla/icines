@@ -731,7 +731,6 @@ function veureHome(){
     $('#inici-info').show(); //TODO: revisar si s'ha de canviar per hide
     bestFilm(5,"best_films")
     startAnimation();
-    insertGeneresHome();
 }
 
 function amagar(){
