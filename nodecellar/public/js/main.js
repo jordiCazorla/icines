@@ -14,8 +14,13 @@ $(document).ready(function(){
     insertGeneresHome();
     selectSubImagesHome();
 
-    socket.on('actualitzar_votar', function(){
+    socket.on('actualitzar_votar_cinema', function(idCinema, cineNom){
         //veureHome();
+        var elms = document.getElementById('inici_cine');
+        if(elms != null){
+            //amagar();
+            veureCine(idCinema, cineNom);
+        }
     });
 });
 
@@ -618,6 +623,10 @@ function veureCine(cineId, cineNom){
                 '<div class="cine_map" id="cine_map"></div>' +
                 '</div>';
             llistat = llistat + '</div>';
+            latitud = cine.latitud;
+            longitud = cine.longitud;
+            cine_name = cine.name;
+            loadScript();
             $('#main').append(llistat);
         }
         else{
@@ -649,13 +658,14 @@ function veureCine(cineId, cineNom){
                         '</div>';
                 }
                 llistat = llistat + '</div>';
+                latitud = cine.latitud;
+                longitud = cine.longitud;
+                cine_name = cine.name;
+                loadScript();
                 $('#main').append(llistat);
             });
         }
-        latitud = cine.latitud;
-        longitud = cine.longitud;
-        cine_name = cine.name;
-        loadScript();
+
         //initializeMap(cine.latitud, cine.longitud);
     });
 }
@@ -702,7 +712,8 @@ function votarCine(id, cineNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veureCine(id, cineNom);
+                                        //veureCine(id, cineNom);
+                                        socket.emit('votar_cine', id, cineNom);
                                     }
                                 });
                             }
@@ -720,13 +731,13 @@ function votarCine(id, cineNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veureCine(id, cineNom);
+                                        //veureCine(id, cineNom);
+                                        socket.emit('votar_cine', id, cineNom);
                                     }
                                 });
                             }
                         },"json");
                 }
-                socket.emit('votar');
             });
 
         });
@@ -780,7 +791,6 @@ function amagar(){
     $('#backoffice_admin_list_slideshow').remove(); //Backoffice slideshow list
     $('#backoffice_admin_new_slideshow').remove(); //Backoffice slideshow list
     $('#backoffice_admin_slideshow_element').remove(); //Backoffice slideshow detail
-
 
 
     window.clearInterval(interval);

@@ -88,8 +88,8 @@ var io = require('socket.io').listen(server);
 io.set('log level',1);
 
 io.sockets.on('connection', function (socket) {
-   socket.on('votar', function(){
-       io.sockets.emit('actualitzar_votar');
+   socket.on('votar_cine', function(idCine, cineNom){
+       io.sockets.emit('actualitzar_votar_cinema', idCine, cineNom);
    }) ;
 });
 
