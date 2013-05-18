@@ -1718,7 +1718,7 @@ function insertGeneresHome(){
             if(randomnumber == typefilms.length){
                 randomnumber = 0;
             }
-            list = list + '<li><a onclick="javascript:veurePelicules(' + "'" + typefilms[randomnumber]._id + "," + typefilms[randomnumber].name + "')" + '">' +
+            list = list + '<li><a onclick="javascript:veurePelicules(' + "'" + typefilms[randomnumber]._id + "','" + typefilms[randomnumber].name + "')" + '">' +
                 typefilms[randomnumber].name  +'</a></li>';
             randomnumber = randomnumber + 1;
         }
