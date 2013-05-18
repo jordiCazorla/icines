@@ -23,6 +23,7 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
     </head>
     <body style="background-color: #9dc9e2">
         <!--[if lt IE 7]>
@@ -84,10 +85,10 @@
                         <ul class="main-menu">
                             <li class="first"><a id="menu_inici" onclick="javascript:veureHome()" class="active" >Inici</a></li>
                             <li><a class="" id="menu_pelicules" onclick="javascript:veureGeneres()">Pel·lícules</a></li>
-                            <li><a id="menu_cartellera" href="#">Cartellera</a></li>
-                            <li><a id="menu_estrenes" href="#">Estrenes de la setmana</a></li>
+                            <li><a id="menu_cartellera" onclick="javascript:showCinemes()">Cartellera</a></li>
+                            <li><a id="menu_estrenes" href="javascript:veureEstrenes()">Estrenes de la setmana</a></li>
                             <li><a id="menu_cinemes" onclick="javascript:veureCines()">Cinemes</a></li>
-                            <li><a id="menu_ranquing" href="#">Rànquings</a></li>
+                            <li><a id="menu_ranquing" onclick="javascript:veureRanquings()">Rànquings</a></li>
                         </ul>
                     </div>
                 </div>
@@ -100,10 +101,10 @@
                         <div class="main-slide slide-show ppt">
 
                             <div class="slide-show" id="element1">
-                                <div class="image-view">
-                                <span>
-                                    <img src="img/example_film.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
-                                </span>
+                                <div class="image-view" id="image_view1">
+                                <!--<span>
+                                    <img src="img/example_film1.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
+                                </span>-->
                                 </div>
                                 <!-- title -->
                                 <div class="title-view">
@@ -124,10 +125,10 @@
                             </div>
                             <div class="slide-show" id="element2">
                                 <!-- image -->
-                                <div class="image-view">
-                                <span>
+                                <div class="image-view" id="image_view2">
+                                <!--<span>
                                     <img src="img/example_film2.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
-                                </span>
+                                </span>-->
                                 </div>
                                 <!-- title -->
                                 <div class="title-view">
@@ -142,16 +143,16 @@
                                 <!-- button -->
                                 <div class="button-view">
                                 <span>
-                                    <a href="#">Veure cartellera</a>
+                                    <a href="javascript:showCinemes()">Veure cartellera</a>
                                 </span>
                                 </div>
                             </div>
                             <div class="slide-show" id="element3">
                                 <!-- image -->
-                                <div class="image-view">
-                                <span>
+                                <div class="image-view" id="image_view3">
+                                <!--<span>
                                     <img src="img/example_film3.jpg" alt="" title="" class="image-slide-show" width="910" height="352" />
-                                </span>
+                                </span>-->
                                 </div>
                                 <!-- title -->
                                 <div class="title-view">
@@ -166,7 +167,7 @@
                                 <!-- button -->
                                 <div class="button-view">
                                 <span>
-                                    <a href="#">Veure cinemes</a>
+                                    <a href="javascript:veureCines()">Veure cinemes</a>
                                 </span>
                                 </div>
                             </div>
@@ -176,30 +177,21 @@
 
                         <div class="menu-conent-boxes">
                             <div class="box" id="first">
-                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <img src="img/example_film1.jpg" alt="" title="" width="267" height="172" />
                                 <h3 class="title-box">Rànquings millor pelicula</h3>
-                                <ol>
-                                    <li>
-                                        'Intel·ligència artificial
-                                    </li>
-                                    <li>
-                                        'Robots
-                                    </li>
-                                </ol>
-                                <span class="small_button_box"><a href="#">Veure Rànquings</a></span>
+                                <div class="film_list" id="best_films"></div>
+                                <span class="small_button_box"><a class="script_function" onclick="javascript:veureRanquings()">Veure Rànquings</a></span>
                             </div>
 
                             <div class="box" id="middle">
-                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
+                                <img src="img/example_film1.jpg" alt="" title="" width="267" height="172" />
                                 <h3 class="title-box">Generes</h3>
                                 <p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>
                                 <span class="small_button_box"><a class="script_function" onclick="javascript:veureGeneres()">Veure Generes</a></span>
                                 </div>
                             <div class="box" id="last">
-                                <img src="img/example_film.jpg" alt="" title="" width="267" height="172" />
-                                <h3 class="title-box">Publicitat</h3>
-                                <p>Promociona el teu espai aquí</p>
-                                <span class="small_button_box"><a href="#">Accedir a publicitat</a></span>
+                                <a target="_blank" href="http://www.ocine.es/im3/"><img src="http://www.ocine.es/biblioteca/items/4183/im3.jpg" alt="" title="" width="270" height="340"/></a>
+
                             </div>
                         </div>
                     </div>
@@ -217,12 +209,6 @@
             <div class="footer">
                 <div class="footer-content">
                     <ul class="footer-menu">
-                        <li>
-                            <a href="#" title="Avis Legal">Avis Legal</a>
-                        </li>
-                        <li>
-                            <a href="#" title="Politica de privacitat">Politica de privacitat</a>
-                        </li>
                         <li class="last-link">
                             <a href="#" title="Registre" onclick="javascript:registre()">Registre</a>
                         </li>

@@ -5,14 +5,14 @@ var Server = mongo.Server,
     BSON = mongo.BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('cinesdb', server);
+db = new Db('imagesdb', server);
 
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'cinesdb' database");
-        db.collection('cines', {safe:true}, function(err, collection) {
+        console.log("Connected to 'imagesdb' database");
+        db.collection('images', {safe:true}, function(err, collection) {
             if (err) {
-                console.log("The 'cines' collection doesn't exist. Creating it with sample data...");
+                console.log("The 'images' collection doesn't exist. Creating it with sample data...");
                 populateDB();
             }
         });
@@ -21,8 +21,8 @@ db.open(function(err, db) {
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving cines: ' + id);
-    db.collection('cines', function(err, collection) {
+    console.log('Retrieving images: ' + id);
+    db.collection('images', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
         });
@@ -30,18 +30,18 @@ exports.findById = function(req, res) {
 };
 
 exports.findAll = function(req, res) {
-    db.collection('cines', function(err, collection) {
+    db.collection('images', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
         });
     });
 };
 
-exports.addCine = function(req, res) {
-    var cine = req.body;
-    console.log('Adding cine: ' + JSON.stringify(cine));
-    db.collection('cines', function(err, collection) {
-        collection.insert(cine, {safe:true}, function(err, result) {
+exports.addImage = function(req, res) {
+    var image = req.body;
+    console.log('Adding image: ' + JSON.stringify(image));
+    db.collection('images', function(err, collection) {
+        collection.insert(image, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred'});
             } else {
@@ -52,28 +52,28 @@ exports.addCine = function(req, res) {
     });
 }
 
-exports.updateCine = function(req, res) {
+exports.updateImage = function(req, res) {
     var id = req.params.id;
-    var cine = req.body;
-    console.log('Updating cine: ' + id);
-    console.log(JSON.stringify(cine));
-    db.collection('cines', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, cine, {safe:true}, function(err, result) {
+    var image = req.body;
+    console.log('Updating image: ' + id);
+    console.log(JSON.stringify(image));
+    db.collection('images', function(err, collection) {
+        collection.update({'_id':new BSON.ObjectID(id)}, image, {safe:true}, function(err, result) {
             if (err) {
-                console.log('Error updating cine: ' + err);
+                console.log('Error updating image: ' + err);
                 res.send({'error':'An error has occurred'});
             } else {
                 console.log('' + result + ' document(s) updated');
-                res.send(cine);
+                res.send(image);
             }
         });
     });
 }
 
-exports.deleteCine = function(req, res) {
+exports.deleteImage = function(req, res) {
     var id = req.params.id;
-    console.log('Deleting cine: ' + id);
-    db.collection('cines', function(err, collection) {
+    console.log('Deleting image: ' + id);
+    db.collection('images', function(err, collection) {
         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred - ' + err});
@@ -90,22 +90,13 @@ exports.deleteCine = function(req, res) {
 // You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
 
-    var cines = [
+    /*var images = [
         {
-            name: "ocine",
-            direction: "Rambla 11 de setembre",
-            city: "Girona",
-            phone: "972972972",
-            email: "ocine@ocine.com",
-            latitud: "41.992033",
-            longitud: "2.818851",
-            image: "http://www.infovt.com/images/ocine.jpg",
-            vote_sum: 0,
-            votes: 0
+        url
         }];
 
-    db.collection('cines', function(err, collection) {
-        collection.insert(cines, {safe:true}, function(err, result) {});
-    });
+    db.collection('images', function(err, collection) {
+        collection.insert(images, {safe:true}, function(err, result) {});
+    });*/
 
 };
