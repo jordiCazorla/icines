@@ -14,9 +14,22 @@ $(document).ready(function(){
     insertGeneresHome();
     selectSubImagesHome();
 
-    socket.on('actualitzar_votar', function(){
+    socket.on('actualitzar_votar_cinema', function(idCinema, cineNom){
         //veureHome();
+        var elms = document.getElementById('inici_cine');
+        if(elms != null){
+            //amagar();
+            veureCine(idCinema, cineNom);
+        }
     });
+    socket.on('actualitzar_votar_pelicula', function(id, genere){
+        //veureHome();
+        var elms = document.getElementById('inici-pelicula');
+        if(elms != null){
+            veurePelicula(id, genere);
+        }
+    });
+
 });
 
 function compare_film_date(a,b) {
@@ -528,7 +541,8 @@ function votarPelicula(id, genereNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veurePelicula(id, genereNom);
+                                        //veurePelicula(id, genereNom);
+                                        socket.emit('votar_peli', id, genereNom);
                                     }
                                 });
                             }
@@ -546,7 +560,8 @@ function votarPelicula(id, genereNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veurePelicula(id, genereNom);
+                                        //veurePelicula(id, genereNom);
+                                        socket.emit('votar_peli', id, genereNom);
                                     }
                                 });
                             }
@@ -669,6 +684,10 @@ function veureCine(cineId, cineNom){
                 '<div class="cine_map" id="cine_map"></div>' +
                 '</div>';
             llistat = llistat + '</div>';
+            latitud = cine.latitud;
+            longitud = cine.longitud;
+            cine_name = cine.name;
+            loadScript();
             $('#main').append(llistat);
         }
         else{
@@ -700,13 +719,14 @@ function veureCine(cineId, cineNom){
                         '</div>';
                 }
                 llistat = llistat + '</div>';
+                latitud = cine.latitud;
+                longitud = cine.longitud;
+                cine_name = cine.name;
+                loadScript();
                 $('#main').append(llistat);
             });
         }
-        latitud = cine.latitud;
-        longitud = cine.longitud;
-        cine_name = cine.name;
-        loadScript();
+
         //initializeMap(cine.latitud, cine.longitud);
     });
 }
@@ -753,7 +773,8 @@ function votarCine(id, cineNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veureCine(id, cineNom);
+                                        //veureCine(id, cineNom);
+                                        socket.emit('votar_cine', id, cineNom);
                                     }
                                 });
                             }
@@ -771,13 +792,13 @@ function votarCine(id, cineNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veureCine(id, cineNom);
+                                        //veureCine(id, cineNom);
+                                        socket.emit('votar_cine', id, cineNom);
                                     }
                                 });
                             }
                         },"json");
                 }
-                socket.emit('votar');
             });
 
         });
@@ -831,7 +852,6 @@ function amagar(){
     $('#backoffice_admin_list_slideshow').remove(); //Backoffice slideshow list
     $('#backoffice_admin_new_slideshow').remove(); //Backoffice slideshow list
     $('#backoffice_admin_slideshow_element').remove(); //Backoffice slideshow detail
-
 
 
     window.clearInterval(interval);
@@ -1713,7 +1733,7 @@ function showCinemes(){
         '</div>' +
         '<div class="menu-conent-boxes">' +
         '<div class="box" id="first">' +
-        '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Top 10 millor pelicula</h3>' +
+        '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Escull el cinema</h3>' +
         '<div class="film_list" id="cartellera_cinema_list">';
     $.getJSON('cines', function(cines_result) {
         if(cines_result.length == 0){
