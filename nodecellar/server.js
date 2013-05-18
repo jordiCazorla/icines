@@ -101,5 +101,9 @@ io.sockets.on('connection', function (socket) {
     socket.on('votar_peli', function(id, genereNom){
         io.sockets.emit('actualitzar_votar_pelicula', id, genereNom);
     });
+    socket.on('comentar_peli', function (elementId, genereNom){
+        io.sockets.emit('actualitzar_comentar_pelicula', elementId, genereNom);
+    });
+
 });
 

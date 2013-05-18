@@ -438,8 +438,8 @@ function comentarPelicula(elementId, genereNom){
             nou_comentari,
             function(final_result){
                 if(!final_result.error){ //tot ha anat be
-                    alert("dins del votar");
-                    veurePelicula(elementId, genereNom);
+                    socket.emit('comentar_peli', elementId, genereNom);
+                    //veurePelicula(elementId, genereNom);
                 }
             },"json");
     }

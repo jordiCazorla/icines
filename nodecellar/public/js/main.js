@@ -29,6 +29,12 @@ $(document).ready(function(){
             veurePelicula(id, genere);
         }
     });
+    socket.on('actualitzar_comentar_pelicula', function(elementId, genereNom){
+        var elms = document.getElementById('inici-pelicula');
+        if(elms != null){
+            veurePelicula(elementId, genereNom);
+        }
+    });
 
 });
 
