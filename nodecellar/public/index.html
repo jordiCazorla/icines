@@ -38,7 +38,7 @@
 
                 <div class="header">
                     <div class="header-content">
-                        <a href="#" title="Inici" rel="home" id="logo">
+                        <a onclick="javascript:veureHome()" title="Inici" rel="home" id="logo">
                             <img src="img/claqueta.png" alt="Inici" />
                         </a>
                         <div class="slogan">
@@ -177,16 +177,16 @@
 
                         <div class="menu-conent-boxes">
                             <div class="box" id="first">
-                                <img src="img/example_film1.jpg" alt="" title="" width="267" height="172" />
+                                <div id="image_ranquing"></div>
                                 <h3 class="title-box">Rànquings millor pelicula</h3>
                                 <div class="film_list" id="best_films"></div>
                                 <span class="small_button_box"><a class="script_function" onclick="javascript:veureRanquings()">Veure Rànquings</a></span>
                             </div>
 
                             <div class="box" id="middle">
-                                <img src="img/example_film1.jpg" alt="" title="" width="267" height="172" />
+                                <div id="image_genere"></div>
                                 <h3 class="title-box">Generes</h3>
-                                <p>Tota la informació d'aquesta pel·lícula i moltes a més aquí.</p>
+                                <ol id="generes_home_list"></ol>
                                 <span class="small_button_box"><a class="script_function" onclick="javascript:veureGeneres()">Veure Generes</a></span>
                                 </div>
                             <div class="box" id="last">

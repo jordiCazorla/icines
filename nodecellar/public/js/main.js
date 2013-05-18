@@ -10,6 +10,8 @@ $(document).ready(function(){
     }
     globalUser = null;
     bestFilm(5,"best_films");
+    insertGeneresHome();
+    selectSubImagesHome();
 });
 
 function compare_film_date(a,b) {
@@ -847,6 +849,9 @@ function llistatSlideshow(){
         var item;
         item = '<div class="backoffice_admin_list_slideshow" id="backoffice_admin_list_slideshow">'+
             "<h2>Llistat de l'slideshow</h2>";
+        if(data.length == 0){
+            item = item + '<div>No tenim cap imatge</div>';
+        }
         for(var i=0; i < data.length; i++){
             item = item +
                 '<a onclick="javascript:detallSlideshow(' +
@@ -1712,5 +1717,50 @@ function cartelleraCinema(idCinema){
 
 
 
+    });
+}
+
+function insertGeneresHome(){
+    //generes_home_list
+    $.getJSON('typefilm', function(typefilms) {
+        var randomnumber=Math.floor(Math.random()*typefilms.length);
+        var list = '';
+        for(var i=0; i < 3; i++){
+            if(randomnumber == typefilms.length){
+                randomnumber = 0;
+            }
+            list = list + '<li><a onclick="javascript:veurePelicules(' + "'" + typefilms[randomnumber]._id + "','" + typefilms[randomnumber].name + "')" + '">' +
+                typefilms[randomnumber].name  +'</a></li>';
+            randomnumber = randomnumber + 1;
+        }
+        $('#generes_home_list').append(list);
+    });
+}
+
+function selectSubImagesHome(){
+    $.getJSON( 'slideimages', function(data) {
+        //image_ranquing
+        //image_genere
+        if(data.length < 2){
+            var image = '<img src="img/example_film1.jpg" alt="" title="" width="267" height="172" />';
+            $('#image_ranquing').append(image);
+            image = '<img src="img/example_film2.jpg" alt="" title="" width="267" height="172" />';
+            $('#image_genere').append(image);
+        }
+        else
+        {
+            var randomnumber=Math.floor(Math.random()*data.length);
+            if(randomnumber == data.length){
+                randomnumber = 0;
+            }
+            var image = '<a><img src="' + data[randomnumber].url +'" alt="" title="" width="267" height="172" /></a>';
+            $('#image_ranquing').append(image);
+            randomnumber = randomnumber + 1;
+            if(randomnumber == data.length){
+                randomnumber = 0;
+            }
+            image = '<a><img src="' + data[randomnumber].url +'" alt="" title="" width="267" height="172" /></a>';
+            $('#image_genere').append(image);
+        }
     });
 }
