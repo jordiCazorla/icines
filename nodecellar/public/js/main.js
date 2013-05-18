@@ -35,7 +35,7 @@ function veureEstrenes(){
 
     var llistat = '<div id="inici_estrenes">' +
         '<div class="breadcrumb">' +
-        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureEstrenes()">Estrenes</a>' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a class="active2" onclick="javascript:veureEstrenes()">Estrenes</a>' +
         '</div>';
 
     llistat = llistat +
@@ -259,7 +259,7 @@ function veureGeneres() {
     var typeFilms;
     var llistat = '<div id="inici-generes">' +
         '<div class="breadcrumb">' +
-        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="">Pel·lícules</a>' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="" class="active2">Pel·lícules</a>' +
         '</div>';
 
     $.getJSON( 'typefilm', {sync: true}, function(data) {
@@ -328,10 +328,14 @@ function compare_film_rating(a,b) {
 
 function veurePelicules(genereId, genereNom){
     amagar();
+
+    desactivarMenus();
+    $('#menu_pelicules').addClass('active');
+
     var films;
     var llistat = '<div id="inici-pelicules">' +
         '<div class="breadcrumb">' +
-        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a onclick="">'+genereNom+'</a>' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a class="active2" onclick="">'+genereNom+'</a>' +
         '</div>';
 
     $.getJSON( 'filmByType/'+genereId, function(data) {
@@ -367,7 +371,7 @@ function veurePelicula(peliculaId, genereNom){
 
         llistat = '<div id="inici-pelicula">' +
             '<div class="breadcrumb">' +
-            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a>' +
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a class="active2" onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a>' +
             '</div>';
 
         llistat = llistat + '<div class="pelicula">' +
@@ -375,13 +379,14 @@ function veurePelicula(peliculaId, genereNom){
             '<div class="pelicula-info">' +
                 '<div class="pelicula-title">'+film.title+'</div>' +
                 '<div class="pelicula-original-title">'+film.original_title+' (original title)</div>' +
-                '<div class="pelicula-duration">Durada: '+film.duration+'</div>' +
-                '<div class="pelicula-director">Director: '+film.director+'</div>' +
-                '<div class="pelicula-cast">Actors: '+film.cast+'</div>' +
-                '<div class="pelicula-type">Genere: <a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a></div>' +
-                '<div class="pelicula-data">Estrena: '+film.dataFilm+'</div>' +
-                '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
-                '<div class="pelicula-review">Sinopsis: '+film.review+'</div>' +
+                '<br/>' +
+                '<div class="pelicula-duration"><span>Durada:</span> '+film.duration+'</div>' +
+                '<div class="pelicula-director"><span>Director:</span> '+film.director+'</div>' +
+                '<div class="pelicula-cast"><span>Actors:</span> '+film.cast+'</div>' +
+                '<div class="pelicula-type"><span>Genere:</span> <a onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a></div>' +
+                '<div class="pelicula-data"><span>Estrena:</span> '+film.dataFilm+'</div>' +
+                '<div class="pelicula-rating"><span>Puntuació:</span> '+ (rating == 0? '-' : rating) +'</div>' +
+                '<div class="pelicula-review"><span>Sinopsis:</span> '+film.review+'</div>' +
             '</div>' +
                 '<div class="votar-film" id="votar-film">Votar: ';
                 if(globalUser == null){
@@ -516,7 +521,7 @@ function veureCines(){
     var cines;
     var llistat = '<div id="inici_cines">' +
         '<div class="breadcrumb">' +
-        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a>Cines</a>' +
+        '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a class="active2">Cines</a>' +
         '</div>';
 
     $.getJSON(url = "cines/", function(data){
@@ -541,9 +546,11 @@ function veureCines(){
             if (op == 2) llistat = llistat + '</div>';
         }
         llistat = llistat + '</div>' + '</div>';
+
         $('#main').append(llistat);
     });
 }
+
 
 var latitud;
 var longitud;
@@ -585,20 +592,20 @@ function veureCine(cineId, cineNom){
 
         llistat = '<div id="inici_cine">' +
             '<div class="breadcrumb">' +
-            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureCines()">Cinemes</a> > <a>'+cineNom+'</a>' +
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureCines()">Cinemes</a> > <a class="active2">'+cineNom+'</a>' +
             '</div>';
 
         llistat = llistat + '<div class="cine">' +
-            '<div class="cine_image"><img src="'+cine.image+'" alt="" title="'+cine.name+'" width="300" height="350" /></div>' +
+            '<div class="cine_image"><img src="'+cine.image+'" alt="" title="'+cine.name+'" height="325" width="320" /></div>' +
             '<div class="cine_info">' +
                 '<div class="cine_name">'+cine.name+'</div>' +
-                '<div class="cine_direction">Adreça: '+cine.direction+'</div>' +
-                '<div class="cine_city">Ciutat: '+cine.city+'</div>' +
-                '<div class="cine_phone">Telèfon: '+cine.phone+'</div>' +
-                '<div class="cine_email">Email: '+cine.email+'</div>' +
-                '<div class="pelicula-rating">Puntuació: '+ rating +'</div>' +
+                '<div class="cine_direction"><span>Adreça:</span> '+cine.direction+'</div>' +
+                '<div class="cine_city"><span>Ciutat:</span> '+cine.city+'</div>' +
+                '<div class="cine_phone"><span>Telèfon:</span> '+cine.phone+'</div>' +
+                '<div class="cine_email"><span>Email:</span> '+cine.email+'</div>' +
+                '<div class="pelicula-rating"><span>Puntuació:</span> '+ (rating == 0? '-':rating) +'</div>' +
 
-                '<div class="votar-cine" id="votar-cine">Votar: ';
+                '<div class="votar-cine" id="votar-cine"><span>Votar:</span> ';
         if(globalUser == null){
             llistat = llistat + '<input type="radio" name="votes" value="1" checked=true> 1 </input>' +
                 '<input type="radio" name="votes" value="2"> 2 </input>' +
@@ -672,6 +679,7 @@ function votarCine(id, cineNom){
                 vote_sum: vote_sum,
                 votes: votes
             };
+
             $.getJSON( 'votesByElemUser/'+cine._id+'/'+globalUser._id, function(votation_result) {
                 var nova_votacio = {
                     element_id: cine._id,
@@ -688,6 +696,7 @@ function votarCine(id, cineNom){
                             if(!result.error){ //tot ha anat be
                                 data.vote_sum = data.vote_sum - votation_result.vote;
                                 data.votes = data.votes - 1;
+
                                 $.ajax({
                                     url: '/cines/' + id,
                                     type: 'PUT',
@@ -1560,7 +1569,7 @@ function veureRanquings(){
 
     var llistat = '<div id="inici_ranquings">' +
         '<div class="breadcrumb">' +
-            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureRanquings()">Rànquings</a>' +
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a class="active2" onclick="javascript:veureRanquings()">Rànquings</a>' +
         '</div>';
 
     div_id_ranquings = "best_films" + "_ranquings";
@@ -1568,12 +1577,11 @@ function veureRanquings(){
 
     llistat = llistat +
         '<div class="menu-conent-boxes">' +
-            '<div class="box" id="first">' +
+            '<div class="ranquing_box" id="first">' +
                 '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Top 10 millor pelicula</h3>' +
                 '<div class="film_list" id="' + div_id_ranquings + '"></div>' +
             '</div>' +
-        '</div>' +
-            '<div class="box" id="middle">' +
+            '<div class="ranquing_box" id="last">' +
                 '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Top cinemes</h3>' +
                 '<div class="film_list" id="' + div_id_cinemes + '"></div>' +
             '</div>'
@@ -1688,7 +1696,7 @@ function cartelleraCinema(idCinema){
         var llistat = '<div id="inici_cartellera_cinema">' +
             '<div class="breadcrumb">' +
             '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:showCinemes()">Cartellera</a>' +
-            ' > <a onclick="javascript:cartelleraCinema(' + "'" + idCinema + "'" + ')">'+ cinema_result.name +'</a>' +
+            ' > <a class="active2" onclick="javascript:cartelleraCinema(' + "'" + idCinema + "'" + ')">'+ cinema_result.name +'</a>' +
             '</div>';
 
         llistat = llistat + '<h2>La cartellera de ' + cinema_result.name + ' és: </h2>';
