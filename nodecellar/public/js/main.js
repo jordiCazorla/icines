@@ -22,6 +22,14 @@ $(document).ready(function(){
             veureCine(idCinema, cineNom);
         }
     });
+    socket.on('actualitzar_votar_pelicula', function(id, genere){
+        //veureHome();
+        var elms = document.getElementById('inici-pelicula');
+        if(elms != null){
+            veurePelicula(id, genere);
+        }
+    });
+
 });
 
 function compare_film_date(a,b) {
@@ -482,7 +490,8 @@ function votarPelicula(id, genereNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veurePelicula(id, genereNom);
+                                        //veurePelicula(id, genereNom);
+                                        socket.emit('votar_peli', id, genereNom);
                                     }
                                 });
                             }
@@ -500,7 +509,8 @@ function votarPelicula(id, genereNom){
                                     type: 'PUT',
                                     data: data,
                                     success: function(result){
-                                        veurePelicula(id, genereNom);
+                                        //veurePelicula(id, genereNom);
+                                        socket.emit('votar_peli', id, genereNom);
                                     }
                                 });
                             }
