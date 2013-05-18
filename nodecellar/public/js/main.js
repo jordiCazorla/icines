@@ -10,6 +10,7 @@ $(document).ready(function(){
     }
     globalUser = null;
     bestFilm(5,"best_films");
+    insertGeneresHome();
 });
 
 function compare_film_date(a,b) {
@@ -730,6 +731,7 @@ function veureHome(){
     $('#inici-info').show(); //TODO: revisar si s'ha de canviar per hide
     bestFilm(5,"best_films")
     startAnimation();
+    insertGeneresHome();
 }
 
 function amagar(){
@@ -1704,5 +1706,22 @@ function cartelleraCinema(idCinema){
 
 
 
+    });
+}
+
+function insertGeneresHome(){
+    //generes_home_list
+    $.getJSON('typefilm', function(typefilms) {
+        var randomnumber=Math.floor(Math.random()*typefilms.length);
+        var list = '';
+        for(var i=0; i < 3; i++){
+            if(randomnumber == typefilms.length){
+                randomnumber = 0;
+            }
+            list = list + '<li><a onclick="javascript:veurePelicules(' + "'" + typefilms[randomnumber]._id + "," + typefilms[randomnumber].name + "')" + '">' +
+                typefilms[randomnumber].name  +'</a></li>';
+            randomnumber = randomnumber + 1;
+        }
+        $('#generes_home_list').append(list);
     });
 }
