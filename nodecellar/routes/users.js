@@ -11,10 +11,10 @@ db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'userdb' database");
         db.collection('users', {safe:true}, function(err, collection) {
-            //if (err) {
+            if (err) {
                 console.log("The 'users' collection doesn't exist. Creating it with sample data...");
                 populateDB();
-            //}
+            }
         });
     }
 });
