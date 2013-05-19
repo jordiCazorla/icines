@@ -184,7 +184,7 @@ function crearPelicules(){
             '<input id="new-trailer" class="form-field FBInput"/>' +
             '<br/>' +
             '<label class="form-field FBLabel">Genere:</label>' +
-            '<br/> <select id="new-genere">';
+            '<br/> <select class="form-field FBInput" id="new-genere">';
         for(var i=0; i < data.length; i++){
             item = item + '<option value="' + data[i]._id + '">' + data[i] .name + '</option>';
         }
