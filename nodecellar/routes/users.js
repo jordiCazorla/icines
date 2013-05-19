@@ -134,13 +134,13 @@ var populateDB = function() {
             name: "ivan",
             password: "ivan",
             email: "u1902293@campus.udg.edu",
-            rol: 1
+            rol: 2
         },
         {
             name: "jordi",
             password: "jordi",
             email: "u1901962@campus.udg.edu",
-            rol: 1
+            rol: 2
         }];
 
     db.collection('users', function(err, collection) {
