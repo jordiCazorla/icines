@@ -92,16 +92,67 @@ var populateDB = function() {
 
     var cines = [
         {
-            name: "ocine",
-            direction: "Rambla 11 de setembre",
-            city: "Girona",
-            phone: "972972972",
-            email: "ocine@ocine.com",
-            latitud: "41.992033",
-            longitud: "2.818851",
-            image: "http://www.infovt.com/images/ocine.jpg",
-            vote_sum: 0,
-            votes: 0
+            "name": "ocine",
+            "direction": "Rambla 11 de setembre",
+            "city": "Girona",
+            "phone": "972972972",
+            "email": "ocine@ocine.com",
+            "latitud": "41.992033",
+            "longitud": "2.818851",
+            "image": "http://www.infovt.com/images/ocine.jpg",
+            "vote_sum": 0,
+            "votes": 0,
+            "_id": "5197b257a9d4bb181b00000a"
+        },
+        {
+            "name": "Albèniz Centre",
+            "direction": "Jeroni Real de Fontclara, 2-4",
+            "city": "Girona",
+            "phone": "+34 972410110",
+            "email": "",
+            "latitud": "41.9866366",
+            "longitud": "2.8229851",
+            "_id": "5198df0bb57b81e816000001"
+        },
+        {
+            "name": "Albéniz Plaça",
+            "direction": "Plaça Jordi de Sant Jordi, 1",
+            "city": "Girona",
+            "phone": "+34 972410660",
+            "email": "",
+            "latitud": "41.984864",
+            "longitud": "2.821982",
+            "_id": "5198e17db57b81e816000002"
+        },
+        {
+            "name": "Ocine",
+            "direction": "Carrer Santiago Russinyol, 67",
+            "city": "Platja d'Aro",
+            "phone": "+34 972826697",
+            "email": "",
+            "latitud": "41.805702",
+            "longitud": "3.053991",
+            "_id": "5198e289b57b81e816000003"
+        },
+        {
+            "name": "Cinebox Espai Gironès",
+            "direction": "Camí dels Carlins, s/n",
+            "city": "Salt",
+            "phone": "+34 902463269",
+            "email": "",
+            "latitud": "41.966521",
+            "longitud": "2.781047",
+            "_id": "5198e2eeb57b81e816000004"
+        },
+        {
+            "name": "Cines Figueres",
+            "direction": "Ronda Sud, 23",
+            "city": "Figueres",
+            "phone": "+34 902101008",
+            "email": "",
+            "latitud": "42.261706",
+            "longitud": "2.976487",
+            "_id": "5198e3f6b57b81e816000005"
         }];
 
     db.collection('cines', function(err, collection) {
