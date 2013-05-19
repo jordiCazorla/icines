@@ -247,7 +247,7 @@ function veureEstrenes(){
                     url: "typefilm/"+films_result[i].typeFilm,
                     async: false,
                     success: function(genere){
-
+alert(genere);
                         if(new Date(films_result[i].dataFilm)  < limit_date) fi = true;
                         else llistat_pelis = llistat_pelis + '<li><a class="script_function" onclick="javascript:veurePelicula(\''+films_result[i]._id+'\',\''+genere.name+'\')">' + films_result[i].title + '</a></li>';
 
