@@ -405,7 +405,9 @@ function cartelleraCinema(idCinema){
         $.getJSON('findAllPeliFromCine/' + cinema_result._id, function(cartellera_result){
             for(var bucle = 0; bucle < cartellera_result.length; bucle++){
                 $.getJSON('films/' + cartellera_result[bucle].peli_id, function(pelicula) {
-                    var title = '<div id="cartellera_'+ pelicula._id + '"><h3 id="' + pelicula._id +'">' + pelicula.title + '</h3></div>';
+                    var title = '<div class="cartellera_box" id="cartellera_'+ pelicula._id + '">' +
+                        '<img src="' + pelicula.image + '" style="width: 150px; height: 225px; float: left; margin-right: 5px;"/>' +
+                        '<h3 id="' + pelicula._id +'">' + pelicula.title + '</h3></div>';
                     $('#general_content_cartellera').append(title);
                     $.getJSON('findAllBillboard/' + cinema_result._id + "/" + pelicula._id, function(billboards){
                         for(var billboard_bucle = 0; billboard_bucle < billboards.length; billboard_bucle++){
