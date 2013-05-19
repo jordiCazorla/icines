@@ -536,3 +536,15 @@ a{
 #addComment{
     width: 700px;
 }
+
+.cartellera_box{
+    width: 350px;
+    height: 225px;
+    padding: 10px 0 10px 10px;
+    background-color: #f3f3f3;
+    border: 1px solid #E3E4E4;
+    font-size: 0.75em;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
