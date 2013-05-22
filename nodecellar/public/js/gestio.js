@@ -324,11 +324,15 @@ function editMenuPelicula(id){
             '<br/>' +
             '<label class="form-field FBLabel">Data:</label>' +
             '<br/>' +
-            '<input id="new-data" class="form-field FBInput" value="' + data.dataFilm + '"/>' +
+            '<input type="date" id="new-data" class="form-field FBInput" value="' + data.dataFilm + '"/>' +
             '<br/>' +
             '<label class="form-field FBLabel">Resum:</label>' +
             '<br/>' +
             '<input id="new-review" size="100px" type="text" class="form-field FBInput" value="' + data.review + '"/>' +
+            '<br/>' +
+            '<label class="form-field FBLabel">Imatge:</label>' +
+            '<br/>' +
+            '<input id="new-image" size="100px" type="text" class="form-field FBInput" value="' + data.image + '"/>' +
             '<br/>' +
             '<input id="edit-vote-sum" value=' + data.vote_sum + ' type="hidden" />' +
             '<input id="edit-votes" value=' + data.votes + ' type="hidden" />' +
@@ -370,7 +374,8 @@ function editPelicula(id){
         dataFilm: $('#new-data').val(),
         review: $('#new-review').val(),
         vote_sum: $('#edit-vote-sum').val(),
-        votes: $('#edit-votes').val()
+        votes: $('#edit-votes').val(),
+        image: $('#new-image').val()
     };
     $.ajax({
         url: '/films/' + id,
@@ -455,6 +460,10 @@ function crearMenuCinema(){
         '<br/>' +
         '<input id="new-longitud" class="form-field FBInput"/>' +
         '<br/>' +
+        '<label class="form-field FBLabel">Imatge:</label>' +
+        '<br/>' +
+        '<input id="new-image" size="100px" type="text" class="form-field FBInput"/>' +
+        '<br/>' +
         '<input class="button-login form-field" type="button" value="Nou cinema" onclick="javascript:crearCinema()" style="float: left;   margin-top: 10px; "/>' +
         '<input class="button-login form-field" type="button" value="Cancelar" onclick="javascript:cancelarNouCinema()" style="float: left; margin: 10px 0px 0px 10px"/>' +
         '</div>' +
@@ -471,7 +480,10 @@ function crearCinema(){
         phone: $('#new-phone').val(),
         email: $('#new-email').val(),
         latitud: $('#new-latitud').val(),
-        longitud: $('#new-longitud').val()
+        longitud: $('#new-longitud').val(),
+        "vote_sum": 0,
+        "votes": 0,
+        "image": $('#new-image').val()
     };
 
     $.post("cines",

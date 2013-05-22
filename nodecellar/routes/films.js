@@ -107,13 +107,12 @@ var populateDB = function() {
      "director": "Michael Sucsy",
      "cast": " Rachel McAdams, Channing Tatum, Jessica Lange",
      "trailer": "7JoXHO3ceUY",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-03-23",
      "review": "A car accident puts Paige in a coma, and when she wakes up with severe memory loss, her husband Leo works to win her heart again.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjE1OTU5MjU0N15BMl5BanBnXkFtZTcwMzI3OTU5Ng@@._V1_SX214_.jpg",
-     "_id": "5198e57eb57b81e816000006"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjE1OTU5MjU0N15BMl5BanBnXkFtZTcwMzI3OTU5Ng@@._V1_SX214_.jpg"
      },
      {
      "title": "Querido John",
@@ -122,13 +121,12 @@ var populateDB = function() {
      "director": "Lasse Hallström",
      "cast": " Channing Tatum, Amanda Seyfried, Richard Jenkins",
      "trailer": "NLkTKkNXDp4",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2010-04-23",
      "review": "A romantic drama about a soldier who falls for a conservative college student while he's home on leave.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTk1NDEzMTU5NV5BMl5BanBnXkFtZTcwNTI3MTk5Mg@@._V1_SX214_.jpg",
-     "_id": "5198e5f5b57b81e816000007"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTk1NDEzMTU5NV5BMl5BanBnXkFtZTcwNTI3MTk5Mg@@._V1_SX214_.jpg"
      },
      {
      "title": "El diario de Noa",
@@ -137,13 +135,12 @@ var populateDB = function() {
      "director": "Nick Cassavetes",
      "cast": "Gena Rowlands, James Garner, Ryan Gosling",
      "trailer": "S3G3fILPQAU",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2004-10-22",
      "review": "A poor and passionate young man falls in love with a rich young woman and gives her a sense of freedom. They soon are separated by their social differences.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTk3OTM5Njg5M15BMl5BanBnXkFtZTYwMzA0ODI3._V1_SX214_.jpg",
-     "_id": "5198e666b57b81e816000008"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTk3OTM5Njg5M15BMl5BanBnXkFtZTYwMzA0ODI3._V1_SX214_.jpg"
      },
      {
      "title": "Un lugar donde refugiarse",
@@ -152,13 +149,12 @@ var populateDB = function() {
      "director": "LasseHallström",
      "cast": "Julianne Hough, David Lyons, Josh Duhamel",
      "trailer": "q3y8fFPPgdA",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-04-19",
      "review": "A young woman with a mysterious past lands in Southport, North Carolina where her bond with a widower forces her to confront the dark secret that haunts her.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTg4MzcxODA3OV5BMl5BanBnXkFtZTcwMTYzNDkwOQ@@._V1_SX214_.jpg",
-     "_id": "5198e6d5b57b81e816000009"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTg4MzcxODA3OV5BMl5BanBnXkFtZTcwMTYzNDkwOQ@@._V1_SX214_.jpg"
      },
      {
      "title": "La vida es bella",
@@ -167,13 +163,12 @@ var populateDB = function() {
      "director": "Roberto Benigni, Rod Dean",
      "cast": " Roberto Benigni, Nicoletta Braschi, Giorgio Cantarini",
      "trailer": "pysuUJhOnv4",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "1999-02-26",
      "review": "A Jewish man has a wonderful romance with the help of his humour, but must use that same quality to protect his son in a Nazi death camp.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTM3NDg0OTkxOV5BMl5BanBnXkFtZTcwMTk2NzIyMQ@@._V1_SY317_CR4,0,214,317_.jpg",
-     "_id": "5198e80db57b81e81600000a"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTM3NDg0OTkxOV5BMl5BanBnXkFtZTcwMTk2NzIyMQ@@._V1_SY317_CR4,0,214,317_.jpg"
      },
      {
      "title": "La última canción",
@@ -182,13 +177,12 @@ var populateDB = function() {
      "director": "Julie Anne Robinson",
      "cast": "Miley Cyrus, Greg Kinnear, Bobby Coleman",
      "trailer": "WwLmQqRanvM",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2010-04-16",
      "review": "A drama centered on a rebellious girl who is sent to a Southern beach town for the summer to stay with her father. Through their mutual love of music, the estranged duo learn to reconnect.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjA5NjM5MDA0M15BMl5BanBnXkFtZTcwMjg2NzQwMw@@._V1_SX214_.jpg",
-     "_id": "5198e87bb57b81e81600000b"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjA5NjM5MDA0M15BMl5BanBnXkFtZTcwMjg2NzQwMw@@._V1_SX214_.jpg"
      },
      {
      "title": "Efectos secundarios",
@@ -197,13 +191,12 @@ var populateDB = function() {
      "director": "Steven Soderbergh",
      "cast": "Rooney Mara, Channing Tatum, Jude Law",
      "trailer": "EFEou3MBLi4",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-04-05",
      "review": "A young woman's world unravels when a drug prescribed by her psychiatrist has unexpected side effects.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTc2MzY0NDAwOF5BMl5BanBnXkFtZTcwMTE1Mzc4OA@@._V1_SY317_CR0,0,214,317_.jpg",
-     "_id": "5198e90eb57b81e81600000c"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTc2MzY0NDAwOF5BMl5BanBnXkFtZTcwMTE1Mzc4OA@@._V1_SY317_CR0,0,214,317_.jpg"
      },
      {
      "title": "El lado bueno de las cosas",
@@ -212,13 +205,12 @@ var populateDB = function() {
      "director": "David O. Russell",
      "cast": "Bradley Cooper, Jennifer Lawrence, Robert De Niro",
      "trailer": "Lj5_FhLaaQQ",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-01-25",
      "review": "After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTM2MTI5NzA3MF5BMl5BanBnXkFtZTcwODExNTc0OA@@._V1_SX214_.jpg",
-     "_id": "5198e963b57b81e81600000d"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTM2MTI5NzA3MF5BMl5BanBnXkFtZTcwODExNTc0OA@@._V1_SX214_.jpg"
      },
      {
      "title": "Cruce de caminos",
@@ -227,13 +219,12 @@ var populateDB = function() {
      "director": "Derek Cianfrance",
      "cast": " Ryan Gosling, Eva Mendes, Anthony Pizza",
      "trailer": "G07pSbHLXgg",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-03-29",
      "review": "A motorcycle stunt rider turns to robbing banks as a way to provide for his lover and their newborn child, a decision that puts him on a collision course with an ambitious rookie cop navigating a department ruled by a corrupt detective.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjc1OTEwNjU4N15BMl5BanBnXkFtZTcwNzUzNDIwOQ@@._V1_SX214_.jpg",
-     "_id": "5198e9abb57b81e81600000e"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjc1OTEwNjU4N15BMl5BanBnXkFtZTcwNzUzNDIwOQ@@._V1_SX214_.jpg"
      },
      {
      "title": "Los miserables",
@@ -242,13 +233,12 @@ var populateDB = function() {
      "director": "Tom Hooper",
      "cast": "Hugh Jackman, Russell Crowe, Anne Hathaway",
      "trailer": "IuEFm84s4oI",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-12-25",
      "review": "In 19th-century France, Jean Valjean, who for decades has been hunted by the ruthless policeman Javert after he breaks parole, agrees to care for factory worker Fantine's daughter, Cosette. The fateful decision changes their lives forever.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTQ4NDI3NDg4M15BMl5BanBnXkFtZTcwMjY5OTI1OA@@._V1_SX214_.jpg",
-     "_id": "5198e9efb57b81e81600000f"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTQ4NDI3NDg4M15BMl5BanBnXkFtZTcwMjY5OTI1OA@@._V1_SX214_.jpg"
      },
      {
      "title": "Lo imposible",
@@ -257,13 +247,12 @@ var populateDB = function() {
      "director": "Juan Antonio Bayona",
      "cast": "Naomi Watts, Ewan McGregor, Tom Holland ",
      "trailer": "gfve6tSfMXA",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-10-11",
      "review": "The story of a tourist family in Thailand caught in the destruction and chaotic aftermath of the 2004 Indian Ocean tsunami.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjA5NTA3NzQ5Nl5BMl5BanBnXkFtZTcwOTYxNjY0OA@@._V1_SX214_.jpg",
-     "_id": "5198ea6cb57b81e816000010"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjA5NTA3NzQ5Nl5BMl5BanBnXkFtZTcwOTYxNjY0OA@@._V1_SX214_.jpg"
      },
      {
      "title": "Argo",
@@ -272,13 +261,12 @@ var populateDB = function() {
      "director": "Ben Affleck",
      "cast": "Ben Affleck, Bryan Cranston, Alan Arkin",
      "trailer": "w918Eh3fij0",
-     "typeFilm": "5197b257a9d4bb181b000006",
+     "typeFilm": "519b9b414195bc5c17000006",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-10-26",
      "review": "A dramatization of the 1980 joint CIA-Canadian secret operation to extract six fugitive American diplomatic personnel out of revolutionary Iran.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTc3MjI0MjM0NF5BMl5BanBnXkFtZTcwMTYxMTQ1OA@@._V1_SY317_CR0,0,214,317_.jpg",
-     "_id": "5198eadbb57b81e816000011"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTc3MjI0MjM0NF5BMl5BanBnXkFtZTcwMTYxMTQ1OA@@._V1_SY317_CR0,0,214,317_.jpg"
      },
      {
      "title": "Iron Man 3",
@@ -287,13 +275,12 @@ var populateDB = function() {
      "director": "Shane Black",
      "cast": "Robert Downey Jr., Gwyneth Paltrow, Don Cheadle",
      "trailer": "AtYYj2FF9Jw",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-04-26",
      "review": "When Tony Stark's world is torn apart by a formidable terrorist called the Mandarin, he starts an odyssey of rebuilding and retribution.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjIzMzAzMjQyM15BMl5BanBnXkFtZTcwNzM2NjcyOQ@@._V1_SX214_.jpg",
-     "_id": "5198ecb1b57b81e816000012"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjIzMzAzMjQyM15BMl5BanBnXkFtZTcwNzM2NjcyOQ@@._V1_SX214_.jpg"
      },
      {
      "title": "Los vengadores",
@@ -302,13 +289,12 @@ var populateDB = function() {
      "director": "Joss Whedon",
      "cast": "Robert Downey Jr., Chris Evans, Scarlett Johansson",
      "trailer": "eOrNdBpGMv8",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-04-27",
      "review": "Nick Fury of S.H.I.E.L.D. brings together a team of super humans to form The Avengers to help save the Earth from Loki and his army.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTk2NTI1MTU4N15BMl5BanBnXkFtZTcwODg0OTY0Nw@@._V1_SY317_CR0,0,214,317_.jpg",
-     "_id": "5198ed43b57b81e816000013"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTk2NTI1MTU4N15BMl5BanBnXkFtZTcwODg0OTY0Nw@@._V1_SY317_CR0,0,214,317_.jpg"
      },
      {
      "title": "Brigada de élite",
@@ -317,13 +303,12 @@ var populateDB = function() {
      "director": "Ruben Fleischer",
      "cast": " Sean Penn, Ryan Gosling, Emma Stone",
      "trailer": "qilrVR0miPU",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-02-08",
      "review": "Los Angeles, 1949: A secret crew of police officers led by two determined sergeants work together in an effort to take down the ruthless mob king Mickey Cohen who runs the city.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTcwMjAyMTUzMl5BMl5BanBnXkFtZTcwODgxNzk1OA@@._V1_SY317_CR0,0,214,317_.jpg",
-     "_id": "5198edbab57b81e816000014"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTcwMjAyMTUzMl5BMl5BanBnXkFtZTcwODgxNzk1OA@@._V1_SY317_CR0,0,214,317_.jpg"
      },
      {
      "title": "Iron Man",
@@ -332,13 +317,12 @@ var populateDB = function() {
      "director": "Jon Favreau",
      "cast": "Robert Downey Jr., Terrence Howard, Jeff Bridges",
      "trailer": "8hYlB38asDY",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2008-04-30",
      "review": "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX214_.jpg",
-     "_id": "5198ee06b57b81e816000015"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX214_.jpg"
      },
      {
      "title": "xXx",
@@ -347,13 +331,12 @@ var populateDB = function() {
      "director": "Rob Cohen",
      "cast": " Vin Diesel, Asia Argento, Marton Csokas",
      "trailer": "77ugzcqPoAI",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2002-10-18",
      "review": "ander Cage is an extreme sports athelete recruited by the government on a special mission.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTIyOTM5MzkzMF5BMl5BanBnXkFtZTYwOTk5OTc5._V1_SY317_CR3,0,214,317_.jpg",
-     "_id": "5198ee7eb57b81e816000016"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTIyOTM5MzkzMF5BMl5BanBnXkFtZTYwOTk5OTc5._V1_SY317_CR3,0,214,317_.jpg"
      },
      {
      "title": "Los juegos del hambre",
@@ -362,13 +345,12 @@ var populateDB = function() {
      "director": "Gary Ross",
      "cast": "Stanley Tucci, Jennifer Lawrence, Liam Hemsworth",
      "trailer": "SMGRhAEn6K0",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-04-20",
      "review": "Katniss Everdeen voluntarily takes her younger sister's place in the Hunger Games, a televised fight to the death in which two teenagers from each of the twelve Districts of Panem are chosen at random to compete.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjA4NDg3NzYxMF5BMl5BanBnXkFtZTcwNTgyNzkyNw@@._V1_SX214_.jpg",
-     "_id": "5198eecfb57b81e816000017"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjA4NDg3NzYxMF5BMl5BanBnXkFtZTcwNTgyNzkyNw@@._V1_SX214_.jpg"
      },
      {
      "title": "El caballero oscuro: La leyenda renace",
@@ -377,13 +359,12 @@ var populateDB = function() {
      "director": "Christopher Nolan",
      "cast": "Christian Bale, Gary Oldman, Tom Hardy",
      "trailer": "g8evyE9TuYk",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-07-20",
      "review": "Eight years on, a new evil rises from where the Batman and Commissioner Gordon tried to bury it, causing the Batman to resurface and fight to protect Gotham City... the very city which brands him an enemy.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_SX214_.jpg",
-     "_id": "5198ef1fb57b81e816000018"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_SX214_.jpg"
      },
      {
      "title": "Looper",
@@ -392,13 +373,12 @@ var populateDB = function() {
      "director": "Rian Johnson",
      "cast": "Joseph Gordon-Levitt, Bruce Willis, Emily Blunt",
      "trailer": "2iQuhsmtfHw",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-10-19",
      "review": "In 2074, when the mob wants to get rid of someone, the target is sent 30 years into the past, where a hired gun awaits. Someone like Joe, who one day learns the mob wants to 'close the loop' by transporting back Joe's future self.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTY3NTY0MjEwNV5BMl5BanBnXkFtZTcwNTE3NDA1OA@@._V1_SY317_CR15,0,214,317_.jpg",
-     "_id": "5198ef72b57b81e816000019"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTY3NTY0MjEwNV5BMl5BanBnXkFtZTcwNTE3NDA1OA@@._V1_SY317_CR15,0,214,317_.jpg"
      },
      {
      "title": "Star Trek",
@@ -407,13 +387,12 @@ var populateDB = function() {
      "director": " J.J. Abrams",
      "cast": "Chris Pine, Zachary Quinto, Leonard Nimoy",
      "trailer": "fdneFmLn0Sg",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2009-05-08",
      "review": "The brash James T. Kirk tries to live up to his father's legacy with Mr. Spock keeping him in check as a vengeful, time-traveling Romulan creates black holes to destroy the Federation one planet at a time.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjE5NDQ5OTE4Ml5BMl5BanBnXkFtZTcwOTE3NDIzMw@@._V1_SX214_.jpg",
-     "_id": "5198efd1b57b81e81600001a"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjE5NDQ5OTE4Ml5BMl5BanBnXkFtZTcwOTE3NDIzMw@@._V1_SX214_.jpg"
      },
      {
      "title": "Oblivion",
@@ -422,13 +401,12 @@ var populateDB = function() {
      "director": " Joseph Kosinski",
      "cast": "Tom Cruise, Morgan Freeman, Olga Kurylenko",
      "trailer": "dQ3Mt9yiz6k",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-04-12",
      "review": "A veteran assigned to extract Earth's remaining resources begins to question what he knows about his mission and himself.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTQwMDY0MTA4MF5BMl5BanBnXkFtZTcwNzI3MDgxOQ@@._V1_SX214_.jpg",
-     "_id": "5198f03bb57b81e81600001b"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTQwMDY0MTA4MF5BMl5BanBnXkFtZTcwNzI3MDgxOQ@@._V1_SX214_.jpg"
      },
      {
      "title": "A todo gas 6",
@@ -437,13 +415,12 @@ var populateDB = function() {
      "director": "Justin Lin",
      "cast": " Dwayne Johnson, Vin Diesel, Paul Walker",
      "trailer": "C_puVuHoR6o",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-05-24",
      "review": "Agent Luke Hobbs enlists Dominic Toretto and his team to bring down former Special Ops soldier Owen Shaw, leader of a unit specializing in vehicular warfare.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTM3NTg2NDQzOF5BMl5BanBnXkFtZTcwNjc2NzQzOQ@@._V1_SX214_.jpg",
-     "_id": "5198f0abb57b81e81600001c"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTM3NTg2NDQzOF5BMl5BanBnXkFtZTcwNjc2NzQzOQ@@._V1_SX214_.jpg"
      },
      {
      "title": "El hombre de acero",
@@ -452,13 +429,12 @@ var populateDB = function() {
      "director": "Zack Snyder",
      "cast": "Henry Cavill, Amy Adams, Russell Crowe",
      "trailer": "T6DJcgm3wNY",
-     "typeFilm": "5197b257a9d4bb181b000004",
+     "typeFilm": "519b9b414195bc5c17000004",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-06-21",
      "review": "A young journalist is forced to confront his secret extraterrestrial heritage when Earth is invaded by members of his race.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjI5OTYzNjI0Ml5BMl5BanBnXkFtZTcwMzM1NDA1OQ@@._V1_SY317_CR1,0,214,317_.jpg",
-     "_id": "5198f0f2b57b81e81600001d"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjI5OTYzNjI0Ml5BMl5BanBnXkFtZTcwMzM1NDA1OQ@@._V1_SY317_CR1,0,214,317_.jpg"
      },
      {
      "title": "¡Rompe Ralph!",
@@ -467,51 +443,47 @@ var populateDB = function() {
      "director": "Rich Moore",
      "cast": "John C. Reilly, Sarah Silverman, Jack McBrayer ",
      "trailer": "87E6N7ToCxs",
-     "typeFilm": "5197b257a9d4bb181b000007",
+     "typeFilm": "519b9b414195bc5c17000007",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-12-25",
      "review": "A video game villain wants to be a hero and sets out to fulfill his dream, but his quest brings havoc to the whole arcade where he lives.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BNzMxNTExOTkyMF5BMl5BanBnXkFtZTcwMzEyNDc0OA@@._V1_SX214_.jpg",
-     "_id": "5199036cb57b81e81600001e"
+     "image": "http://ia.media-imdb.com/images/M/MV5BNzMxNTExOTkyMF5BMl5BanBnXkFtZTcwMzEyNDc0OA@@._V1_SX214_.jpg"
      },
      {
-     "_id": "519903d1b57b81e81600001f",
      "title": "Epic: El reino secreto",
      "original_title": "Epic",
      "duration": "102",
      "director": "Chris Wedge",
      "cast": "Colin Farrell, Josh Hutcherson, Beyoncé Knowles",
      "trailer": "iUdeQiQejyg",
-     "typeFilm": "5197b257a9d4bb181b000007",
+     "typeFilm": "519b9b414195bc5c17000007",
      "dataFilm": "2013-08-30",
      "review": "A teenager finds herself transported to a deep forest setting where a battle between the forces of good and the forces of evil is taking place. She bands together with a rag-tag group characters in order to save their world -- and ours.",
      "vote_sum": "0",
      "votes": "0"
      },
      {
-     "_id": "51990425b57b81e816000020",
      "title": "Los increíbles",
      "original_title": "The Incredibles",
      "duration": "115",
      "director": "Brad Bird",
      "cast": " Craig T. Nelson, Holly Hunter, Samuel L. Jackson",
      "trailer": "eZbzbC9285I",
-     "typeFilm": "5197b257a9d4bb181b000007",
+     "typeFilm": "519b9b414195bc5c17000007",
      "dataFilm": "2004-11-26",
      "review": "A family of undercover superheroes, while trying to live the quiet suburban life, are forced into action to save the world.",
      "vote_sum": "0",
      "votes": "0"
      },
      {
-     "_id": "5199046fb57b81e816000021",
      "title": "Indomable",
      "original_title": "Brave",
      "duration": "93",
      "director": "Mark Andrews, Brenda Chapman",
      "cast": " Kelly Macdonald, Billy Connolly, Emma Thompson",
      "trailer": "0gc36idTb3c",
-     "typeFilm": "5197b257a9d4bb181b000007",
+     "typeFilm": "519b9b414195bc5c17000007",
      "dataFilm": "2012-08-10",
      "review": "Determined to make her own path in life, Princess Merida defies a custom that brings chaos to her kingdom. Granted one wish, Merida must rely on her bravery and her archery skills to undo a beastly curse.",
      "vote_sum": "0",
@@ -524,13 +496,12 @@ var populateDB = function() {
      "director": "Roger Allers, Rob Minkoff",
      "cast": "Matthew Broderick, James Earl Jones, Jeremy Irons",
      "trailer": "jOIu472cCq0",
-     "typeFilm": "5197b257a9d4bb181b000007",
+     "typeFilm": "519b9b414195bc5c17000007",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "1994-11-08",
      "review": "Tricked into thinking he killed his father, a guilt ridden lion cub flees into exile and abandons his identity as the future King.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjEyMzgwNTUzMl5BMl5BanBnXkFtZTcwNTMxMzM3Ng@@._V1_SY317_CR15,0,214,317_.jpg",
-     "_id": "519904ffb57b81e816000022"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjEyMzgwNTUzMl5BMl5BanBnXkFtZTcwNTMxMzM3Ng@@._V1_SY317_CR15,0,214,317_.jpg"
      },
      {
      "title": "Enredados",
@@ -539,13 +510,12 @@ var populateDB = function() {
      "director": "Nathan Greno, Byron Howard",
      "cast": "Mandy Moore, Zachary Levi, Donna Murphy ",
      "trailer": "sSx1dYJlJh4",
-     "typeFilm": "5197b257a9d4bb181b000007",
+     "typeFilm": "519b9b414195bc5c17000007",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2011-02-04",
      "review": "The magically long-haired Rapunzel has spent her entire life in a tower, but now that a runaway thief has stumbled upon her, she is about to discover the world for the first time, and who she really is.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjA5NzMwMjA0OV5BMl5BanBnXkFtZTcwNDMzMzc5Mw@@._V1_SX214_.jpg",
-     "_id": "51990565b57b81e816000023"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjA5NzMwMjA0OV5BMl5BanBnXkFtZTcwNDMzMzc5Mw@@._V1_SX214_.jpg"
      },
      {
      "title": "Ted",
@@ -554,13 +524,12 @@ var populateDB = function() {
      "director": "Seth MacFarlane",
      "cast": " Mark Wahlberg, Mila Kunis, Seth MacFarlane",
      "trailer": "9fbo_pQvU7M",
-     "typeFilm": "5197b257a9d4bb181b000005",
+     "typeFilm": "519b9b414195bc5c17000005",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-08-10",
      "review": "As the result of a childhood wish, John Bennett's teddy bear, Ted, came to life and has been by John's side ever since - a friendship that's tested when Lori, John's girlfriend of four years, wants more from their relationship.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTQ1OTU0ODcxMV5BMl5BanBnXkFtZTcwOTMxNTUwOA@@._V1_SX214_.jpg",
-     "_id": "5199061db57b81e816000024"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTQ1OTU0ODcxMV5BMl5BanBnXkFtZTcwOTMxNTUwOA@@._V1_SX214_.jpg"
      },
      {
      "title": "Scary Movie 5",
@@ -569,13 +538,12 @@ var populateDB = function() {
      "director": "Malcolm D. Lee",
      "cast": "Ashley Tisdale, Simon Rex, Charlie Sheen",
      "trailer": "RMDZ8M47j0I",
-     "typeFilm": "5197b257a9d4bb181b000005",
+     "typeFilm": "519b9b414195bc5c17000005",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-05-01",
      "review": "A couple begin to experience some unusual activity after bringing their newborn son home from the hospital. With the help of home-surveillance cameras and a team of experts, they learn they're being stalked by a nefarious demon.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTc5OTIxMjQ4NF5BMl5BanBnXkFtZTcwOTAyNDcyOQ@@._V1_SY317_CR0,0,214,317_.jpg",
-     "_id": "519906c2b57b81e816000025"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTc5OTIxMjQ4NF5BMl5BanBnXkFtZTcwOTAyNDcyOQ@@._V1_SY317_CR0,0,214,317_.jpg"
      },
      {
      "title": "Intocable",
@@ -584,13 +552,12 @@ var populateDB = function() {
      "director": " Olivier Nakache, Eric Toledano",
      "cast": " François Cluzet, Omar Sy, Anne Le Ny",
      "trailer": "34WIbmXkewU",
-     "typeFilm": "5197b257a9d4bb181b000005",
+     "typeFilm": "519b9b414195bc5c17000005",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-03-09",
      "review": "After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caretaker.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTYxNDA3MDQwNl5BMl5BanBnXkFtZTcwNTU4Mzc1Nw@@._V1_SX214_.jpg",
-     "_id": "5199070cb57b81e816000026"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTYxNDA3MDQwNl5BMl5BanBnXkFtZTcwNTU4Mzc1Nw@@._V1_SX214_.jpg"
      },
      {
      "title": "Memorias de un zombie adolescente",
@@ -599,13 +566,12 @@ var populateDB = function() {
      "director": "Jonathan Levine",
      "cast": " Nicholas Hoult, Teresa Palmer, Analeigh Tipton",
      "trailer": "07s-cNFffDM",
-     "typeFilm": "5197b257a9d4bb181b000005",
+     "typeFilm": "519b9b414195bc5c17000005",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-04-19",
      "review": "After R (a highly unusual zombie) saves Julie from an attack, the two form a relationship that sets in motion a sequence of events that might transform the entire lifeless world.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTQ4MjY2MjMzOV5BMl5BanBnXkFtZTcwMDUxNzIwOQ@@._V1_SX214_.jpg",
-     "_id": "51990776b57b81e816000027"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTQ4MjY2MjMzOV5BMl5BanBnXkFtZTcwMDUxNzIwOQ@@._V1_SX214_.jpg"
      },
      {
      "title": "Por la cara",
@@ -614,13 +580,12 @@ var populateDB = function() {
      "director": "Seth Gordon",
      "cast": " Jason Bateman, Melissa McCarthy, Amanda Peet",
      "trailer": "GqQg6Rlt6W4",
-     "typeFilm": "5197b257a9d4bb181b000005",
+     "typeFilm": "519b9b414195bc5c17000005",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-03-22",
      "review": "Mild-mannered businessman Sandy Patterson travels from Denver to Miami to confront the deceptively harmless-looking woman who has been living it up after stealing Sandy's identity.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTY3NzM5MTk2Nl5BMl5BanBnXkFtZTcwMDQ4MjQ3OA@@._V1_SX214_.jpg",
-     "_id": "519907d1b57b81e816000028"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTY3NzM5MTk2Nl5BMl5BanBnXkFtZTcwMDQ4MjQ3OA@@._V1_SX214_.jpg"
      },
      {
      "title": "Resacón en Las Vegas",
@@ -629,13 +594,12 @@ var populateDB = function() {
      "director": "Todd Phillips",
      "cast": "Bradley Cooper, Ed Helms, Zach Galifianakis",
      "trailer": "vhFVZsk3XEs",
-     "typeFilm": "5197b257a9d4bb181b000005",
+     "typeFilm": "519b9b414195bc5c17000005",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2009-08-14",
      "review": "A Las Vegas-set comedy centered around three groomsmen who lose their about-to-be-wed buddy during their drunken misadventures, then must retrace their steps in order to find him.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTU1MDA1MTYwMF5BMl5BanBnXkFtZTcwMDcxMzA1Mg@@._V1_SX214_.jpg",
-     "_id": "51990811b57b81e816000029"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTU1MDA1MTYwMF5BMl5BanBnXkFtZTcwMDcxMzA1Mg@@._V1_SX214_.jpg"
      },
      {
      "title": "Gravity",
@@ -644,13 +608,12 @@ var populateDB = function() {
      "director": "Alfonso Cuarón",
      "cast": " Sandra Bullock, George Clooney, Basher Savage",
      "trailer": "rjb0kD-yht4",
-     "typeFilm": "5197b257a9d4bb181b000008",
+     "typeFilm": "519b9b414195bc5c17000008",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-10-04",
      "review": "Astronauts attempt to return to earth after debris crashes into their space shuttle, leaving them drifting alone in space.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BNjE5MzYwMzYxMF5BMl5BanBnXkFtZTcwOTk4MTk0OQ@@._V1_SY317_CR0,0,214,317_.jpg",
-     "_id": "51990a3cb57b81e81600002a"
+     "image": "http://ia.media-imdb.com/images/M/MV5BNjE5MzYwMzYxMF5BMl5BanBnXkFtZTcwOTk4MTk0OQ@@._V1_SY317_CR0,0,214,317_.jpg"
      },
      {
      "title": "Prometheus",
@@ -659,13 +622,12 @@ var populateDB = function() {
      "director": "Ridley Scott",
      "cast": "Noomi Rapace, Michael Fassbender, Charlize Theron",
      "trailer": "sftuxbvGwiU",
-     "typeFilm": "5197b257a9d4bb181b000008",
+     "typeFilm": "519b9b414195bc5c17000008",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-08-03",
      "review": "A team of explorers discover a clue to the origins of mankind on Earth, leading them on a journey to the darkest corners of the universe. There, they must fight a terrifying battle to save the future of the human race.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTY3NzIyNTA2NV5BMl5BanBnXkFtZTcwNzE2NjI4Nw@@._V1_SX214_.jpg",
-     "_id": "51990ab0b57b81e81600002b"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTY3NzIyNTA2NV5BMl5BanBnXkFtZTcwNzE2NjI4Nw@@._V1_SX214_.jpg"
      },
      {
      "title": "El atlas de las nubes ",
@@ -674,13 +636,12 @@ var populateDB = function() {
      "director": "Tom Tykwer, Andy Wachowski",
      "cast": "Tom Hanks, Halle Berry, Hugo Weaving",
      "trailer": "hWnAqFyaQ5s",
-     "typeFilm": "5197b257a9d4bb181b000008",
+     "typeFilm": "519b9b414195bc5c17000008",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-02-22",
      "review": "An exploration of how the actions of individual lives impact one another in the past, present and future, as one soul is shaped from a killer into a hero, and an act of kindness ripples across centuries to inspire a revolution.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTczMTgxMjc4NF5BMl5BanBnXkFtZTcwNjM5MTA2OA@@._V1_SX214_.jpg",
-     "_id": "51990af6b57b81e81600002c"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTczMTgxMjc4NF5BMl5BanBnXkFtZTcwNjM5MTA2OA@@._V1_SX214_.jpg"
      },
      {
      "title": "Origen",
@@ -689,13 +650,12 @@ var populateDB = function() {
      "director": "Christopher Nolan",
      "cast": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page",
      "trailer": "66TuSJo4dZM",
-     "typeFilm": "5197b257a9d4bb181b000008",
+     "typeFilm": "519b9b414195bc5c17000008",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2010-08-06",
      "review": "A skilled extractor is offered a chance to regain his old life as payment for a task considered to be impossible.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX214_.jpg",
-     "_id": "51990b53b57b81e81600002d"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX214_.jpg"
      },
      {
      "title": "The Collection ",
@@ -704,13 +664,12 @@ var populateDB = function() {
      "director": "Marcus Dunstan",
      "cast": " Josh Stewart, Emma Fitzpatrick, Christopher McDonald",
      "trailer": "n08aIH-Bhcc",
-     "typeFilm": "5197b257a9d4bb181b000009",
+     "typeFilm": "519b9b414195bc5c17000009",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2013-07-05",
      "review": "A man who escapes from the vicious grips of the serial killer known as \"The Collector\" is blackmailed to rescue an innocent girl from the killer's booby-trapped warehouse.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BODQ0MDgzNDA0NV5BMl5BanBnXkFtZTcwNDM4MDQ1OA@@._V1_SX214_.jpg",
-     "_id": "51990bfeb57b81e81600002e"
+     "image": "http://ia.media-imdb.com/images/M/MV5BODQ0MDgzNDA0NV5BMl5BanBnXkFtZTcwNDM4MDQ1OA@@._V1_SX214_.jpg"
      },
      {
      "title": "El Hobbit: Un viaje inesperado",
@@ -719,13 +678,12 @@ var populateDB = function() {
      "director": "Peter Jackson",
      "cast": " Ian McKellen, Martin Freeman, Richard Armitage",
      "trailer": "SDnYMbYB-nU",
-     "typeFilm": "5197b257a9d4bb181b000009",
+     "typeFilm": "519b9b414195bc5c17000009",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2012-12-14",
      "review": "A younger and more reluctant Hobbit, Bilbo Baggins, sets out on an \"unexpected journey\" to the Lonely Mountain with a spirited group of Dwarves to reclaim their stolen mountain home from a dragon named Smaug.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX214_.jpg",
-     "_id": "51990c40b57b81e81600002f"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX214_.jpg"
      },
      {
      "title": "Memento",
@@ -734,13 +692,12 @@ var populateDB = function() {
      "director": "Christopher Nolan",
      "cast": "Guy Pearce, Carrie-Anne Moss, Joe Pantoliano",
      "trailer": "mV9l1enMqvk",
-     "typeFilm": "5197b257a9d4bb181b000009",
+     "typeFilm": "519b9b414195bc5c17000009",
      "vote_sum": "0",
      "votes": "0",
      "dataFilm": "2001-01-19",
      "review": "A man, suffering from short-term memory loss, uses notes and tattoos to hunt for the man he thinks killed his wife.",
-     "image": "http://ia.media-imdb.com/images/M/MV5BMjA3MTkzMzI3N15BMl5BanBnXkFtZTcwNzYwMzQ4MQ@@._V1_SX214_.jpg",
-     "_id": "51990c94b57b81e816000030"
+     "image": "http://ia.media-imdb.com/images/M/MV5BMjA3MTkzMzI3N15BMl5BanBnXkFtZTcwNzYwMzQ4MQ@@._V1_SX214_.jpg"
      }];
 
     db.collection('films', function(err, collection) {

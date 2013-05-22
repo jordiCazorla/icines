@@ -110,8 +110,9 @@ function veurePelicula(peliculaId, genereNom){
 
         llistat = '<div id="inici-pelicula">' +
             '<div class="breadcrumb">' +
-            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> > <a class="active2" onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a>' +
-            '</div>';
+            '<a onclick="javascript:veureHome()" style="cursor: pointer;">Home</a> > <a onclick="javascript:veureGeneres()">Pel·lícules</a> ';
+            llistat = llistat + (genereNom != 'undefined'? ' > <a class="active2" onclick="javascript:veurePelicules(\''+film.typeFilm+'\',\''+genereNom+'\')">'+genereNom+'</a>' : '');
+            llistat = llistat +'</div>';
 
         llistat = llistat + '<div class="pelicula">' +
             '<div class="pelicula-image"><img height="325" width="220" src="'+film.image+'"/></div>' +
@@ -218,7 +219,7 @@ function veureEstrenes(){
     llistat = llistat +
         '<div class="menu-conent-boxes">' +
         '<div class="box" id="first">' +
-        '<h3 class="title-box">Estrenes de la setmana</h3>' +
+        '<h3 class="title-box" style="text-decoration: underline; font-weight: bold;">Estrenes de la setmana</h3>' +
         '<div class="film_list" id="estrenes"></div>' +
         '</div>' +
         '</div>' +
@@ -338,12 +339,12 @@ function bestCinema(numberCinemes, div_id){
             }
             llistat_cines = llistat_cines + '<ol>';
             if(cines_result.length > 1){
-                llistat_cines.sort(compare_film_rating);
+                cines_result.sort(compare_film_rating);
                 for(var z = 0; z < max; z++){
-                    llistat_cines = llistat_cines + '<li>' + cines_result[z].name + '</li>';
+                    llistat_cines = llistat_cines + '<li><a class="script_function" onclick="javascript:veureCine(\''+cines_result[z]._id+'\',\''+cines_result[z].name+'\')">' + cines_result[z].name + '</a></li>';
                 }
             }else{
-                llistat_cines = llistat_cines + '<li>' + cines_result[0].name + '</li>';
+                llistat_cines = llistat_cines + '<li><a class="script_function" onclick="javascript:veureCine(\''+cines_result[0]._id+'\',\''+cines_result[0].name+'\')">' + cines_result[0].name + '</a></li>';
             }
             llistat_cines = llistat_cines + '</ol>';
             $('#'+div_id).append(llistat_cines);
@@ -403,21 +404,26 @@ function cartelleraCinema(idCinema){
         llistat = llistat + '<div id="general_content_cartellera"></div>';
 
         $.getJSON('findAllPeliFromCine/' + cinema_result._id, function(cartellera_result){
+            var currentFilmId = '';
             for(var bucle = 0; bucle < cartellera_result.length; bucle++){
-                $.getJSON('films/' + cartellera_result[bucle].peli_id, function(pelicula) {
-                    var title = '<div class="cartellera_box" id="cartellera_'+ pelicula._id + '">' +
-                        '<img src="' + pelicula.image + '" style="width: 150px; height: 225px; float: left; margin-right: 5px;"/>' +
-                        '<h3 id="' + pelicula._id +'">' + pelicula.title + '</h3></div>';
-                    $('#general_content_cartellera').append(title);
-                    $.getJSON('findAllBillboard/' + cinema_result._id + "/" + pelicula._id, function(billboards){
-                        for(var billboard_bucle = 0; billboard_bucle < billboards.length; billboard_bucle++){
-                            $.getJSON('timetable/' + billboards[billboard_bucle].timetable_id, function(time){
-                                var temps = '<li>' + time.time +'</li>';
-                                $('#cartellera_'+pelicula._id).append(temps);
-                            });
-                        }
+                if(currentFilmId != cartellera_result[bucle].peli_id){
+                    currentFilmId = cartellera_result[bucle].peli_id;
+                    $.getJSON('films/' + cartellera_result[bucle].peli_id, function(pelicula) {
+                        var genereNom;
+                        var title = '<div class="cartellera_box" id="cartellera_'+ pelicula._id + '">' +
+                            '<img src="' + pelicula.image + '" style="width: 150px; height: 225px; float: left; margin-right: 5px;"/>' +
+                            '<h3 id="' + pelicula._id +'"><a class="script_function" onclick="javascript:veurePelicula(\''+pelicula._id+'\',\''+genereNom+'\')">' + pelicula.title + '</a></h3></div>';
+                        $('#general_content_cartellera').append(title);
+                        $.getJSON('findAllBillboard/' + cinema_result._id + "/" + pelicula._id, function(billboards){
+                            for(var billboard_bucle = 0; billboard_bucle < billboards.length; billboard_bucle++){
+                                $.getJSON('timetable/' + billboards[billboard_bucle].timetable_id, function(time){
+                                    var temps = '<li>' + time.time +'</li>';
+                                    $('#cartellera_'+pelicula._id).append(temps);
+                                });
+                            }
+                        });
                     });
-                });
+                }
             }
         });
         $('#main').append(llistat);
