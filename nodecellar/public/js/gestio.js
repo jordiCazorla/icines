@@ -565,6 +565,8 @@ function editMenuCinema(id){
             '<br/>' +
             '<input id="new-image" class="form-field FBInput" value="' + data.image + '"/>' +
             '</br>' +
+            '<input id="edit-vote-sum" value=' + data.vote_sum + ' type="hidden" />' +
+            '<input id="edit-votes" value=' + data.votes + ' type="hidden" />' +
             '<input class="button-login" type="button" value="Editar" onclick="javascript:editCinema(' +
             "'" + data._id + "'" + ')" style="float: left;   margin-top: 10px; margin-left: 50px;"/>' +
             '<input class="button-login" type="button" value="Torna enrere" onclick="javascript:detallCinema(' +
@@ -583,7 +585,9 @@ function editCinema(id){
         email: $('#new-email').val(),
         latitud: $('#new-latitud').val(),
         longitud: $('#new-longitud').val(),
-        image: $('#new-image').val()
+        image: $('#new-image').val(),
+        vote_sum: $('#edit-vote-sum').val(),
+        votes: $('#edit-votes').val()
     };
     $.ajax({
         url: '/cines/' + id,

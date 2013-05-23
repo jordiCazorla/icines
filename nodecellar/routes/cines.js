@@ -11,10 +11,10 @@ db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'cinesdb' database");
         db.collection('cines', {safe:true}, function(err, collection) {
-            if (err) {
+            //if (err) {
                 console.log("The 'cines' collection doesn't exist. Creating it with sample data...");
                 populateDB();
-            }
+            //}
         });
     }
 });
